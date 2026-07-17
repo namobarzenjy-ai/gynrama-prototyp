@@ -60,7 +60,7 @@ export function BehandlingsLista() {
           return (
             // "kat-"-prefix: kategorin Abort och behandlingen Abort
             // skulle annars få samma id
-            <div key={kat} id={`kat-${kat.toLowerCase()}`} className="scroll-mt-32 pt-20">
+            <div key={kat} id={`kat-${kat.toLowerCase()}`} className="pt-20">
               <div className="flex items-end justify-between gap-6 border-b border-ink/20 pb-5">
                 <h2 className="text-[clamp(1.9rem,3.2vw,2.7rem)] text-ink">
                   {kat}
@@ -75,7 +75,7 @@ export function BehandlingsLista() {
                 <details
                   key={b.slug}
                   id={b.slug}
-                  className="group scroll-mt-32 border-b border-ink/20"
+                  className="group border-b border-ink/20"
                 >
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-6 [&::-webkit-details-marker]:hidden">
                     <h3 className="text-[21px] text-ink transition-opacity group-hover:opacity-70">

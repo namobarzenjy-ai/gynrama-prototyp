@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Pill } from "./ui";
+import { Logo } from "./Logo";
 
 const NAV = [
   { label: "Hem", href: "/" },
@@ -14,12 +15,7 @@ export function Header({ aktiv = "/" }: { aktiv?: string }) {
   return (
     <header className="sticky top-0 z-50 bg-paper/90 backdrop-blur-md">
       <div className="mx-auto flex h-[106px] max-w-[1240px] items-center justify-between px-6">
-        <Link
-          href="/"
-          className="font-serif text-[30px] leading-none tracking-tight text-ink"
-        >
-          GynRaMa
-        </Link>
+        <Logo height={68} />
 
         {/* Aktiv sida markeras med mörk pill — precis som i mallen */}
         <nav className="hidden items-center gap-1 lg:flex">

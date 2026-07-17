@@ -54,8 +54,8 @@ export function Varldskanda() {
                     src={p.bild}
                     alt={`${p.namn}, ${p.titel.toLowerCase()}`}
                     width={440}
-                    height={480}
-                    className="h-[190px] w-full rounded-[18px] object-cover object-top lg:h-[210px]"
+                    height={550}
+                    className="aspect-[4/5] w-full rounded-[18px] bg-lavender-mist object-cover object-top"
                   />
                   <figcaption className="mt-2 text-[13px] leading-snug text-ink/70">
                     {p.namn}

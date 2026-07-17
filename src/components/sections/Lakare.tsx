@@ -22,12 +22,13 @@ export function Lakare() {
               href={`/om-oss#${l.slug}`}
               className="group flex flex-col overflow-hidden rounded-card bg-white transition-transform hover:-translate-y-1"
             >
+              {/* Porträttformat — källbilderna är stående, se Team.tsx */}
               <Image
                 src={l.bild}
                 alt={`${l.namn}, ${l.titel.toLowerCase()}`}
                 width={440}
-                height={480}
-                className="h-[210px] w-full object-cover object-top"
+                height={550}
+                className="aspect-[4/5] w-full bg-lavender-mist object-cover object-top"
               />
               <div className="flex flex-1 flex-col p-5">
                 <p className="text-[16px] text-ink">{l.namn}</p>

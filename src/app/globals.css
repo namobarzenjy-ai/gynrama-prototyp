@@ -33,6 +33,12 @@
 
 html {
   scroll-behavior: smooth;
+  /*
+    Headern är 106px hög och sticky. Utan detta hamnar rubriken man hoppar
+    till bakom headern och sektionen ser avklippt ut. Gäller alla ankare på
+    sajten — använd inte scroll-mt-* på enskilda mål, det staplas ovanpå.
+  */
+  scroll-padding-top: 146px;
 }
 
 body {

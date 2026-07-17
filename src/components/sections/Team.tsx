@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Check } from "../ui";
 import { lakare, personal, teamAvslutning, type Person } from "@/content/omoss";
 
-function PersonKort({ p, stor }: { p: Person; stor?: boolean }) {
+function PersonKort({ p }: { p: Person }) {
   // Första stycket syns alltid; resten av biografin och meriterna fälls ut.
   // Utan detta blir korten olika höga och väggen av text oläsbar.
   const [ingress, ...restBio] = p.bio;
@@ -11,14 +11,18 @@ function PersonKort({ p, stor }: { p: Person; stor?: boolean }) {
   return (
     <article
       id={p.slug}
-      className="flex scroll-mt-32 flex-col overflow-hidden rounded-card bg-white"
+      className="flex flex-col overflow-hidden rounded-card bg-white"
     >
+      {/*
+        Porträttformat 4:5. Källbilderna är stående (0.82–1.03) — i en
+        bred, låg ruta klipptes 38–53% bort och personerna blev inzoomade.
+      */}
       <Image
         src={p.bild}
         alt={`${p.namn}, ${p.titel.toLowerCase()}`}
         width={640}
-        height={700}
-        className={`w-full object-cover object-top ${stor ? "h-[300px]" : "h-[230px]"}`}
+        height={800}
+        className="aspect-[4/5] w-full bg-lavender-mist object-cover object-top"
       />
 
       <div className="flex flex-1 flex-col p-6">
@@ -76,10 +80,8 @@ function PersonKort({ p, stor }: { p: Person; stor?: boolean }) {
 }
 
 export function Team() {
-  const [randa, mats, ...ovriga] = lakare;
-
   return (
-    <section id="team" className="scroll-mt-32 bg-lavender-mist">
+    <section id="team" className="bg-lavender-mist">
       <div className="mx-auto max-w-[1240px] px-6 pb-28 lg:pb-36">
         <h2 className="mx-auto max-w-[16ch] pt-4 text-center text-[clamp(2rem,3.6vw,3.1rem)] text-ink">
           Våra specialistläkare
@@ -88,14 +90,9 @@ export function Team() {
           {teamAvslutning}
         </p>
 
-        {/* Grundarna får större kort */}
-        <div className="mt-14 grid gap-5 md:grid-cols-2">
-          <PersonKort p={randa} stor />
-          <PersonKort p={mats} stor />
-        </div>
-
-        <div className="mt-5 grid gap-5 md:grid-cols-3">
-          {ovriga.map((p) => (
+        {/* Enhetliga kort — grundarna får sin framtoning i sektionen ovanför */}
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {lakare.map((p) => (
             <PersonKort key={p.slug} p={p} />
           ))}
         </div>
@@ -103,7 +100,7 @@ export function Team() {
         <h3 className="mt-20 text-center text-[clamp(1.6rem,2.6vw,2.2rem)] text-ink">
           Övrig personal
         </h3>
-        <div className="mx-auto mt-10 grid max-w-[820px] gap-5 sm:grid-cols-2">
+        <div className="mx-auto mt-10 grid max-w-[810px] gap-5 sm:grid-cols-2">
           {personal.map((p) => (
             <PersonKort key={p.slug} p={p} />
           ))}

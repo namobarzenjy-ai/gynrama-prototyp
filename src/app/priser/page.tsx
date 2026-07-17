@@ -45,7 +45,7 @@ export default function Priser() {
               <div
                 key={kat.rubrik}
                 id={kat.rubrik.toLowerCase().replace(/[^a-zåäö]+/g, "-")}
-                className="scroll-mt-32 pt-16"
+                className="pt-16"
               >
                 <h2 className="text-[clamp(1.8rem,3vw,2.5rem)] text-ink">
                   {kat.rubrik}

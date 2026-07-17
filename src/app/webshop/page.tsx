@@ -53,7 +53,7 @@ export default function Webshop() {
                 <div
                   key={kat}
                   id={kat.toLowerCase()}
-                  className="scroll-mt-32 pt-16"
+                  className="pt-16"
                 >
                   <div className="flex items-end justify-between gap-6 border-b border-ink/20 pb-5">
                     <h2 className="text-[clamp(1.8rem,3vw,2.5rem)] text-ink">

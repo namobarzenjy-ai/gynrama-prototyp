@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { kontakt } from "@/content/gynrama";
+import { Logo } from "./Logo";
 
 // Absoluta vägar — footern renderas även på undersidor där
 // startsidans ankare inte finns
@@ -39,7 +40,7 @@ export function Footer() {
       <div className="mx-auto max-w-[1240px] px-6 py-20">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <p className="font-serif text-[30px] leading-none">GynRaMa</p>
+            <Logo variant="ljus" height={56} />
             <p className="mt-5 max-w-[38ch] text-[15px] leading-relaxed text-white/70">
               Till oss är alla välkomna, både par och ensamstående, och ni kan
               söka er till oss oavsett var i landet eller världen ni bor. Ingen

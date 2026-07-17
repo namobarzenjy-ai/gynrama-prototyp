@@ -121,8 +121,8 @@ export default function Ivf() {
                     src={l.bild}
                     alt={`${l.namn}, ${l.titel.toLowerCase()}`}
                     width={220}
-                    height={260}
-                    className="size-[86px] shrink-0 rounded-[14px] object-cover object-top"
+                    height={275}
+                    className="h-[108px] w-[86px] shrink-0 rounded-[14px] bg-lavender-mist object-cover object-top"
                   />
                   <div>
                     <p className="text-[17px] text-ink">{l.namn}</p>
