@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
   ...(pages && {
     output: "export",
     basePath: `/${repo}`,
+    // Ger behandlingar/index.html istället för behandlingar.html, så att
+    // både /behandlingar och /behandlingar/ svarar på GitHub Pages
+    trailingSlash: true,
     // GitHub Pages har ingen bildoptimeringsserver
     images: { unoptimized: true },
   }),
