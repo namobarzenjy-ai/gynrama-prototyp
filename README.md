@@ -1,6 +1,8 @@
 # GynRaMa — designprototyp
 
-Ny startsida åt [gynrama.se](https://gynrama.se), byggd i Next.js 16 + Tailwind 4.
+Ny hemsida åt [gynrama.se](https://gynrama.se), byggd i Next.js 16 + Tailwind 4.
+
+**▶ Live: <https://namobarzenjy-ai.github.io/gynrama-prototyp/>**
 
 ```bash
 npm run dev     # http://localhost:3000
@@ -9,9 +11,13 @@ npm run build
 
 ## Vad det här är
 
-En **prototyp av startsidan** — inte en färdig sida. Innehållet är hämtat från
-GynRaMas befintliga WordPress-sida; designspråket kommer från en
+En **designprototyp** — inte en färdig sida, och inte klinikens riktiga
+webbplats. Klara sidor: startsidan och `/behandlingar`. Innehållet är hämtat
+från GynRaMas befintliga WordPress-sida; designspråket kommer från en
 Elementor-mall för kvinnohälsa ([demo](https://awakenedtemplates.com/doula)).
+
+Live-sidan är satt till `noindex, nofollow` och deployas automatiskt till
+GitHub Pages vid varje push till `main` (se `.github/workflows/deploy.yml`).
 
 ## Designtokens
 
