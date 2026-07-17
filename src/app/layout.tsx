@@ -25,6 +25,10 @@ export const metadata: Metadata = {
   title: "GynRaMa – Gynekolog & fertilitet i Göteborg",
   description:
     "Högkvalitativ gynekologisk vård och fertilitetsutredning med personligt bemötande. Boka fysiskt besök, videobesök eller telefonkonsultation – ingen remiss krävs.",
+  // Detta är en designprototyp, inte klinikens riktiga sida. Den får inte
+  // indexeras — en patient som hittade den via sökning kunde tro att den
+  // är GynRaMas verkliga mottagning och agera på priser och telefonnummer.
+  robots: { index: false, follow: false },
 };
 
 export default function RootLayout({
