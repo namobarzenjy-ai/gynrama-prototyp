@@ -4,9 +4,10 @@ import { Pill } from "./ui";
 const NAV = [
   { label: "Hem", href: "/" },
   { label: "Behandlingar", href: "/behandlingar" },
+  { label: "IVF", href: "/gynrama-ivf" },
+  { label: "Priser", href: "/priser" },
   { label: "Om oss", href: "/om-oss" },
-  { label: "Priser", href: "/#priser" },
-  { label: "Webshop", href: "/#webshop" },
+  { label: "Webshop", href: "/webshop" },
 ];
 
 export function Header({ aktiv = "/" }: { aktiv?: string }) {
@@ -38,7 +39,7 @@ export function Header({ aktiv = "/" }: { aktiv?: string }) {
           ))}
         </nav>
 
-        <Pill href="/#boka" tone="lavender" className="hidden sm:inline-flex">
+        <Pill href="/boka-tid" tone="lavender" className="hidden sm:inline-flex">
           Boka tid
         </Pill>
       </div>

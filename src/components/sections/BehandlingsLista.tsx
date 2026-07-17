@@ -93,7 +93,7 @@ export function BehandlingsLista() {
                   <div className="pb-8">
                     <Brodtext text={b.text} />
                     <div className="mt-7">
-                      <Pill href="#boka" tone="lime">
+                      <Pill href="/boka-tid" tone="lime">
                         Boka tid
                       </Pill>
                     </div>

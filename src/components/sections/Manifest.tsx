@@ -20,7 +20,7 @@ export function Manifest() {
               och lyssnad på – från första kontakt till avslutat besök.
             </p>
             <div className="mt-8">
-              <Pill href="#boka" tone="lime">
+              <Pill href="/boka-tid" tone="lime">
                 Boka tid
               </Pill>
             </div>

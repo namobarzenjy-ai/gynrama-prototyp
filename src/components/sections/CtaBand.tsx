@@ -23,7 +23,7 @@ export function CtaBand() {
                 Din hälsa förtjänar tid, kunskap och ett lugnt bemötande.
               </h2>
               <div className="mt-8">
-                <Pill href={"tel:+4631232122"} tone="lime" withArrow>
+                <Pill href="/boka-tid" tone="lime" withArrow>
                   Boka tid
                 </Pill>
               </div>

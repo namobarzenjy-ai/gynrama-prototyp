@@ -12,9 +12,22 @@ npm run build
 ## Vad det här är
 
 En **designprototyp** — inte en färdig sida, och inte klinikens riktiga
-webbplats. Klara sidor: startsidan, `/behandlingar` och `/om-oss`. Innehållet är
-hämtat från GynRaMas befintliga WordPress-sida; designspråket kommer från en
-Elementor-mall för kvinnohälsa ([demo](https://awakenedtemplates.com/doula)).
+webbplats. Innehållet är hämtat från GynRaMas befintliga WordPress-sida;
+designspråket kommer från en Elementor-mall för kvinnohälsa
+([demo](https://awakenedtemplates.com/doula)).
+
+Alla åtta sidor är byggda:
+
+| Sida | Innehåll |
+| --- | --- |
+| `/` | Startsida |
+| `/behandlingar` | 17 behandlingar i 4 kategorier |
+| `/gynrama-ivf` | IVF i samarbete med Nordic IVF |
+| `/priser` | 41 tjänster i 7 kategorier |
+| `/boka-tid` | 4 besökstyper, länkade till klinikens skarpa bokningssystem |
+| `/om-oss` | Kliniken + 7 personer i teamet |
+| `/formular-och-lankar` | 4 PDF-formulär |
+| `/webshop` | 17 produkter i 4 kategorier (katalog, ingen kassa) |
 
 Live-sidan är satt till `noindex, nofollow` och deployas automatiskt till
 GitHub Pages vid varje push till `main` (se `.github/workflows/deploy.yml`).
@@ -56,10 +69,16 @@ gynrama.se. Redigera den filen, inte komponenterna.
 - **Inga patientomdömen.** Mallen har en omdömessektion; GynRaMa har inga
   omdömen på sin sida, så den är ersatt med de riktiga specialistläkarna.
   Omdömen får inte hittas på.
-- **Alla CTA:er går till `#boka`** — inte till det riktiga bokningssystemet.
-- **Webshoppen (17 produkter) och WooCommerce-flödet är inte byggt.**
-- **Kvar att bygga:** Priser, Boka tid, Formulär & länkar, GynRaMa IVF, Webshop.
-- Priserna i `content/gynrama.ts` är hämtade 2026-07-17 — verifiera mot
-  gynrama.se/priser/ innan publicering.
+- **Webshoppen är en katalog, ingen butik.** Ingen varukorg och ingen kassa är
+  byggd — "Till produkten" länkar till klinikens skarpa WooCommerce-sidor.
+  Produktbilderna hotlänkas också från gynrama.se.
+- **Priserna är hämtade 2026-07-17** (`content/priser.ts`, `prisHamtat`).
+  Verifiera mot gynrama.se/priser/ innan publicering — priser ändras.
 - Två stavfel i klinikens källtext är medvetet bevarade, se `kandaStavfel` i
   `content/omoss.ts`. Värda att påpeka för dem.
+
+## Vad som INTE är platshållare
+
+Bokningsknapparna går till klinikens **skarpa bokningssystem** (patient.nu),
+med de fyra riktiga kalender-URL:erna hämtade från deras egen sida. Klickar
+någon på "Boka" i prototypen hamnar de i den verkliga bokningen.

@@ -4,12 +4,13 @@ import { kontakt } from "@/content/gynrama";
 // Absoluta vägar — footern renderas även på undersidor där
 // startsidans ankare inte finns
 const SNABBLANKAR = [
-  { label: "Boka tid", href: "/#boka" },
+  { label: "Boka tid", href: "/boka-tid" },
   { label: "Behandlingar", href: "/behandlingar" },
-  { label: "Priser", href: "/#priser" },
-  { label: "GynRaMa IVF", href: "/behandlingar#kat-fertilitet" },
+  { label: "GynRaMa IVF", href: "/gynrama-ivf" },
+  { label: "Priser", href: "/priser" },
+  { label: "Formulär & länkar", href: "/formular-och-lankar" },
   { label: "Om oss", href: "/om-oss" },
-  { label: "Webshop", href: "/#webshop" },
+  { label: "Webshop", href: "/webshop" },
 ];
 
 function Social({
