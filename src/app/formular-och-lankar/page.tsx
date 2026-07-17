@@ -55,7 +55,7 @@ export default function FormularOchLankar() {
                 </p>
                 <Link
                   href={gdprPdf}
-                  className="mt-5 inline-flex items-center gap-2 text-[15px] transition-colors hover:text-lime"
+                  className="mt-5 inline-flex items-center gap-2 text-[15px] transition-colors hover:text-lime max-lg:min-h-11"
                 >
                   Personuppgiftspolicy (PDF)
                   <ArrowUpRight className="size-[12px]" />
@@ -71,13 +71,13 @@ export default function FormularOchLankar() {
                 <div className="mt-5 space-y-1.5">
                   <Link
                     href={kontakt.telefonHref}
-                    className="block text-[15px] transition-colors hover:text-lime"
+                    className="block text-[15px] transition-colors hover:text-lime max-lg:flex max-lg:min-h-11 max-lg:items-center"
                   >
                     {kontakt.telefon}
                   </Link>
                   <Link
                     href={`mailto:${kontakt.epost}`}
-                    className="block text-[15px] transition-colors hover:text-lime"
+                    className="block text-[15px] transition-colors hover:text-lime max-lg:flex max-lg:min-h-11 max-lg:items-center"
                   >
                     {kontakt.epost}
                   </Link>

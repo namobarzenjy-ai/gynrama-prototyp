@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Pill } from "./ui";
 import { Logo } from "./Logo";
+import { MobilMeny } from "./MobilMeny";
 
 const NAV = [
   { label: "Hem", href: "/" },
@@ -14,10 +14,14 @@ const NAV = [
 export function Header({ aktiv = "/" }: { aktiv?: string }) {
   return (
     <header className="sticky top-0 z-50 bg-paper/90 backdrop-blur-md">
-      <div className="mx-auto flex h-[106px] max-w-[1240px] items-center justify-between px-6">
-        <Logo height={68} />
+      {/*
+        Allt mobilspecifikt sitter bakom max-lg / lg-prefix. Desktop (lg+)
+        behåller exakt 106px höjd, 68px logga och pill-navigationen.
+      */}
+      <div className="mx-auto flex h-[74px] max-w-[1240px] items-center justify-between px-6 lg:h-[106px]">
+        <Logo className="h-[40px] lg:h-[68px]" />
 
-        {/* Aktiv sida markeras med mörk pill — precis som i mallen */}
+        {/* Desktop-navigation. Aktiv sida markeras med mörk pill — som i mallen */}
         <nav className="hidden items-center gap-1 lg:flex">
           {NAV.map((item) => (
             <Link
@@ -35,9 +39,18 @@ export function Header({ aktiv = "/" }: { aktiv?: string }) {
           ))}
         </nav>
 
-        <Pill href="/boka-tid" tone="lavender" className="hidden sm:inline-flex">
+        {/*
+          Boka tid syns på desktop. På mobil ligger den i menyn istället —
+          headern rymmer inte både logga, knapp och hamburgare på 375px.
+        */}
+        <Link
+          href="/boka-tid"
+          className="hidden rounded-pill bg-lavender px-[25px] py-[17px] text-[18px] leading-none font-medium text-ink transition-colors hover:bg-lavender/80 lg:inline-flex lg:items-center"
+        >
           Boka tid
-        </Pill>
+        </Link>
+
+        <MobilMeny lankar={NAV} aktiv={aktiv} />
       </div>
     </header>
   );

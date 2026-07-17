@@ -34,11 +34,18 @@
 html {
   scroll-behavior: smooth;
   /*
-    Headern är 106px hög och sticky. Utan detta hamnar rubriken man hoppar
-    till bakom headern och sektionen ser avklippt ut. Gäller alla ankare på
-    sajten — använd inte scroll-mt-* på enskilda mål, det staplas ovanpå.
+    Headern är sticky. Utan detta hamnar rubriken man hoppar till bakom
+    headern och sektionen ser avklippt ut. Gäller alla ankare på sajten —
+    använd inte scroll-mt-* på enskilda mål, det staplas ovanpå.
+    Mobilheadern är 74px, desktop 106px.
   */
-  scroll-padding-top: 146px;
+  scroll-padding-top: 110px;
+}
+
+@media (min-width: 1024px) {
+  html {
+    scroll-padding-top: 146px;
+  }
 }
 
 body {

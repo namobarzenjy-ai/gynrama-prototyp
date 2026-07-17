@@ -5,7 +5,9 @@ import type { NextConfig } from "next";
  * dev-server utan basePath och med bildoptimering påslagen.
  */
 const pages = process.env.GITHUB_PAGES === "true";
-const repo = "gynrama-prototyp";
+/* BASE_PATH kan sättas för att bygga två versioner sida vid sida under
+   samma origin — används av desktop-regressionstestet, se scripts/. */
+const repo = process.env.BASE_PATH?.replace(/^\//, "") || "gynrama-prototyp";
 
 const nextConfig: NextConfig = {
   /*

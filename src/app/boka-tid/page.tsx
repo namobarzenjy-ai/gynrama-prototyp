@@ -51,7 +51,12 @@ export default function BokaTid() {
                   key={b.titel}
                   className="flex flex-col rounded-card bg-white p-7"
                 >
-                  <div className="flex items-baseline justify-between gap-5">
+                  {/*
+                    max-lg: stapla rubrik och pris. På samma rad blir kortets
+                    min-content bredare än behållaren (lång rubrik + nowrap-pris)
+                    och sidan får horisontell scroll på mobil.
+                  */}
+                  <div className="flex items-baseline justify-between gap-5 max-lg:flex-col max-lg:items-start max-lg:gap-1.5">
                     <h3 className="text-[22px] text-ink">{b.titel}</h3>
                     <span className="shrink-0 font-serif text-[20px] whitespace-nowrap text-ink">
                       {b.pris}
@@ -96,7 +101,7 @@ export default function BokaTid() {
                 </Link>
                 <Link
                   href={kontakt.telefonAltHref}
-                  className="mt-1 block text-[15px] text-white/70 transition-colors hover:text-lime"
+                  className="mt-1 block text-[15px] text-white/70 transition-colors hover:text-lime max-lg:flex max-lg:min-h-11 max-lg:items-center"
                 >
                   {kontakt.telefonAlt}
                 </Link>
@@ -144,7 +149,7 @@ export default function BokaTid() {
 
                 <Link
                   href="/priser"
-                  className="mt-7 inline-flex items-center gap-2 text-[15px] text-ink/70 underline-offset-4 transition-colors hover:text-ink hover:underline"
+                  className="mt-7 inline-flex items-center gap-2 text-[15px] text-ink/70 underline-offset-4 transition-colors hover:text-ink hover:underline max-lg:min-h-11"
                 >
                   Se hela prislistan
                   <ArrowUpRight className="size-[12px]" />

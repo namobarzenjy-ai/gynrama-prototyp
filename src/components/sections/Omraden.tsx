@@ -14,9 +14,10 @@ export function Omraden() {
           Specialistvård med kvalitet i fokus
         </h2>
         <p className="mt-8 text-center">
+          {/* max-lg: tryckyta bara på mobil — desktop-layouten rörs inte */}
           <Link
             href="/behandlingar"
-            className="inline-flex items-center gap-2 text-[16px] text-ink/70 underline-offset-4 transition-colors hover:text-ink hover:underline"
+            className="inline-flex items-center gap-2 text-[16px] text-ink/70 underline-offset-4 transition-colors hover:text-ink hover:underline max-lg:min-h-11 max-lg:px-4"
           >
             Se alla behandlingar
             <ArrowUpRight className="size-[13px]" />
@@ -41,7 +42,7 @@ export function Omraden() {
                   <Link
                     href={o.href}
                     aria-label={`Läs mer om ${o.titel}`}
-                    className="grid size-9 shrink-0 place-items-center rounded-full bg-lime text-ink transition-colors hover:bg-lime-deep"
+                    className="grid size-9 shrink-0 place-items-center rounded-full bg-lime text-ink transition-colors hover:bg-lime-deep max-lg:size-11"
                   >
                     <ArrowUpRight className="size-[14px]" />
                   </Link>

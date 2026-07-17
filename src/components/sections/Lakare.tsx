@@ -45,9 +45,10 @@ export function Lakare() {
         </div>
 
         <p className="mt-12 text-center">
+          {/* max-lg: tryckyta bara på mobil — desktop-layouten rörs inte */}
           <Link
             href="/om-oss"
-            className="inline-flex items-center gap-2 text-[16px] text-ink/70 underline-offset-4 transition-colors hover:text-ink hover:underline"
+            className="inline-flex items-center gap-2 text-[16px] text-ink/70 underline-offset-4 transition-colors hover:text-ink hover:underline max-lg:min-h-11 max-lg:px-4"
           >
             Om GynRaMa och hela teamet
             <ArrowUpRight className="size-[13px]" />

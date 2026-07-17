@@ -33,7 +33,7 @@ function PersonKort({ p }: { p: Person }) {
 
         {harMer && (
           <details className="group mt-4">
-            <summary className="flex cursor-pointer list-none items-center gap-2 text-[14px] text-ink/60 transition-colors hover:text-ink [&::-webkit-details-marker]:hidden">
+            <summary className="flex cursor-pointer list-none items-center gap-2 text-[14px] text-ink/60 transition-colors hover:text-ink max-lg:min-h-11 [&::-webkit-details-marker]:hidden">
               <span
                 aria-hidden
                 className="relative size-3.5 shrink-0 text-ink/60"

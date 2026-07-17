@@ -75,6 +75,35 @@ det 404:ar loggan på Pages men fungerar lokalt.
 Allt i [`src/content/gynrama.ts`](src/content/gynrama.ts) är hämtat från
 gynrama.se. Redigera den filen, inte komponenterna.
 
+## Mobil — och hur desktop hålls orörd
+
+Tailwind är mobile-first: en klass utan prefix gäller **alla** skärmar,
+inklusive desktop. Allt mobilspecifikt ligger därför bakom `max-lg:`, som bara
+gäller **under** 1024px. Desktop kan då inte påverkas.
+
+Mobilmenyn ([`MobilMeny.tsx`](src/components/MobilMeny.tsx)) är byggd på
+`<details>` — ingen klient-JS, precis som dragspelen, och fungerar även om JS
+inte laddar. Hela komponenten är `lg:hidden`.
+
+### Regressionstest av desktop
+
+`BASE_PATH` i [`next.config.ts`](next.config.ts) finns för att kunna bygga två
+versioner sida vid sida under samma origin och jämföra dem:
+
+```bash
+git stash push -- src/                                  # baseline
+BASE_PATH=/a GITHUB_PAGES=true npm run build && mv out /tmp/cmp/a
+git stash pop                                           # med ändringarna
+BASE_PATH=/b GITHUB_PAGES=true npm run build && mv out /tmp/cmp/b
+cd /tmp/cmp && python3 -m http.server 8850
+```
+
+Öppna `/a/` och jämför mot `/b/` i iframes vid 1440px — varje elements
+position, storlek, typsnittsgrad och färg. Noll avvikelser = desktop orörd.
+
+Stasha bara `src/`. Tar du med `next.config.ts` byggs baselinen utan `BASE_PATH`
+och laddar ingen CSS — då blir varje element en falsk avvikelse.
+
 ## Att lösa innan skarp lansering
 
 - **Stämningsbilderna är platshållare.** Fria stockfoton (Unsplash/Pexels-licens,
