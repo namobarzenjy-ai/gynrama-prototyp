@@ -8,6 +8,12 @@ const pages = process.env.GITHUB_PAGES === "true";
 const repo = "gynrama-prototyp";
 
 const nextConfig: NextConfig = {
+  /*
+    next/image med unoptimized:true skickar src oförändrad och lägger INTE
+    på basePath. Lokala bilder måste därför prefixas manuellt — annars 404:ar
+    de på GitHub Pages men fungerar lokalt. Se components/Logo.tsx.
+  */
+  env: { NEXT_PUBLIC_BASE_PATH: pages ? `/${repo}` : "" },
   ...(pages && {
     output: "export",
     basePath: `/${repo}`,

@@ -8,6 +8,13 @@ import Link from "next/link";
  *
  * Loggan är 350x100 (3.5:1).
  */
+/*
+  Måste prefixas manuellt: next/image med unoptimized:true (som Pages-bygget
+  använder) lägger inte på basePath åt oss. Utan detta 404:ar loggan på
+  GitHub Pages men fungerar lokalt.
+*/
+const bas = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export function Logo({
   variant = "mork",
   height = 52,
@@ -25,7 +32,7 @@ export function Logo({
       className={`inline-block ${className}`}
     >
       <Image
-        src={variant === "ljus" ? "/gynrama-logo-vit.svg" : "/gynrama-logo.svg"}
+        src={`${bas}/gynrama-logo${variant === "ljus" ? "-vit" : ""}.svg`}
         alt="GynRaMa AB – Gynekologisk mottagning med akademisk profil"
         width={Math.round(height * 3.5)}
         height={height}
