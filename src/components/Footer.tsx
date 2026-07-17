@@ -8,7 +8,7 @@ const SNABBLANKAR = [
   { label: "Behandlingar", href: "/behandlingar" },
   { label: "Priser", href: "/#priser" },
   { label: "GynRaMa IVF", href: "/behandlingar#kat-fertilitet" },
-  { label: "Om oss", href: "/#om-oss" },
+  { label: "Om oss", href: "/om-oss" },
   { label: "Webshop", href: "/#webshop" },
 ];
 

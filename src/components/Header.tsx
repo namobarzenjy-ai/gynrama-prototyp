@@ -4,7 +4,7 @@ import { Pill } from "./ui";
 const NAV = [
   { label: "Hem", href: "/" },
   { label: "Behandlingar", href: "/behandlingar" },
-  { label: "Om oss", href: "/#om-oss" },
+  { label: "Om oss", href: "/om-oss" },
   { label: "Priser", href: "/#priser" },
   { label: "Webshop", href: "/#webshop" },
 ];

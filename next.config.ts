@@ -22,6 +22,8 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "images.pexels.com" },
+      // Klinikens egna personalporträtt, från deras befintliga sida
+      { protocol: "https", hostname: "gynrama.se" },
     ],
   },
 };

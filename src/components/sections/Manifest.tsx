@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { NoteTag, Pill } from "../ui";
 import { bilder } from "@/content/gynrama";
+import { lakare } from "@/content/omoss";
 
 export function Manifest() {
   return (
@@ -26,15 +27,15 @@ export function Manifest() {
           </div>
 
           <div className="relative lg:w-[360px]">
+            {/* Klinikens eget foto på sin verksamhetschef — inte stock */}
             <Image
-              src={bilder.omOss}
-              alt="Specialistläkare i vit rock"
+              src={lakare[0].bild}
+              alt={`${lakare[0].namn}, ${lakare[0].titel.toLowerCase()}`}
               width={720}
               height={960}
-              className="h-[440px] w-full rounded-card object-cover"
+              className="h-[440px] w-full rounded-card object-cover object-top"
             />
-            {/* Platshållarbild — texten får inte namnge en verklig läkare */}
-            <NoteTag className="-bottom-4 left-6">Välkommen!</NoteTag>
+            <NoteTag className="-bottom-4 left-6">Randa, verksamhetschef</NoteTag>
           </div>
         </div>
 

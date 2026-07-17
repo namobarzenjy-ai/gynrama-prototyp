@@ -1,11 +1,7 @@
-import { lakare } from "@/content/gynrama";
-
-function initialer(namn: string) {
-  return namn
-    .split(" ")
-    .map((n) => n[0])
-    .join("");
-}
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "../ui";
+import { lakare } from "@/content/omoss";
 
 export function Lakare() {
   return (
@@ -19,31 +15,43 @@ export function Lakare() {
           för att ge varje patient trygg, modern och individanpassad vård.
         </p>
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {lakare.map((l) => (
-            <article
-              key={l.namn}
-              className="flex flex-col rounded-card bg-white p-6"
+            <Link
+              key={l.slug}
+              href={`/om-oss#${l.slug}`}
+              className="group flex flex-col overflow-hidden rounded-card bg-white transition-transform hover:-translate-y-1"
             >
-              <p className="flex-1 text-[14px] leading-relaxed text-ink/75">
-                {l.text}
-              </p>
-
-              <div className="mt-7 flex items-center gap-3">
-                {/* Initialer istället för porträtt — vi har inga riktiga foton */}
-                <span className="grid size-11 shrink-0 place-items-center rounded-full bg-lavender font-serif text-[15px] text-ink">
-                  {initialer(l.namn)}
-                </span>
-                <span>
-                  <p className="text-[15px] text-ink">{l.namn}</p>
-                  <p className="text-[12px] leading-snug text-ink/55">
-                    {l.titel}
-                  </p>
+              <Image
+                src={l.bild}
+                alt={`${l.namn}, ${l.titel.toLowerCase()}`}
+                width={440}
+                height={480}
+                className="h-[210px] w-full object-cover object-top"
+              />
+              <div className="flex flex-1 flex-col p-5">
+                <p className="text-[16px] text-ink">{l.namn}</p>
+                <p className="mt-1 text-[12px] leading-snug text-ink/55">
+                  {l.titel}
+                </p>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] text-ink/50 transition-colors group-hover:text-ink">
+                  Läs mer
+                  <ArrowUpRight className="size-[11px]" />
                 </span>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
+
+        <p className="mt-12 text-center">
+          <Link
+            href="/om-oss"
+            className="inline-flex items-center gap-2 text-[16px] text-ink/70 underline-offset-4 transition-colors hover:text-ink hover:underline"
+          >
+            Om GynRaMa och hela teamet
+            <ArrowUpRight className="size-[13px]" />
+          </Link>
+        </p>
       </div>
     </section>
   );
