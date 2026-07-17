@@ -52,6 +52,24 @@ Hämtade ur mallens live-demo via computed styles. Ligger i
 Alla tre typsnitten är fria Google Fonts. Färger och layoutmönster är
 återskapade från grunden — ingen kod eller bild från mallen är kopierad.
 
+### Loggan
+
+Klinikens egen logga i två varianter, båda i `public/`:
+
+| Fil | Används |
+| --- | --- |
+| `gynrama-logo.svg` | Header och ljusa ytor |
+| `gynrama-logo-vit.svg` | Footern och mörka ytor |
+
+Originalfilen hade en vit bakgrundsruta bakom emblemet som är borttagen —
+kvinnoprofilen är urklippt negativ yta och visar underlaget. Därför krävs den
+vita varianten: emblemets lila `#84277F` mot footerns `#404051` ger bara
+1.25:1 i kontrast, alltså osynligt. Helvit ger 10.1:1.
+
+Loggans sökväg måste prefixas med `NEXT_PUBLIC_BASE_PATH` (se `Logo.tsx`).
+`next/image` med `unoptimized:true` lägger inte på basePath åt oss, så utan
+det 404:ar loggan på Pages men fungerar lokalt.
+
 ## Innehåll
 
 Allt i [`src/content/gynrama.ts`](src/content/gynrama.ts) är hämtat från
