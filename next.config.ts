@@ -28,9 +28,8 @@ const nextConfig: NextConfig = {
   images: {
     ...(pages && { unoptimized: true }),
     remotePatterns: [
-      { protocol: "https", hostname: "images.unsplash.com" },
-      { protocol: "https", hostname: "images.pexels.com" },
-      // Klinikens egna personalporträtt, från deras befintliga sida
+      // Personalporträtten hämtas från klinikens befintliga sida. Övriga
+      // bilder ligger nu lokalt i public/bilder/ (klinikens egna foton).
       { protocol: "https", hostname: "gynrama.se" },
     ],
   },

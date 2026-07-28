@@ -19,11 +19,11 @@ export function Besok() {
 
             <div className="relative mt-14 max-w-[360px]">
               <Image
-                src={bilder.kort3}
-                alt="Hand som håller en kvist över vatten"
-                width={720}
-                height={720}
-                className="h-[340px] w-full rounded-card object-cover"
+                src={bilder.bokaBesok}
+                alt="Specialistläkare vid arbete på GynRaMa"
+                width={960}
+                height={1400}
+                className="h-[340px] w-full rounded-card object-cover object-top"
               />
               <NoteTag className="-bottom-3 left-5">Ingen remiss!</NoteTag>
             </div>
@@ -59,10 +59,10 @@ export function Besok() {
                 <div className="grid gap-5 pb-7 sm:grid-cols-[190px_1fr]">
                   {i === 0 && (
                     <Image
-                      src={bilder.kort2}
-                      alt="Kvinna med slutna ögon i mjukt ljus"
-                      width={380}
-                      height={300}
+                      src={bilder.graviditet}
+                      alt="Ultraljudsundersökning av gravid mage"
+                      width={933}
+                      height={1400}
                       className="h-[150px] w-full rounded-[18px] object-cover"
                     />
                   )}

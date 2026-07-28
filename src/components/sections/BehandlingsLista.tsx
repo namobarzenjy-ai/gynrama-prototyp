@@ -91,6 +91,16 @@ export function BehandlingsLista() {
                   </summary>
 
                   <div className="pb-8">
+                    {b.bild && (
+                      <img
+                        src={b.bild}
+                        alt={b.bildAlt ?? ""}
+                        width={2560}
+                        height={1707}
+                        loading="lazy"
+                        className="mb-6 h-[280px] w-full max-w-[560px] rounded-card object-cover"
+                      />
+                    )}
                     <Brodtext text={b.text} />
                     <div className="mt-7">
                       <Pill href="/boka-tid" tone="lime">

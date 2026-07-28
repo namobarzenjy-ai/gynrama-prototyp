@@ -42,10 +42,10 @@ export function Manifest() {
         {/* Lavendelkortet — mallens "Hi. I'm Anna."-block */}
         <div className="mt-16 grid gap-6 rounded-card bg-lavender p-6 lg:mt-20 lg:grid-cols-[280px_1fr] lg:p-8">
           <Image
-            src={bilder.kort1}
-            alt="Mjuka pionblad i varma toner"
-            width={560}
-            height={560}
+            src={bilder.manifest}
+            alt="Reception med orkidé på GynRaMa i Göteborg"
+            width={933}
+            height={1400}
             className="h-full min-h-[240px] w-full rounded-[18px] object-cover"
           />
 

@@ -23,41 +23,53 @@ export const kontakt = {
   verksamhetschef: "Randa Akouri, Verksamhetschef",
 };
 
-/* Bilder: fria stockfoton (Unsplash/Pexels-licens — fri kommersiell
-   användning, ingen attribution krävs). Varje URL är verifierad HTTP 200. */
+/*
+   Bilder: klinikens EGNA foton, tagna på GynRaMa i Göteborg. Ersätter de
+   tidigare stockfotona. Ligger i public/bilder/ som optimerad WebP.
+
+   Sökvägen prefixas med basePath — next/image med unoptimized (Pages-bygget)
+   lägger inte på det åt oss, så utan detta 404:ar bilderna på GitHub Pages
+   men fungerar lokalt. Samma fälla som loggan, se Logo.tsx.
+
+   Personporträtten (personalen) ligger INTE här — de hämtas från gynrama.se
+   och rörs inte. Se omoss.ts.
+*/
+const bas = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const b = (namn: string) => `${bas}/bilder/${namn}.webp`;
+
 export const bilder = {
-  hero: "https://images.unsplash.com/photo-1651507225850-4721bd4b537e?w=1200&q=80",
-  omOss:
-    "https://images.unsplash.com/photo-1706565029539-d09af5896340?w=1200&q=80",
-  kort1:
-    "https://images.unsplash.com/photo-1612662227564-982c079252bb?w=1200&h=1200&fit=crop&q=80",
-  kort2:
-    "https://images.pexels.com/photos/5852906/pexels-photo-5852906.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1000&fit=crop",
-  kort3:
-    "https://images.unsplash.com/photo-1561652970-807773cc928c?w=1200&h=1200&fit=crop&q=80",
-  cta: "https://images.unsplash.com/photo-1762007175856-68d237957842?w=1200&q=80",
+  hero: b("reception-logga"), // reception med GynRaMa-loggan på väggen
+  manifest: b("reception-orkide"), // reception med orkidé
+  ctaBakgrund: b("vantrum"), // väntrummet, bred bakgrund
+  ctaKort: b("lakare-korridor"), // specialistläkare i korridoren
+  bokaBesok: b("lakare-dator"), // specialistläkare vid arbete
+  gynekologi: b("modell"), // anatomisk modell + informationsmaterial
+  fertilitet: b("kaffe"), // kaffestationen i väntrummet
+  graviditet: b("ultraljud"), // ultraljud av gravid mage
+  ivf: b("kaffe"),
+  kolposkopi: b("kolposkopi"), // kolposkopiundersökning (endast behandlingssidan)
 };
 
 export const omraden = [
   {
     titel: "Gynekologi",
     text: "Regelbundna kontroller, ultraljud, cellförändringar, myom och klimakteriebesvär.",
-    bild: bilder.kort1,
-    alt: "Mjuka pionblad i varma toner",
+    bild: bilder.gynekologi,
+    alt: "Anatomisk modell och informationsmaterial på GynRaMa",
     href: "/behandlingar#kat-gynekologi",
   },
   {
     titel: "Fertilitet & IVF",
     text: "Utredning, rådgivning och IVF i nära samarbete med Nordic IVF.",
-    bild: bilder.kort2,
-    alt: "Kvinna med slutna ögon i mjukt ljus",
+    bild: bilder.fertilitet,
+    alt: "Kaffestation i väntrummet på GynRaMa",
     href: "/behandlingar#kat-fertilitet",
   },
   {
     titel: "Graviditet",
     text: "Bedömning i tidig graviditet och ultraljud med 3D- och 4D-teknik.",
-    bild: bilder.kort3,
-    alt: "Hand som håller en kvist över vatten",
+    bild: bilder.graviditet,
+    alt: "Ultraljudsundersökning av gravid mage",
     href: "/behandlingar#kat-graviditet",
   },
 ];

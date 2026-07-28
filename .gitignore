@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Klinikens råa originalbilder — optimerade versioner ligger i public/bilder/
+
+# Klinikens råa originalbilder — optimerade ligger i public/bilder/
+egna bilder/

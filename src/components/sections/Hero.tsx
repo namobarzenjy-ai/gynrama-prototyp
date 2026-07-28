@@ -11,9 +11,9 @@ export function Hero() {
           <div className="pointer-events-none absolute -top-2 right-0 hidden w-[38%] lg:block">
             <Image
               src={bilder.hero}
-              alt="Kvinna i lugnt, mjukt dagsljus"
-              width={600}
-              height={800}
+              alt="Receptionen på GynRaMa i Göteborg"
+              width={1066}
+              height={1600}
               priority
               className="h-[500px] w-full rounded-card object-cover"
             />

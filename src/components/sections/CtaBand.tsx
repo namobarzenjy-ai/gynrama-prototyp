@@ -8,11 +8,11 @@ export function CtaBand() {
       <div className="mx-auto max-w-[1240px] px-6 pb-28 lg:pb-36">
         <div className="relative overflow-hidden rounded-card bg-tan">
           <Image
-            src={bilder.cta}
+            src={bilder.ctaBakgrund}
             alt=""
             aria-hidden
-            width={1400}
-            height={800}
+            width={2048}
+            height={1365}
             className="absolute inset-0 size-full object-cover"
           />
 
@@ -47,11 +47,11 @@ export function CtaBand() {
                 ))}
               </ul>
               <Image
-                src={bilder.kort2}
-                alt="Kvinna med slutna ögon i mjukt ljus"
-                width={420}
-                height={300}
-                className="mt-5 h-[130px] w-full rounded-[14px] object-cover"
+                src={bilder.ctaKort}
+                alt="Specialistläkare på GynRaMa"
+                width={1600}
+                height={1066}
+                className="mt-5 h-[130px] w-full rounded-[14px] object-cover object-top"
               />
             </div>
           </div>

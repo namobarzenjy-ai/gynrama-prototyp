@@ -16,7 +16,12 @@ export type Behandling = {
   namn: string;
   kategori: Kategori;
   text: string;
+  /** Valfri bild i det öppnade dragspelet. Klinikens egna foton. */
+  bild?: string;
+  bildAlt?: string;
 };
+
+const bas = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export const kategorier: Kategori[] = [
   "Gynekologi",
@@ -80,6 +85,9 @@ Vidare utredning och behandling
 • Misstänkt CIN II–III: kolposkopi och eventuellt biopsi
 • Bekräftad CIN II–III: behandlas vanligtvis med slyngkonisering där det förändrade området avlägsnas under lokalbedövning
 Läkarna på GynRaMa har lång erfarenhet av utredning och behandling av dysplasi, samt forskningsbakgrund inom området.`,
+    // Randas kolposkopi-bild — endast här, som önskat
+    bild: `${bas}/bilder/kolposkopi.webp`,
+    bildAlt: "Kolposkopiundersökning på GynRaMa",
   },
   {
     slug: "myom",
