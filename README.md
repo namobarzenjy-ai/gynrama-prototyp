@@ -106,9 +106,6 @@ och laddar ingen CSS — då blir varje element en falsk avvikelse.
 
 ## Att lösa innan skarp lansering
 
-- **Stämningsbilderna är platshållare.** Fria stockfoton (Unsplash/Pexels-licens,
-  fri kommersiell användning, ingen attribution krävs). Byt till egna
-  kliniksbilder. Gäller `bilder` i `content/gynrama.ts`.
 - **Personalporträtten hotlänkas från gynrama.se.** Det är klinikens egna foton,
   men de laddas från deras WordPress vid varje visning. Lägg dem i `public/`
   innan skarp drift. Kopplingen bild→person är verifierad — se kommentaren i
@@ -123,6 +120,22 @@ och laddar ingen CSS — då blir varje element en falsk avvikelse.
   Verifiera mot gynrama.se/priser/ innan publicering — priser ändras.
 - Två stavfel i klinikens källtext är medvetet bevarade, se `kandaStavfel` i
   `content/omoss.ts`. Värda att påpeka för dem.
+
+## Bilderna
+
+Alla stämningsbilder är **klinikens egna foton**, tagna på GynRaMa, optimerade
+till WebP i `public/bilder/` (via `sharp`, se git-historiken). Inga stockfoton
+kvar. Råoriginalen ligger i `egna bilder/` (gitignore:ad) — kör om konverteringen
+därifrån om du vill ändra storlek/kvalitet.
+
+Kvalitetsnot: 8 av 9 källor är 2048px (fin 2K-klass, inte 4K) och är **inte**
+uppskalade — uppskalning skapar bara suddighet. Bara kolposkopi-bilden är ett
+äkta 4K-original (levereras i 2560px). Vill du ha riktig 4K på övriga behövs
+nya foton i högre upplösning.
+
+Kolposkopi-bilden (pågående undersökning) ligger **bara** på behandlingssidan,
+vid Cellförändringar. Randas två övriga bilder används som stämningsbilder (CTA
+och Boka-besök), inte som profilbild — hennes profilbild är orörd.
 
 ## Vad som INTE är platshållare
 
