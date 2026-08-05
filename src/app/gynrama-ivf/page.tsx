@@ -48,9 +48,9 @@ export default function Ivf() {
               <div className="relative lg:w-[320px]">
                 <Image
                   src={bilder.ivf}
-                  alt="Kaffestation i väntrummet på GynRaMa"
-                  width={1400}
-                  height={933}
+                  alt="Nyfödd hand som håller om en vuxens finger"
+                  width={800}
+                  height={953}
                   className="h-[380px] w-full rounded-card object-cover"
                 />
                 <NoteTag className="-bottom-4 left-6">Med Nordic IVF</NoteTag>

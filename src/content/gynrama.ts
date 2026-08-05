@@ -38,31 +38,59 @@ const bas = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const b = (namn: string) => `${bas}/bilder/${namn}.webp`;
 
 export const bilder = {
-  hero: b("reception-logga"), // reception med GynRaMa-loggan på väggen
+  hero: b("reception-hero"), // hero-bakgrund: receptionen med patient i disken
   manifest: b("reception-orkide"), // reception med orkidé
   ctaBakgrund: b("vantrum"), // väntrummet, bred bakgrund
   ctaKort: b("lakare-korridor"), // specialistläkare i korridoren
-  bokaBesok: b("lakare-dator"), // specialistläkare vid arbete
-  gynekologi: b("modell"), // anatomisk modell + informationsmaterial
-  fertilitet: b("kaffe"), // kaffestationen i väntrummet
+  bokaBesok: b("reception-logga"), // reception med GynRaMa-loggan på väggen
+  gynekologi: b("gynrum"), // läkare vid kolposkopet i undersökningsrummet
+  fertilitet: b("ivf-barn"), // samma bild som IVF-sidan, medvetet delad
   graviditet: b("ultraljud"), // ultraljud av gravid mage
-  ivf: b("kaffe"),
+  ivf: b("ivf-barn"), // barnhand i vuxenhand
   kolposkopi: b("kolposkopi"), // kolposkopiundersökning (endast behandlingssidan)
 };
+
+/*
+   Bildvalen följer kundens besked 2026-08-05: bilden ska matcha ämnet på
+   platsen. Tre av dem är provisoriska tills kliniken skickar resten av
+   fotograferingen (numreringen i "egna bilder/" hoppar över 4–7, 10–13, 15–18
+   och 20, så fler bilder finns hos dem):
+
+   - gynekologi  Kunden vill ha gynrummet med gynstol och ultraljud. Det finns
+                 inte fotograferat. gynrum.webp är kolposkopibilden beskuren
+                 ovanför patientens ben — rätt ämne, men inte rätt bild.
+   - fertilitet  Kunden vill ha samtalsrum med ett par. Finns inte. Kortet delar
+                 därför bild med IVF-sidan på kundens begäran — samma fil på
+                 båda ställena är alltså avsiktligt, inte ett slarvfel.
+   - ivf         Kunden vill ha ägg, spermier eller barn. ivf-barn.webp är
+                 urklippt ur klinikens egen IVF-annons (originalet ligger i
+                 "egna bilder/"), fritt från text och logga.
+
+   reception-hero.webp är den enda bilden vi har där folk syns, och den enda
+   som ligger BAKOM text: den är hero-sektionens bakgrund med rubriken ovanpå.
+   Hämtad oskuren från klinikens nuvarande förstasida (2100x891). Byts den mot
+   en bild med andra mått måste width/height i Hero.tsx följa med, och tonings-
+   styrkan där är avvägd mot just den här bildens ljushet — se Hero.tsx.
+
+   kaffe.webp, modell.webp och lakare-dator.webp är därmed oanvända. De ligger
+   kvar — kaffebilden låg tidigare på både fertilitet och IVF, modellen
+   föreställer en gravid livmoder (obstetrik, inte gynekologi), och läkaren vid
+   skrivbordet ersattes när fertilitetskortet fick IVF-bilden.
+*/
 
 export const omraden = [
   {
     titel: "Gynekologi",
     text: "Regelbundna kontroller, ultraljud, cellförändringar, myom och klimakteriebesvär.",
     bild: bilder.gynekologi,
-    alt: "Anatomisk modell och informationsmaterial på GynRaMa",
+    alt: "Specialistläkare vid kolposkopet i undersökningsrummet på GynRaMa",
     href: "/behandlingar#kat-gynekologi",
   },
   {
     titel: "Fertilitet & IVF",
     text: "Utredning, rådgivning och IVF i nära samarbete med Nordic IVF.",
     bild: bilder.fertilitet,
-    alt: "Kaffestation i väntrummet på GynRaMa",
+    alt: "Nyfödd hand som håller om en vuxens finger",
     href: "/behandlingar#kat-fertilitet",
   },
   {

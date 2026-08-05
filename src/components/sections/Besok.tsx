@@ -20,9 +20,9 @@ export function Besok() {
             <div className="relative mt-14 max-w-[360px]">
               <Image
                 src={bilder.bokaBesok}
-                alt="Specialistläkare vid arbete på GynRaMa"
-                width={960}
-                height={1400}
+                alt="Receptionen på GynRaMa med klinikens logga på väggen"
+                width={1066}
+                height={1600}
                 className="h-[340px] w-full rounded-card object-cover object-top"
               />
               <NoteTag className="-bottom-3 left-5">Ingen remiss!</NoteTag>

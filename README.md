@@ -133,9 +133,77 @@ uppskalade — uppskalning skapar bara suddighet. Bara kolposkopi-bilden är ett
 äkta 4K-original (levereras i 2560px). Vill du ha riktig 4K på övriga behövs
 nya foton i högre upplösning.
 
-Kolposkopi-bilden (pågående undersökning) ligger **bara** på behandlingssidan,
-vid Cellförändringar. Randas två övriga bilder används som stämningsbilder (CTA
-och Boka-besök), inte som profilbild — hennes profilbild är orörd.
+Kolposkopi-bilden i sin helhet (pågående undersökning) ligger **bara** på
+behandlingssidan, vid Cellförändringar. Randas övriga bilder används som
+stämningsbilder, inte som profilbild — hennes profilbild är orörd.
+
+### Bilden ska matcha ämnet
+
+Kunden gav 2026-08-05 beskedet att varje bild ska sitta där ämnet stämmer:
+gynstol och ultraljud vid gynekologi, samtalsrum och par vid fertilitet, ägg
+eller barn vid IVF, gravidmage vid obstetrik, och folk i receptionen. Slottarna
+i `bilder`-objektet i [`content/gynrama.ts`](src/content/gynrama.ts) är omkopplade
+efter det. Tre av dem är **provisoriska** och kommenterade i filen:
+
+| Slot | Ligger där nu | Varför provisorisk |
+| --- | --- | --- |
+| `gynekologi` | `gynrum.webp` | Gynrum med gynstol och ultraljud är inte fotograferat. Bilden är kolposkopibilden beskuren ovanför patientens ben. |
+| `fertilitet` | `lakare-dator.webp` | Samtalsrum med par saknas helt. Läkaren vid skrivbordet är närmaste rådgivningsmiljö. |
+| `ivf` | `ivf-barn.webp` | Ägg, spermier och IVF-miljö saknas. Bilden är urklippt ur klinikens egen IVF-annons. |
+
+### Hero-sektionen
+
+`reception-hero.webp` är **hero-bakgrunden** och den enda bild vi har där folk
+syns — en patient tas emot vid disken. Kunden bad uttryckligen om den. Källan är
+klinikens nuvarande förstasida
+(`gynrama.se/wp-content/uploads/2026/06/gynrama-header.webp`), ett panorama på
+2100×891 som ligger oskuret.
+
+Hero-sektionen ritades om för det här: tidigare låg en liten stående bild till
+höger som rubriken petade in över. Nu är bilden en banner i full bredd med
+rubriken ovanpå — samma grepp som klinikens nuvarande sida.
+
+Tre saker hänger ihop i [`Hero.tsx`](src/components/sections/Hero.tsx) och går
+sönder var för sig:
+
+- **Bildens mått.** `width`/`height` måste matcha filen. På desktop ligger
+  bilden i flödet och sätter sektionens höjd, så fel mått ger fel höjd.
+- **Mobil beskär.** Samma panorama blir bara ~145px högt i full bredd, och där
+  ryms ingen rubrik. Under `lg` byts därför layouten: bilden blir absolut
+  bakgrund med `object-cover` och höjden kommer från texten istället.
+- **Toningen.** Bilden är ljus (vita väggar) och rubriken vit — utan dämpning är
+  texten oläslig. Desktop har en sidled-toning som är tyngst till vänster där
+  texten ligger och släpper fram receptionsdisken till höger. Mobil har en jämn
+  dämpning, eftersom texten där går över hela bredden. Byts bilden mot en mörkare
+  måste styrkan justeras, annars blir det onödigt grått.
+
+Kedjan i övrigt: `reception-logga.webp` flyttade dit hero-bilden låg förut
+(Boka-besök), och CTA-bandet fick tillbaka det tomma väntrummet. Det finns
+alltså bara **ett** ställe på sajten där patienter syns. Behövs fler krävs nya
+foton.
+
+**Det finns fler foton hos kunden.** Filnamnen i `egna bilder/` är numrerade
+1, 2, 3, 8, 9, 14, 19 och 21, och kamerasekvensen löper F30B9153 → F30B9503. Vi
+har alltså ett urval ur en betydligt större fotografering. Be om hela serien i
+originalupplösning innan ni bokar ny fotografering — de tre provisoriska
+bilderna ovan finns troligen redan tagna. Notera också att de åtta numrerade är
+nedskalade till 2048px medan `F30B9447.JPG` är full upplösning (5760×3840), så
+nedskalningen skedde i överföringen.
+
+`ivf-barn.webp` ligger på **två** ställen — startsidans Fertilitet & IVF-kort och
+IVF-sidan. Det är kundens uttryckliga val, inte ett slarvfel: byt inte ut det ena
+i tron att det är en dubblett.
+
+`kaffe.webp`, `modell.webp` och `lakare-dator.webp` är oanvända sedan
+omkopplingen. De ligger kvar. Kaffebilden satt tidigare på både fertilitet och
+IVF, modellen föreställer en gravid livmoder (obstetrik snarare än gynekologi),
+och läkaren vid skrivbordet ersattes när fertilitetskortet fick IVF-bilden.
+
+Ersätter du en fil i `public/bilder/` under samma namn fortsätter dev-servern
+att visa den gamla — `next/image` cachar den optimerade varianten på disk. I
+Next 16 ligger den cachen i **`.next/dev/cache/images`**, inte `.next/cache/images`
+som i tidigare versioner. Rensa den och starta om, annars felsöker du en bild
+som redan är rätt på disk.
 
 ## Vad som INTE är platshållare
 
