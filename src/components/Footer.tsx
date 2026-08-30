@@ -132,7 +132,9 @@ export function Footer() {
             <Link href={kontakt.gdpr} className="underline-offset-4 hover:text-lila-ljus hover:underline max-lg:inline-flex max-lg:min-h-11 max-lg:items-center">
               Integritetspolicy (GDPR)
             </Link>
-            <span aria-hidden>·</span>
+            {/* Punkt bara när länkarna får plats på samma rad — på mobil
+                staplas de och punkten skulle hänga ensam */}
+            <span aria-hidden className="max-lg:hidden">·</span>
             <Link href={kontakt.allabolag} className="underline-offset-4 hover:text-lila-ljus hover:underline max-lg:inline-flex max-lg:min-h-11 max-lg:items-center">
               Företagsinformation via Allabolag
             </Link>
