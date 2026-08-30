@@ -4,6 +4,12 @@
  * Texten är medicinsk information och är INTE omskriven, förkortad eller
  * parafraserad. Ändra bara om GynRaMa själva ändrar sin källtext.
  *
+ * Kundens ändringar 2026-08-30:
+ *  - NIPT (foster-test) borttagen ur sortimentet.
+ *  - IVF tillagd som egen behandling; texten är klinikens egen från
+ *    gynrama.se/gynrama-ivf/ (samma källa som ivf.ts).
+ *  - Kategorin Fertilitet visas som "Fertilitet & IVF".
+ *
  * Rader som börjar med "• " renderas som punktlista. Korta rader utan
  * avslutande punkt renderas som underrubrik. Se `Brodtext` i
  * components/sections/BehandlingsLista.tsx.
@@ -19,15 +25,21 @@ export type Behandling = {
   /** Valfri bild i det öppnade dragspelet. Klinikens egna foton. */
   bild?: string;
   bildAlt?: string;
+  /** Valfri vidare-länk, renderas som knapp bredvid Boka tid. */
+  mer?: { label: string; href: string };
 };
 
 const bas = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-export const kategorier: Kategori[] = [
-  "Gynekologi",
-  "Graviditet",
-  "Fertilitet",
-  "Abort",
+/**
+ * rubrik visas på sidan; slug bygger ankaret kat-<slug> och får INTE ändras —
+ * startsidans områdeskort länkar till #kat-fertilitet m.fl.
+ */
+export const kategorier: { kategori: Kategori; rubrik: string; slug: string }[] = [
+  { kategori: "Gynekologi", rubrik: "Gynekologi", slug: "gynekologi" },
+  { kategori: "Graviditet", rubrik: "Graviditet", slug: "graviditet" },
+  { kategori: "Fertilitet", rubrik: "Fertilitet & IVF", slug: "fertilitet" },
+  { kategori: "Abort", rubrik: "Abort", slug: "abort" },
 ];
 
 export const ingress = `Hos oss på GynRaMa erbjuder vi ett brett utbud av gynekologiska undersökningar och behandlingar med fokus på trygghet, kvalitet och individuellt bemötande. Oavsett om du söker för en rutinmässig kontroll eller specifika besvär, är vårt mål att ge dig professionell vård baserad på aktuell medicinsk kunskap.
@@ -263,18 +275,6 @@ Blödning kan även komma från hemorrojder, vilket är vanligt under graviditet
 Vid blödning under graviditeten eller om du får något av ovanstående symtom bör du kontakta GynRaMa för bedömning och undersökning.`,
   },
   {
-    slug: "foster-test",
-    namn: "Foster test (NIPT)",
-    kategori: "Graviditet",
-    text: `Fostertest, även kallat NIPT (Non-Invasive Prenatal Test) är ett enkelt, säkert och mycket tillförlitligt fostertest som mäter sannolikheten för trisomi 21, 18 och 13. Det finns olika märken på NIPT där vi erbjuder Roche Harmony NIPT med analys hos Life Genomics i Göteborg. Harmony NIPT har en känslighet på 99%, jämfört med 79% för KUB. Det går dessutom att välja till analys av könskromosomavvikelser utan extra kostnad. Mindre än 0,1% falskt positiva svar kan förekomma med Harmony NIPT test jämfört med 5% med KUB test. NIPT kan göras från och med 10 fullgångna graviditetsveckor.
-Fördelar med Harmony NIPT
-• Riskfritt – icke-invasivt och därmed ingen risk för missfall
-• Enkelt – endast ett blodprov behövs
-• Tillförlitligt – bevisad specificitet och sensitivitet är över 99%
-• Välbeprövat – över 70 kliniska studier
-• Över 2 800 000 Harmony NIPT har utförts globalt`,
-  },
-  {
     slug: "ofrivillig-barnloshet",
     namn: "Ofrivillig barnlöshet",
     kategori: "Fertilitet",
@@ -320,6 +320,15 @@ Ibland behövs en spruta som gör att ägget lossnar, ungefär 30–35 timmar f�
 Varför behandlingen görs
 Stimulerad ägglossning ökar chansen att spermier kan befrukta ett ägg och gör det enklare att planera samlag eller insemination.
 Om du har försökt bli gravid i över ett år utan framgång kan du kontakta GynRaMa för hjälp med stimulerad ägglossning. Våra läkare är specialister och du kan känna dig trygg hos oss.`,
+  },
+  {
+    slug: "ivf",
+    namn: "IVF-behandling",
+    kategori: "Fertilitet",
+    text: `Drömmen om ett barn är unik och det är även din fertilitetsresa. På GynRaMa erbjuder vi individanpassade IVF-behandlingar i nära samarbete med Nordic IVF. Tillsammans kombinerar vi hög medicinsk kompetens, modern laboratorieverksamhet och ett personligt omhändertagande för att ge dig de bästa förutsättningarna.
+Vi följer dig genom hela processen från den första fertilitetsutredningen och behandlingsplaneringen till IVF-behandling, embryoåterföring och uppföljning. Hos oss möter du samma specialistteam genom hela din resa, vilket skapar kontinuitet, trygghet och ett personligt bemötande.
+Varje behandling utformas utifrån dina eller era individuella förutsättningar. Oavsett om du kommer som par eller ensamstående får du en tydlig plan, nära uppföljning och tillgång till den senaste kunskapen inom reproduktionsmedicin.`,
+    mer: { label: "Läs mer om GynRaMa IVF", href: "/gynrama-ivf" },
   },
   {
     slug: "spermaprov",

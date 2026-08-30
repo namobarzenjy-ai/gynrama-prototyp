@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Pill } from "../ui";
-import { varldskanda, lakare } from "@/content/omoss";
+import { sverigesRadio, varldskanda, lakare } from "@/content/omoss";
 
 /** Klinikens starkaste innehåll — livmodertransplantationen. */
 export function Varldskanda() {
@@ -39,7 +39,41 @@ export function Varldskanda() {
                 ))}
               </div>
 
-              <div className="mt-9">
+              {/*
+                Radioinslaget från gamla hemsidans Om oss. Ljudet ÄR Sveriges
+                Radios — vi länkar till deras spelare istället för att kopiera
+                filen (upphovsrätt). Kortet ser ut som en spelare så det är
+                tydligt att det är ljud, men uppspelningen sker hos SR.
+              */}
+              <a
+                href={sverigesRadio.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-6 flex max-w-[440px] items-center gap-4 rounded-[18px] bg-paper p-4 transition-shadow hover:shadow-md"
+              >
+                <span
+                  aria-hidden
+                  className="grid size-12 shrink-0 place-items-center rounded-full bg-slate-deep text-white transition-colors group-hover:bg-ink"
+                >
+                  {/* Play-triangel */}
+                  <svg viewBox="0 0 16 16" className="ml-0.5 size-4 fill-current">
+                    <path d="M4 2.5v11l9-5.5-9-5.5Z" />
+                  </svg>
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-[12px] tracking-wide text-ink/50 uppercase">
+                    {sverigesRadio.etikett} · {sverigesRadio.datum} · {sverigesRadio.langd}
+                  </span>
+                  <span className="mt-0.5 block font-serif text-[19px] leading-snug text-ink">
+                    Hör inslaget: {sverigesRadio.rubrik}
+                  </span>
+                  <span className="mt-1 block text-[13px] leading-snug text-ink/60">
+                    {sverigesRadio.beskrivning} Öppnas hos Sveriges Radio.
+                  </span>
+                </span>
+              </a>
+
+              <div className="mt-7">
                 <Pill href="#team" tone="lime" withArrow>
                   Möt teamet
                 </Pill>

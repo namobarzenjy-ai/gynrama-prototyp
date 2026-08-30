@@ -17,16 +17,13 @@ export function CtaBand() {
           />
 
           <div className="relative grid gap-8 p-5 lg:grid-cols-[minmax(0,1fr)_280px] lg:p-6">
-            {/* Lavendelkortet som ligger på bilden */}
-            <div className="max-w-[420px] rounded-[20px] bg-lavender p-8 lg:p-10">
-              <h2 className="text-[clamp(1.9rem,3vw,2.7rem)] text-ink">
-                Din hälsa förtjänar tid, kunskap och ett lugnt bemötande.
-              </h2>
-              <div className="mt-8">
-                <Pill href="/boka-tid" tone="lime" withArrow>
-                  Boka tid
-                </Pill>
-              </div>
+            {/* Lavendelkortet som ligger på bilden. Rubriken "Din hälsa
+                förtjänar tid..." togs bort på kundens begäran 2026-08-30 —
+                kortet är nu ett rent bokningskort. */}
+            <div className="max-w-[420px] self-center rounded-[20px] bg-lavender p-8 lg:p-10">
+              <Pill href="/boka-tid" tone="lime" withArrow>
+                Boka tid
+              </Pill>
               <p className="mt-6 text-[14px] text-ink/60">
                 Ingen remiss eller egenremiss krävs.
               </p>

@@ -115,30 +115,35 @@ export function Footer() {
                   {kontakt.oppetNot}
                 </span>
               </li>
-              <li className="pt-2">
-                <Link href={kontakt.gdpr} className="hover:text-lime max-lg:inline-flex max-lg:min-h-11 max-lg:items-center">
-                  Integritetspolicy (GDPR)
-                </Link>
-              </li>
-              <li>
-                <Link href={kontakt.allabolag} className="hover:text-lime max-lg:inline-flex max-lg:min-h-11 max-lg:items-center">
-                  Företagsinformation
-                </Link>
-              </li>
             </ul>
           </div>
         </div>
       </div>
 
+      {/*
+        Juridikblocket. Krav från kunden 2026-08-30: integritetspolicy,
+        företagsinformation (Allabolag), kontaktperson, klagomålsväg och
+        e-post ska finnas på VARJE sida. Footern renderas på alla sidor,
+        så allt samlas här — flytta inte in delar i enskilda sidor.
+      */}
       <div className="border-t border-white/12">
-        <div className="mx-auto flex max-w-[1240px] flex-col items-center gap-1 px-6 py-8 text-center text-[14px] text-white/55">
+        <div className="mx-auto flex max-w-[1240px] flex-col items-center gap-2 px-6 py-8 text-center text-[14px] text-white/55">
+          <p className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+            <Link href={kontakt.gdpr} className="underline-offset-4 hover:text-lime hover:underline max-lg:inline-flex max-lg:min-h-11 max-lg:items-center">
+              Integritetspolicy (GDPR)
+            </Link>
+            <span aria-hidden>·</span>
+            <Link href={kontakt.allabolag} className="underline-offset-4 hover:text-lime hover:underline max-lg:inline-flex max-lg:min-h-11 max-lg:items-center">
+              Företagsinformation via Allabolag
+            </Link>
+          </p>
           <p>
             GynRaMa AB · Org.nr {kontakt.orgnr} · Kontaktperson:{" "}
             {kontakt.verksamhetschef}
           </p>
           <p>
             Vid klagomål, kontakta oss via e-post{" "}
-            <Link href={`mailto:${kontakt.epost}`} className="hover:text-lime max-lg:inline-flex max-lg:min-h-11 max-lg:items-center">
+            <Link href={`mailto:${kontakt.epost}`} className="underline-offset-4 hover:text-lime hover:underline max-lg:inline-flex max-lg:min-h-11 max-lg:items-center">
               {kontakt.epost}
             </Link>
           </p>

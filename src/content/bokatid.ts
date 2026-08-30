@@ -3,6 +3,9 @@
  *
  * bokningsUrl pekar på klinikens SKARPA bokningssystem (patient.nu).
  * Länkarna är hämtade från deras egen sida, inte gissade.
+ *
+ * Avvikelse från källan: akutbesök är "inom 4 timmar" sedan kundens
+ * besked 2026-08-30 (källsidan sade 24/8 timmar).
  */
 
 export type Besokstyp = {
@@ -57,7 +60,7 @@ export const bokaFakta = [
 export const bokningsregler = [
   "Avboka ditt besök senast 24 timmar innan planerad tid.",
   "Vid sen avbokning eller uteblivet besök debiteras hela besökskostnaden.",
-  "Bokar du tid samma dag, välj akutbesök inom 24 timmar eller akutbesök inom 8 timmar. Gäller oavsett besökstyp.",
+  "Bokar du tid samma dag, välj akutbesök inom 4 timmar. Gäller oavsett besökstyp.",
   "Behöver du tolk kan vi ordna det. Vid privat besök betalar du själv tolkkostnaden.",
   "Frikort gäller inte vid uteblivet besök.",
   "Regionavtal gäller endast måndag–fredag. Privat vård kan bokas alla dagar.",

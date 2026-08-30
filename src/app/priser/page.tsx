@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SidHero } from "@/components/sections/SidHero";
+import { BehandlingarPriser } from "@/components/sections/BehandlingarPriser";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Check, Pill } from "@/components/ui";
 import { priser, prisIngress, prisNoter, prisHamtat } from "@/content/priser";
@@ -86,6 +87,7 @@ export default function Priser() {
           </div>
         </section>
 
+        <BehandlingarPriser visa="behandlingar" />
         <CtaBand />
       </main>
       <Footer />

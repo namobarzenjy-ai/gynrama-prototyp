@@ -56,14 +56,14 @@ export function BehandlingsLista() {
     <section className="bg-gradient-to-b from-lavender-soft to-lavender-mist">
       <div className="mx-auto max-w-[1240px] px-6 pb-28 lg:pb-36">
         {kategorier.map((kat) => {
-          const iKat = behandlingar.filter((b) => b.kategori === kat);
+          const iKat = behandlingar.filter((b) => b.kategori === kat.kategori);
           return (
             // "kat-"-prefix: kategorin Abort och behandlingen Abort
             // skulle annars få samma id
-            <div key={kat} id={`kat-${kat.toLowerCase()}`} className="pt-20">
+            <div key={kat.slug} id={`kat-${kat.slug}`} className="pt-20">
               <div className="flex items-end justify-between gap-6 border-b border-ink/20 pb-5">
                 <h2 className="text-[clamp(1.9rem,3.2vw,2.7rem)] text-ink">
-                  {kat}
+                  {kat.rubrik}
                 </h2>
                 <span className="pb-1 text-[14px] text-ink/50">
                   {iKat.length}{" "}
@@ -102,10 +102,15 @@ export function BehandlingsLista() {
                       />
                     )}
                     <Brodtext text={b.text} />
-                    <div className="mt-7">
+                    <div className="mt-7 flex flex-wrap gap-3">
                       <Pill href="/boka-tid" tone="lime">
                         Boka tid
                       </Pill>
+                      {b.mer && (
+                        <Pill href={b.mer.href} tone="slate">
+                          {b.mer.label}
+                        </Pill>
+                      )}
                     </div>
                   </div>
                 </details>

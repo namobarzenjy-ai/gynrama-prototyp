@@ -9,8 +9,8 @@
  * Sätt ALDRIG ett annat foto under ett av de här namnen — det är verkliga,
  * identifierbara personer.
  *
- * Texten är oförändrad. Källan har några stavfel som medvetet är bevarade,
- * se `kandaStavfel` längst ned.
+ * Texten följde källan ordagrant fram till 2026-08-30, då kunden begärde
+ * språkrättningar och innehållsändringar — se noten längst ned.
  */
 
 export type Person = {
@@ -54,12 +54,27 @@ export const praktiskt = [
 /** Från rubriken "Världskända doktorer" på källsidan. */
 export const varldskanda = {
   rubrik: "Världskända doktorer",
-  text: `Professor Mats Brännström & Docent Randa Akouri, som jobbar på GynRaMa, är världskända doktorer som ligger bakom livmodertransplantation som ledde till första barnet som föddes år 2014. Kvinnor som saknar livmoder av olika orsaker har nu fått möjlighet att få egna biologiska barn tack vare dem och deras framgångar. De har rest världen runt för sprida sin banbrytande forskning som idag har lett till att över 45 barn är födda i världen.`,
+  text: `Docent Randa Akouri & Professor Mats Brännström, som jobbar på GynRaMa, är världskända doktorer som ligger bakom livmodertransplantation som ledde till första barnet som föddes år 2014. Kvinnor som saknar livmoder av olika orsaker har nu fått möjlighet att få egna biologiska barn tack vare dem och deras framgångar. De har rest världen runt för att sprida sin banbrytande forskning som idag har lett till att över 70 barn är födda i världen.`,
   avslut: `Nu finns GynRaMa efter många års patientefterfrågan.`,
   statistik: [
     { etikett: "Världens första", varde: "2014", beskrivning: "barn efter livmodertransplantation" },
-    { etikett: "Globalt hittills", varde: "45+", beskrivning: "barn födda tack vare forskningen" },
+    { etikett: "Globalt hittills", varde: "70+", beskrivning: "barn födda tack vare forskningen" },
   ],
+};
+
+/**
+ * Radioinslaget som gamla hemsidan länkade under "Om oss". Ljudet ligger hos
+ * Sveriges Radio och är deras upphovsrättsskyddade material — vi länkar/bäddar
+ * in, vi kopierar ALDRIG ljudfilen till sajten.
+ */
+export const sverigesRadio = {
+  etikett: "Sveriges Radio",
+  rubrik: "Livmodertransplantation",
+  beskrivning:
+    "Hör inslaget om forskningen bakom livmodertransplantationerna vid Sahlgrenska, med intervjuer med forskarteamet.",
+  datum: "30 april 2012",
+  langd: "9:31",
+  url: "https://www.sverigesradio.se/artikel/5087318",
 };
 
 export const lakare: Person[] = [
@@ -75,7 +90,7 @@ export const lakare: Person[] = [
     meriter: [
       `År 2001 var Randa Akouri den första i världen som visade lyckade livmodertransplantationer i en djurmodell. Detta var forskningsgrunden till att första barnet i världen, efter lyckad livmodertransplantation, föddes 2014 senare i Göteborg.`,
       `Docent Akouri har varit författare och medförfattare till ett flertal vetenskapliga forskningsartiklar och översiktsartiklar inom uterustransplantation och reproduktionsmedicin, samt skrivit bokkapitel.`,
-      `Docent Akouri har lett arbete bakom introduktion av livmodertransplantation utomlands, vilket bl.a. gav den första lyckade livmodertransplantation i MENAT (Mellanöstern, Turkiet och Nord Afrika), där första barnet föddes år 2019.`,
+      `Docent Akouri har lett arbete bakom introduktion av livmodertransplantation utomlands, vilket bl.a. gav den första lyckade livmodertransplantationen i MENAT (Mellanöstern, Turkiet och Nordafrika), där första barnet föddes år 2019.`,
       `Docent Akouri har varit föredragshållare inom gynekologi och reproduktionsmedicin vid ett flertal tillfällen nationellt och internationellt.`,
       `Docent Akouri har tilldelats Göteborgs Stads förtjänsttecken 2025.`,
     ],
@@ -87,7 +102,7 @@ export const lakare: Person[] = [
       "Specialistläkare i kvinnosjukdomar och professor i ämnesområdet Obstetrik och Gynekologi",
     bild: `${UPLOADS}/2022/10/mats-brannstrom.jpg`,
     bio: [
-      `Professor Brännström är en av världens mest kända gynekologer efter en lång karriär inom forskning ock klinik inom området kvinnosjukdomar. Han har mer än 30 års klinisk erfarenhet inom området gynekologisk cancerkirurgi och mer än 10 års erfarenhet av reproduktionsmedicin och IVF. Professor Brännström har också en mycket lång erfarenhet av öppenvårdsgynekologi avseende benigna gynekologiska besvär och sjukdomar.`,
+      `Professor Brännström är en av världens mest kända gynekologer efter en lång karriär inom forskning och klinik inom området kvinnosjukdomar. Han har mer än 30 års klinisk erfarenhet inom området gynekologisk cancerkirurgi och mer än 10 års erfarenhet av reproduktionsmedicin och IVF. Professor Brännström har också en mycket lång erfarenhet av öppenvårdsgynekologi avseende benigna gynekologiska besvär och sjukdomar.`,
     ],
     meriter: [
       `Författare till över 400 vetenskapliga forskningsartiklar inom gynekologi och reproduktionsmedicin.`,
@@ -141,15 +156,6 @@ export const lakare: Person[] = [
 
 export const personal: Person[] = [
   {
-    slug: "louise-haag",
-    namn: "Louise Haag",
-    titel: "Medicinsk sekreterare inom gynekologi och obstetrik",
-    bild: `${UPLOADS}/2026/04/IMG_0506-920x1024.jpeg`,
-    bio: [
-      `Louise Haag är medicinsk sekreterare inom gynekologi och obstetrik med mångårig erfarenhet. Hon är en central del av klinikens dagliga verksamhet och ansvarar för patientkontakt, reception och bokningshantering med hög professionalitet och omtanke.`,
-    ],
-  },
-  {
     slug: "therese-larsson",
     namn: "Therese Larsson",
     titel: "Undersköterska",
@@ -163,10 +169,14 @@ export const personal: Person[] = [
 export const teamAvslutning = `Vi som arbetar på GynRaMa är läkare, psykiatriker, sjuksköterskor, undersköterskor och receptionister.`;
 
 /**
- * Stavfel som finns i GynRaMas källtext och som är bevarade ordagrant ovan.
- * Värda att påpeka för kliniken, men inte att tyst rätta åt dem.
+ * Källans stavfel var länge medvetet bevarade ("återge ordagrant"). Kunden
+ * gav 2026-08-30 klartecken att rätta språkfel — följande är RÄTTADE ovan
+ * och texten är därmed inte längre ordagrann mot källan:
+ *  - "forskning ock klinik" -> "och" (Mats bio)
+ *  - "för sprida" -> "för att sprida" (Världskända)
+ *  - "livmodertransplantation i MENAT" -> "livmodertransplantationen" (merit)
+ *  - "Nord Afrika" -> "Nordafrika" (merit)
+ * Samma besked ändrade "över 45 barn"/"45+" till 70, bytte ordningen till
+ * Randa & Mats i Världskända-texten, och tog bort Louise Haag ur personal.
  */
-export const kandaStavfel = [
-  `Mats Brännström: "forskning ock klinik" — ska troligen vara "och".`,
-  `Världskända doktorer: "för sprida sin banbrytande forskning" — saknar "att".`,
-];
+export const rattadeStavfel = true;

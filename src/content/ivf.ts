@@ -3,7 +3,8 @@
  *
  * Två stavfel i källan är rättade här eftersom de gäller klinikens eget namn:
  * "GynRaM Fertilitet" -> "GynRaMa Fertilitet", och "På GynRaMA" -> "På GynRaMa".
- * Se `kandaStavfel` i omoss.ts för fel som är bevarade.
+ * Övriga språkfel i källtexterna rättades 2026-08-30 på kundens begäran —
+ * se noten längst ned i omoss.ts.
  *
  * Notera: källsidan saknar helt CTA-knappar — enda vägen vidare är menyn.
  * Här finns bokningslänkar, vilket är en medveten avvikelse.

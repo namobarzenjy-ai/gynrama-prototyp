@@ -44,3 +44,6 @@ next-env.d.ts
 
 # Klinikens råa originalbilder — optimerade ligger i public/bilder/
 egna bilder/
+
+# Kundens råmaterial — precis som "egna bilder/"
+fler b ilder/

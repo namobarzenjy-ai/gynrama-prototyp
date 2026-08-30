@@ -123,9 +123,9 @@ export const besok = [
     punkt: "Medicinsk rådgivning",
   },
   {
-    titel: "Akut besök inom 24 timmar",
-    pris: "2 600 kr",
-    text: "När det inte kan vänta. Akut besök utanför ordinarie öppettider eller inom 3 timmar kostar 3 900 kr.",
+    titel: "Akut besök inom 4 timmar",
+    pris: "3 900 kr",
+    text: "När det inte kan vänta får du tid hos specialistläkare inom fyra timmar. Gäller även utanför ordinarie öppettider.",
     punkt: "Inga väntetider",
   },
   {

@@ -1,8 +1,14 @@
 /**
- * Prislista — hämtad ordagrant från https://gynrama.se/priser/ 2026-07-17.
- * Källan använder <caption> per kategori; namn och belopp är oförändrade.
+ * Prislista — hämtad från https://gynrama.se/priser/ 2026-07-17, med
+ * kundens ändringar 2026-08-30:
+ *  - Akuttiden är "inom 4 timmar, 3 900 kr" (ersätter 24 tim/2 600 och
+ *    3 tim-raden).
+ *  - NIPT är borttaget ur sortimentet, inklusive mikrodeletions-tillvalet
+ *    som bara fanns som tillägg till NIPT.
  *
- * VERIFIERA MOT KLINIKEN INNAN SKARP DRIFT. Priser ändras.
+ * Kunden har aviserat ett NYTT PRISUNDERLAG som ännu inte kommit — övriga
+ * belopp är alltså fortfarande 2026-07-17 och ska bytas när underlaget
+ * finns. VERIFIERA MOT KLINIKEN INNAN SKARP DRIFT.
  */
 
 export type Prisrad = { tjanst: string; pris: string; not?: string };
@@ -22,11 +28,10 @@ export const priser: Priskategori[] = [
       { tjanst: "Telefonkonsultation / medicinsk rådgivning", pris: "500 kr" },
       { tjanst: "Videobesök konsultation med specialist", pris: "1 000 kr" },
       { tjanst: "Receptförskrivning utanför läkarbesök", pris: "500 kr" },
-      { tjanst: "Akut besök inom 24 timmar", pris: "2 600 kr" },
       {
-        tjanst:
-          "Akut besök utanför ordinarie öppettider samt akut besök inom 3 timmar",
+        tjanst: "Akut besök inom 4 timmar",
         pris: "3 900 kr",
+        not: "Gäller även utanför ordinarie öppettider",
       },
       { tjanst: "Remiss i samband med besöket", pris: "500 kr" },
     ],
@@ -36,17 +41,6 @@ export const priser: Priskategori[] = [
     rader: [
       { tjanst: "Tidigt graviditetsultraljud (från v 6+)", pris: "1 600 kr" },
       { tjanst: "Abdominellt graviditetsultraljud", pris: "1 900 kr" },
-      {
-        tjanst:
-          "Foster (NIPT) inklusive ultraljud, provtagning och tillval av kromosomavvikelser samt könsbestämning",
-        pris: "7 200 kr",
-        not: "Från graviditetsvecka 10+0",
-      },
-      {
-        tjanst:
-          "Tillval av mikrodeletioner 22q11.2 som orsakar DiGeorges syndrom",
-        pris: "3 100 kr",
-      },
     ],
   },
   {
@@ -108,7 +102,7 @@ export const priser: Priskategori[] = [
         tjanst:
           "Gynekologisk undersökning vid IVF-behandling på annan klinik eller utomlands",
         pris: "1 600 kr",
-        not: "För gynekologisk undersökning inklusive ultraljud. Kostnad för laboratorie tillkommer enligt prislista. Receptförskrivning 500 kr per recept, exklusive förmån. 200 kr tillkommer för kopia av journalanteckning i samband med besöket",
+        not: "För gynekologisk undersökning inklusive ultraljud. Kostnad för laboratorieprover tillkommer enligt prislista. Receptförskrivning 500 kr per recept, exklusive förmån. 200 kr tillkommer för kopia av journalanteckning i samband med besöket",
       },
       {
         tjanst: "Cellprov (HPV + cytologi)",

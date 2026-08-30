@@ -23,9 +23,9 @@ Alla åtta sidor är byggda:
 | `/` | Startsida |
 | `/behandlingar` | 17 behandlingar i 4 kategorier |
 | `/gynrama-ivf` | IVF i samarbete med Nordic IVF |
-| `/priser` | 41 tjänster i 7 kategorier |
+| `/priser` | 39 tjänster i 7 kategorier |
 | `/boka-tid` | 4 besökstyper, länkade till klinikens skarpa bokningssystem |
-| `/om-oss` | Kliniken + 7 personer i teamet |
+| `/om-oss` | Kliniken + 6 personer i teamet |
 | `/formular-och-lankar` | 4 PDF-formulär |
 | `/webshop` | 17 produkter i 4 kategorier (katalog, ingen kassa) |
 
@@ -116,10 +116,46 @@ och laddar ingen CSS — då blir varje element en falsk avvikelse.
 - **Webshoppen är en katalog, ingen butik.** Ingen varukorg och ingen kassa är
   byggd — "Till produkten" länkar till klinikens skarpa WooCommerce-sidor.
   Produktbilderna hotlänkas också från gynrama.se.
-- **Priserna är hämtade 2026-07-17** (`content/priser.ts`, `prisHamtat`).
-  Verifiera mot gynrama.se/priser/ innan publicering — priser ändras.
-- Två stavfel i klinikens källtext är medvetet bevarade, se `kandaStavfel` i
-  `content/omoss.ts`. Värda att påpeka för dem.
+- **Priserna är hämtade 2026-07-17** (`content/priser.ts`, `prisHamtat`),
+  med två undantag från kundens besked 2026-08-30: akuttiden (inom 4 timmar,
+  3 900 kr) och NIPT som är borttaget. Kunden har aviserat ett **nytt
+  prisunderlag som ännu inte kommit** — övriga belopp ska bytas när det finns.
+- ~~Två stavfel i källtexten är medvetet bevarade~~ Kunden gav 2026-08-30
+  klartecken att rätta språkfel; de är rättade och dokumenterade i noten
+  längst ned i `content/omoss.ts`. Texterna är därmed inte längre ordagranna
+  mot källan.
+
+## Kundens ändringsbesked 2026-08-30 (genomfört)
+
+- **Akuttid:** "inom 4 timmar, 3 900 kr" överallt (priser, startsida,
+  bokningsregler). Ersätter 24 tim/2 600 kr och 3 tim-raden.
+- **NIPT borttaget** ur behandlingar och prislista, inklusive
+  mikrodeletions-tillvalet som bara fanns som NIPT-tillägg.
+- **IVF är egen behandling** under kategorin som nu heter "Fertilitet &
+  IVF" (ankar-sluggen `kat-fertilitet` är oförändrad — startsidans kort
+  länkar dit). Behandlingstexten är klinikens egen från IVF-sidan.
+- **"Behandlingar & priser"-brygga** på både `/behandlingar` och `/priser`
+  (`BehandlingarPriser.tsx`).
+- **Louise Haag borttagen** ur teamet.
+- **Världskända doktorer:** Randa står först, "över 70 barn" och "70+"
+  (siffran är antal födda barn efter livmodertransplantation — inte ett
+  åldersspann, trots kundens formulering).
+- **Sveriges Radio-inslaget** (Livmodertransplantation, 30 april 2012, 9:31)
+  ligger som spelar-kort i Världskända-sektionen. Ljudet är SR:s
+  upphovsrättsskyddade material — vi LÄNKAR till SR, filen får inte kopieras
+  in på sajten.
+- **CTA-bandets rubrik** "Din hälsa förtjänar tid..." borttagen; kortet är
+  ett rent bokningskort.
+- **Juridikblock i footern** (= på varje sida): GDPR, Allabolag,
+  kontaktperson, klagomålsväg, e-post. Samlat i footerns nedre list.
+- **Boka tid-knappen**: kundens önskan "koppla som gamla sidan" var redan
+  uppfylld — gamla sidans knapp går till /boka-tid-sidan med samma fyra
+  patient.nu-kalendrar som vår. patient.nu ÄR Webdocs patientportal, så
+  "koppling mot Webdoc" finns redan.
+
+Kvar från samma besked, väntar på underlag/beslut: nytt prisunderlag,
+grön knappfärg (förslag framtaget), "gryniga bilden" (oklart vilken),
+sökruta, AI-chatt (juridik först), tre språk (eget arbetspaket).
 
 ## Bilderna
 
