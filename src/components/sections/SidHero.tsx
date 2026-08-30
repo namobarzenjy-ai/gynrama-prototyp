@@ -32,7 +32,7 @@ export function SidHero({
               <Link
                 key={a.href}
                 href={a.href}
-                className="rounded-pill bg-white/12 px-[22px] py-[13px] text-[16px] leading-none text-white backdrop-blur-sm transition-colors hover:bg-lime hover:text-ink"
+                className="rounded-pill bg-white/12 px-[22px] py-[13px] text-[16px] leading-none text-white backdrop-blur-sm transition-colors hover:bg-lila hover:text-white"
               >
                 {a.label}
               </Link>

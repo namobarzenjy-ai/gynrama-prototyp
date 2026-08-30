@@ -12,7 +12,7 @@ export function Besok() {
               Så bokar du ditt besök
             </h2>
             <div className="mt-8">
-              <Pill href="/boka-tid" tone="lime">
+              <Pill href="/boka-tid" tone="lila">
                 Boka tid
               </Pill>
             </div>

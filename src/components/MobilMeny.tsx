@@ -46,7 +46,7 @@ export function MobilMeny({
 
         <Link
           href="/boka-tid"
-          className="mt-2 flex min-h-12 items-center justify-center rounded-pill bg-lime px-4 text-[17px] font-medium text-ink transition-colors hover:bg-lime-deep"
+          className="mt-2 flex min-h-12 items-center justify-center rounded-pill bg-lila px-4 text-[17px] font-medium text-white transition-colors hover:bg-lila-deep"
         >
           Boka tid
         </Link>

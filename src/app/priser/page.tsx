@@ -76,7 +76,7 @@ export default function Priser() {
             ))}
 
             <div className="mt-16 flex flex-wrap items-center gap-5">
-              <Pill href="/boka-tid" tone="lime" withArrow>
+              <Pill href="/boka-tid" tone="lila" withArrow>
                 Boka tid
               </Pill>
               <p className="text-[13px] text-ink/50">

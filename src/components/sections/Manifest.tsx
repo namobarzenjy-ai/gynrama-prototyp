@@ -20,7 +20,7 @@ export function Manifest() {
               och lyssnad på – från första kontakt till avslutat besök.
             </p>
             <div className="mt-8">
-              <Pill href="/boka-tid" tone="lime">
+              <Pill href="/boka-tid" tone="lila">
                 Boka tid
               </Pill>
             </div>
@@ -54,7 +54,7 @@ export function Manifest() {
               Världskända doktorer.
             </h3>
             <p className="mt-4 max-w-[54ch] text-[16px] leading-relaxed text-ink/75">
-              Professor Mats Brännström och docent Randa Akouri ligger bakom
+              Docent Randa Akouri och professor Mats Brännström ligger bakom
               livmodertransplantationen som ledde till att världens första barn
               föddes 2014. GynRaMa är en privat gynekologklinik i Göteborg som
               startade hösten 2022.
@@ -64,12 +64,12 @@ export function Manifest() {
 
             {/* Statistikkorten från Dribbble-varianten — med riktiga siffror */}
             <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:max-w-[420px]">
-              <div className="rounded-[18px] bg-lime p-5">
-                <p className="text-[13px] text-ink/60">Världens första</p>
-                <p className="mt-6 font-serif text-[34px] leading-none text-ink">
+              <div className="rounded-[18px] bg-lila p-5">
+                <p className="text-[13px] text-white/70">Världens första</p>
+                <p className="mt-6 font-serif text-[34px] leading-none text-white">
                   2014
                 </p>
-                <p className="mt-1 text-[13px] text-ink/70">
+                <p className="mt-1 text-[13px] text-white/80">
                   barn efter livmodertransplantation
                 </p>
               </div>

@@ -26,13 +26,15 @@ export function Varldskanda() {
                 {varldskanda.statistik.map((s, i) => (
                   <div
                     key={s.varde}
-                    className={`rounded-[18px] p-5 ${i === 0 ? "bg-lime" : "bg-paper"}`}
+                    className={`rounded-[18px] p-5 ${i === 0 ? "bg-lila" : "bg-paper"}`}
                   >
-                    <p className="text-[13px] text-ink/60">{s.etikett}</p>
-                    <p className="mt-6 font-serif text-[34px] leading-none text-ink">
+                    <p className={`text-[13px] ${i === 0 ? "text-white/70" : "text-ink/60"}`}>
+                      {s.etikett}
+                    </p>
+                    <p className={`mt-6 font-serif text-[34px] leading-none ${i === 0 ? "text-white" : "text-ink"}`}>
                       {s.varde}
                     </p>
-                    <p className="mt-1 text-[13px] text-ink/70">
+                    <p className={`mt-1 text-[13px] ${i === 0 ? "text-white/80" : "text-ink/70"}`}>
                       {s.beskrivning}
                     </p>
                   </div>
@@ -74,7 +76,7 @@ export function Varldskanda() {
               </a>
 
               <div className="mt-7">
-                <Pill href="#team" tone="lime" withArrow>
+                <Pill href="#team" tone="lila" withArrow>
                   Möt teamet
                 </Pill>
               </div>

@@ -27,7 +27,7 @@ function Social({
     <Link
       href={href}
       aria-label={label}
-      className="grid size-8 place-items-center rounded-full bg-ink text-white/80 transition-colors hover:text-lime max-lg:size-11"
+      className="grid size-8 place-items-center rounded-full bg-ink text-white/80 transition-colors hover:text-lila-ljus max-lg:size-11"
     >
       {children}
     </Link>
@@ -66,7 +66,7 @@ export function Footer() {
             <ul className="mt-5 space-y-3 text-[15px] text-white/70">
               <li>
                 <span className="block text-white/50">Telefon</span>
-                <Link href={kontakt.telefonHref} className="hover:text-lime max-lg:inline-flex max-lg:min-h-11 max-lg:items-center">
+                <Link href={kontakt.telefonHref} className="hover:text-lila-ljus max-lg:inline-flex max-lg:min-h-11 max-lg:items-center">
                   {kontakt.telefon}
                 </Link>
               </li>
@@ -74,14 +74,14 @@ export function Footer() {
                 <span className="block text-white/50">E-post</span>
                 <Link
                   href={`mailto:${kontakt.epost}`}
-                  className="hover:text-lime max-lg:inline-flex max-lg:min-h-11 max-lg:items-center"
+                  className="hover:text-lila-ljus max-lg:inline-flex max-lg:min-h-11 max-lg:items-center"
                 >
                   {kontakt.epost}
                 </Link>
               </li>
               <li>
                 <span className="block text-white/50">Adress</span>
-                <Link href={kontakt.karta} className="hover:text-lime max-lg:inline-flex max-lg:min-h-11 max-lg:items-center">
+                <Link href={kontakt.karta} className="hover:text-lila-ljus max-lg:inline-flex max-lg:min-h-11 max-lg:items-center">
                   {kontakt.adress}
                   <br />
                   {kontakt.postort}
@@ -97,7 +97,7 @@ export function Footer() {
                 <li key={l.label}>
                   <Link
                     href={l.href}
-                    className="hover:text-lime max-lg:flex max-lg:min-h-11 max-lg:items-center"
+                    className="hover:text-lila-ljus max-lg:flex max-lg:min-h-11 max-lg:items-center"
                   >
                     {l.label}
                   </Link>
@@ -129,11 +129,11 @@ export function Footer() {
       <div className="border-t border-white/12">
         <div className="mx-auto flex max-w-[1240px] flex-col items-center gap-2 px-6 py-8 text-center text-[14px] text-white/55">
           <p className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
-            <Link href={kontakt.gdpr} className="underline-offset-4 hover:text-lime hover:underline max-lg:inline-flex max-lg:min-h-11 max-lg:items-center">
+            <Link href={kontakt.gdpr} className="underline-offset-4 hover:text-lila-ljus hover:underline max-lg:inline-flex max-lg:min-h-11 max-lg:items-center">
               Integritetspolicy (GDPR)
             </Link>
             <span aria-hidden>·</span>
-            <Link href={kontakt.allabolag} className="underline-offset-4 hover:text-lime hover:underline max-lg:inline-flex max-lg:min-h-11 max-lg:items-center">
+            <Link href={kontakt.allabolag} className="underline-offset-4 hover:text-lila-ljus hover:underline max-lg:inline-flex max-lg:min-h-11 max-lg:items-center">
               Företagsinformation via Allabolag
             </Link>
           </p>
@@ -143,7 +143,7 @@ export function Footer() {
           </p>
           <p>
             Vid klagomål, kontakta oss via e-post{" "}
-            <Link href={`mailto:${kontakt.epost}`} className="underline-offset-4 hover:text-lime hover:underline max-lg:inline-flex max-lg:min-h-11 max-lg:items-center">
+            <Link href={`mailto:${kontakt.epost}`} className="underline-offset-4 hover:text-lila-ljus hover:underline max-lg:inline-flex max-lg:min-h-11 max-lg:items-center">
               {kontakt.epost}
             </Link>
           </p>

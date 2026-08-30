@@ -66,7 +66,7 @@ export default function BokaTid() {
                     {b.text}
                   </p>
                   <div className="mt-6">
-                    <Pill href={b.bokningsUrl} tone="lime" withArrow>
+                    <Pill href={b.bokningsUrl} tone="lila" withArrow>
                       Boka
                     </Pill>
                   </div>
@@ -74,7 +74,7 @@ export default function BokaTid() {
               ))}
             </div>
 
-            <p className="mt-8 rounded-[18px] bg-lime p-5 text-[15px] text-ink">
+            <p className="mt-8 rounded-[18px] bg-lila p-5 text-[15px] text-white">
               {betalning}
             </p>
 
@@ -95,13 +95,13 @@ export default function BokaTid() {
                 <p className="text-[13px] text-white/50">Ring oss</p>
                 <Link
                   href={kontakt.telefonHref}
-                  className="mt-1 block font-serif text-[26px] transition-colors hover:text-lime"
+                  className="mt-1 block font-serif text-[26px] transition-colors hover:text-lila-ljus"
                 >
                   {kontakt.telefon}
                 </Link>
                 <Link
                   href={kontakt.telefonAltHref}
-                  className="mt-1 block text-[15px] text-white/70 transition-colors hover:text-lime max-lg:flex max-lg:min-h-11 max-lg:items-center"
+                  className="mt-1 block text-[15px] text-white/70 transition-colors hover:text-lila-ljus max-lg:flex max-lg:min-h-11 max-lg:items-center"
                 >
                   {kontakt.telefonAlt}
                 </Link>

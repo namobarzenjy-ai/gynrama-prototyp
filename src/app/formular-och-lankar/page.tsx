@@ -31,7 +31,7 @@ export default function FormularOchLankar() {
                 >
                   <div className="flex items-start justify-between gap-4">
                     <h2 className="text-[22px] text-ink">{f.titel}</h2>
-                    <span className="grid size-9 shrink-0 place-items-center rounded-full bg-lime text-ink transition-colors group-hover:bg-lime-deep">
+                    <span className="grid size-9 shrink-0 place-items-center rounded-full bg-lila text-white transition-colors group-hover:bg-lila-deep">
                       <ArrowUpRight className="size-[14px]" />
                     </span>
                   </div>
@@ -55,7 +55,7 @@ export default function FormularOchLankar() {
                 </p>
                 <Link
                   href={gdprPdf}
-                  className="mt-5 inline-flex items-center gap-2 text-[15px] transition-colors hover:text-lime max-lg:min-h-11"
+                  className="mt-5 inline-flex items-center gap-2 text-[15px] transition-colors hover:text-lila-ljus max-lg:min-h-11"
                 >
                   Personuppgiftspolicy (PDF)
                   <ArrowUpRight className="size-[12px]" />
@@ -71,13 +71,13 @@ export default function FormularOchLankar() {
                 <div className="mt-5 space-y-1.5">
                   <Link
                     href={kontakt.telefonHref}
-                    className="block text-[15px] transition-colors hover:text-lime max-lg:flex max-lg:min-h-11 max-lg:items-center"
+                    className="block text-[15px] transition-colors hover:text-lila-ljus max-lg:flex max-lg:min-h-11 max-lg:items-center"
                   >
                     {kontakt.telefon}
                   </Link>
                   <Link
                     href={`mailto:${kontakt.epost}`}
-                    className="block text-[15px] transition-colors hover:text-lime max-lg:flex max-lg:min-h-11 max-lg:items-center"
+                    className="block text-[15px] transition-colors hover:text-lila-ljus max-lg:flex max-lg:min-h-11 max-lg:items-center"
                   >
                     {kontakt.epost}
                   </Link>

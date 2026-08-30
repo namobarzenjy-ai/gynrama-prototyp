@@ -24,7 +24,7 @@ export function Praktiskt() {
             <p className="text-[13px] text-white/50">Adress</p>
             <Link
               href={kontakt.karta}
-              className="mt-2 inline-flex items-start gap-1.5 text-[16px] leading-snug transition-colors hover:text-lime max-lg:min-h-11"
+              className="mt-2 inline-flex items-start gap-1.5 text-[16px] leading-snug transition-colors hover:text-lila-ljus max-lg:min-h-11"
             >
               <span>
                 {kontakt.adress}
@@ -43,7 +43,7 @@ export function Praktiskt() {
             <p className="text-[13px] text-white/50">Telefonrådgivning</p>
             <Link
               href={kontakt.telefonHref}
-              className="mt-2 inline-flex items-center text-[16px] transition-colors hover:text-lime max-lg:min-h-11"
+              className="mt-2 inline-flex items-center text-[16px] transition-colors hover:text-lila-ljus max-lg:min-h-11"
             >
               {kontakt.telefon}
             </Link>

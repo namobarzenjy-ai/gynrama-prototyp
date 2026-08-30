@@ -42,7 +42,7 @@ Hämtade ur mallens live-demo via computed styles. Ligger i
 | Rubriker | DM Serif Display 400 |
 | Brödtext | DM Sans 18px |
 | Handskrivet | Caveat |
-| Lime (CTA) | `#DBFE87` |
+| Lila (CTA) | `#84277F` — klinikens lila ur loggan; `lila-deep` för hover, `lila-ljus` som accent på mörka ytor |
 | Lavendel | `#D6D3F0` |
 | Mörk slate | `#404051` |
 | Text | `#1F1F28` |
@@ -153,9 +153,20 @@ och laddar ingen CSS — då blir varje element en falsk avvikelse.
   patient.nu-kalendrar som vår. patient.nu ÄR Webdocs patientportal, så
   "koppling mot Webdoc" finns redan.
 
+- **CTA-färgen är klinikens lila** (beslut 2026-08-30): mallens lime
+  ersattes av `#84277F` överallt — knappar, pil-cirklar, statistikkort,
+  badges. Fylld lila kräver VIT text (8.1:1; mot ink bara ~2.6:1), och på
+  mörka ytor används ljusa accenten `lila-ljus` — mörklila mot slate-deep är
+  oläsligt. Se tokens i `globals.css`.
+- **Sökruta i headern** (`Sok.tsx` + `content/sokindex.ts`): helt
+  klientbaserad — sajten är statisk, så indexet byggs vid bygget ur
+  content-filerna och söks i webbläsaren. Ny content-fil måste läggas till i
+  sokindex.ts för att bli sökbar. Träffar länkar till ankare (behandlingsrad,
+  priskategori, personkort, webshopkategori).
+
 Kvar från samma besked, väntar på underlag/beslut: nytt prisunderlag,
-grön knappfärg (förslag framtaget), "gryniga bilden" (oklart vilken),
-sökruta, AI-chatt (juridik först), tre språk (eget arbetspaket).
+"gryniga bilden" (oklart vilken), AI-chatt (juridik först), tre språk
+(eget arbetspaket).
 
 ## Bilderna
 

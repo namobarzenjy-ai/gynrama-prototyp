@@ -42,7 +42,7 @@ export function Omraden() {
                   <Link
                     href={o.href}
                     aria-label={`Läs mer om ${o.titel}`}
-                    className="grid size-9 shrink-0 place-items-center rounded-full bg-lime text-ink transition-colors hover:bg-lime-deep max-lg:size-11"
+                    className="grid size-9 shrink-0 place-items-center rounded-full bg-lila text-white transition-colors hover:bg-lila-deep max-lg:size-11"
                   >
                     <ArrowUpRight className="size-[14px]" />
                   </Link>

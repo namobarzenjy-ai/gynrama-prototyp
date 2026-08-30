@@ -20,7 +20,7 @@ export function BehandlingarPriser({ visa }: { visa: "priser" | "behandlingar" }
               : "Varje behandling beskrivs i detalj på behandlingssidan — vad som ingår, när du bör söka vård och hur undersökningen går till."}
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Pill href={tillPriser ? "/priser" : "/behandlingar"} tone="lime" withArrow>
+            <Pill href={tillPriser ? "/priser" : "/behandlingar"} tone="lila" withArrow>
               {tillPriser ? "Se alla priser" : "Se alla behandlingar"}
             </Pill>
             <Pill href="/boka-tid" tone="ghost">

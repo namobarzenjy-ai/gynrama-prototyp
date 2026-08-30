@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { MobilMeny } from "./MobilMeny";
+import { Sok } from "./Sok";
 
 const NAV = [
   { label: "Hem", href: "/" },
@@ -40,17 +41,21 @@ export function Header({ aktiv = "/" }: { aktiv?: string }) {
         </nav>
 
         {/*
-          Boka tid syns på desktop. På mobil ligger den i menyn istället —
-          headern rymmer inte både logga, knapp och hamburgare på 375px.
+          Sök + Boka tid + hamburgare i en grupp så att justify-between inte
+          sprider ut dem. Sökikonen syns på alla bredder; Boka tid bara på
+          desktop — på mobil ligger den i menyn, headern rymmer inte både
+          logga, sök, knapp och hamburgare på 375px.
         */}
-        <Link
-          href="/boka-tid"
-          className="hidden rounded-pill bg-lavender px-[25px] py-[17px] text-[18px] leading-none font-medium text-ink transition-colors hover:bg-lavender/80 lg:inline-flex lg:items-center"
-        >
-          Boka tid
-        </Link>
-
-        <MobilMeny lankar={NAV} aktiv={aktiv} />
+        <div className="flex items-center gap-1 lg:gap-2">
+          <Sok />
+          <Link
+            href="/boka-tid"
+            className="hidden rounded-pill bg-lavender px-[25px] py-[17px] text-[18px] leading-none font-medium text-ink transition-colors hover:bg-lavender/80 lg:inline-flex lg:items-center"
+          >
+            Boka tid
+          </Link>
+          <MobilMeny lankar={NAV} aktiv={aktiv} />
+        </div>
       </div>
     </header>
   );

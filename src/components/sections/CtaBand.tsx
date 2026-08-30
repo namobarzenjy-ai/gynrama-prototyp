@@ -21,7 +21,7 @@ export function CtaBand() {
                 förtjänar tid..." togs bort på kundens begäran 2026-08-30 —
                 kortet är nu ett rent bokningskort. */}
             <div className="max-w-[420px] self-center rounded-[20px] bg-lavender p-8 lg:p-10">
-              <Pill href="/boka-tid" tone="lime" withArrow>
+              <Pill href="/boka-tid" tone="lila" withArrow>
                 Boka tid
               </Pill>
               <p className="mt-6 text-[14px] text-ink/60">

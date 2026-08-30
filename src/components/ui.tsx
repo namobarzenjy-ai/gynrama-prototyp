@@ -1,12 +1,12 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-type Tone = "lime" | "lavender" | "ghost" | "slate";
+type Tone = "lila" | "lavender" | "ghost" | "slate";
 
 const TONES: Record<Tone, string> = {
-  lime: "bg-lime text-ink hover:bg-lime-deep",
+  lila: "bg-lila text-white hover:bg-lila-deep",
   lavender: "bg-lavender text-ink hover:bg-lavender/80",
-  ghost: "bg-transparent text-white hover:text-lime",
+  ghost: "bg-transparent text-white hover:text-lila-ljus",
   slate: "bg-slate-deep text-white hover:bg-ink",
 };
 
@@ -18,7 +18,7 @@ const TONES: Record<Tone, string> = {
 export function Pill({
   href,
   children,
-  tone = "lime",
+  tone = "lila",
   withArrow = false,
   className = "",
 }: {

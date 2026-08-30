@@ -7,8 +7,13 @@
 */
 @theme {
   /* Färger */
-  --color-lime: #dbfe87;
-  --color-lime-deep: #cbef6b;
+  /* Klinikens lila (ur loggan) ersatte mallens lime som CTA-färg på
+     kundens begäran 2026-08-30. Fylld yta kräver VIT text (8.1:1 mot vitt,
+     mot ink bara ~2.6:1). lila-ljus är accenten på mörka ytor — mörklila
+     mot slate-deep är oläsligt (1.4:1). */
+  --color-lila: #84277f;
+  --color-lila-deep: #6b2067;
+  --color-lila-ljus: #e2b7df;
   --color-lavender: #d6d3f0;
   --color-lavender-soft: #dbdbee;
   --color-lavender-mist: #e3e1f3;

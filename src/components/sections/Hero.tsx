@@ -60,7 +60,7 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Pill href="/boka-tid" tone="lime" withArrow>
+            <Pill href="/boka-tid" tone="lila" withArrow>
               Boka tid
             </Pill>
             <Pill href="#behandlingar" tone="ghost">

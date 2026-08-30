@@ -81,7 +81,7 @@ export default function Webshop() {
                           <span
                             className={`absolute top-4 left-4 rounded-pill px-3 py-1.5 text-[11px] leading-none ${
                               p.ce === "Självtest"
-                                ? "bg-lime text-ink"
+                                ? "bg-lila text-white"
                                 : "bg-lavender text-ink"
                             }`}
                           >

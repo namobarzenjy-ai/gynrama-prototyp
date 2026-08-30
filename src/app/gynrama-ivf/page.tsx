@@ -39,7 +39,7 @@ export default function Ivf() {
                   </p>
                 ))}
                 <div className="pt-3">
-                  <Pill href="/boka-tid" tone="lime" withArrow>
+                  <Pill href="/boka-tid" tone="lila" withArrow>
                     Boka fertilitetskonsultation
                   </Pill>
                 </div>
@@ -91,7 +91,7 @@ export default function Ivf() {
                 </dl>
                 <Link
                   href="/priser"
-                  className="mt-5 inline-flex items-center gap-1.5 text-[13px] text-white/60 transition-colors hover:text-lime max-lg:min-h-11"
+                  className="mt-5 inline-flex items-center gap-1.5 text-[13px] text-white/60 transition-colors hover:text-lila-ljus max-lg:min-h-11"
                 >
                   Hela prislistan
                   <ArrowUpRight className="size-[11px]" />

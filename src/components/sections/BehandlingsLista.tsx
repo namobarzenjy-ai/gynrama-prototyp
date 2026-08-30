@@ -103,7 +103,7 @@ export function BehandlingsLista() {
                     )}
                     <Brodtext text={b.text} />
                     <div className="mt-7 flex flex-wrap gap-3">
-                      <Pill href="/boka-tid" tone="lime">
+                      <Pill href="/boka-tid" tone="lila">
                         Boka tid
                       </Pill>
                       {b.mer && (
