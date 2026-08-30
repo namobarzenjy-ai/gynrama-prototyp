@@ -8,9 +8,10 @@ import { behandlingar, ingress as behandlingsIngress } from "./behandlingar";
 import { priser, prisIngress } from "./priser";
 import { besokstyper, bokaIngress } from "./bokatid";
 import { lakare, personal, intro as omossIntro } from "./omoss";
-import { produkter, webshopIngress } from "./webshop";
+import { kategorier, produkter, webshopIngress } from "./webshop";
 import { formular, formularIngress } from "./formular";
 import { ivfIngress } from "./ivf";
+import { t } from "@/i18n";
 
 export type SokPost = {
   titel: string;
@@ -20,24 +21,20 @@ export type SokPost = {
   text: string;
 };
 
-/** Samma id-transform som priser-sidan använder för sina kategorirubriker. */
-const prisAnkare = (rubrik: string) =>
-  rubrik.toLowerCase().replace(/[^a-zåäö]+/g, "-");
-
 export const sokposter: SokPost[] = [
   // Sidorna
-  { titel: "Behandlingar", typ: "Sida", href: "/behandlingar", text: behandlingsIngress },
-  { titel: "GynRaMa IVF", typ: "Sida", href: "/gynrama-ivf", text: ivfIngress.join(" ") },
-  { titel: "Priser", typ: "Sida", href: "/priser", text: prisIngress },
-  { titel: "Boka tid", typ: "Sida", href: "/boka-tid", text: bokaIngress },
-  { titel: "Om oss", typ: "Sida", href: "/om-oss", text: omossIntro.join(" ") },
-  { titel: "Formulär & länkar", typ: "Sida", href: "/formular-och-lankar", text: formularIngress },
-  { titel: "Webshop", typ: "Sida", href: "/webshop", text: webshopIngress },
+  { titel: "Behandlingar", typ: t("Sida", "Page", "صفحة"), href: "/behandlingar", text: behandlingsIngress },
+  { titel: "GynRaMa IVF", typ: t("Sida", "Page", "صفحة"), href: "/gynrama-ivf", text: ivfIngress.join(" ") },
+  { titel: "Priser", typ: t("Sida", "Page", "صفحة"), href: "/priser", text: prisIngress },
+  { titel: "Boka tid", typ: t("Sida", "Page", "صفحة"), href: "/boka-tid", text: bokaIngress },
+  { titel: "Om oss", typ: t("Sida", "Page", "صفحة"), href: "/om-oss", text: omossIntro.join(" ") },
+  { titel: "Formulär & länkar", typ: t("Sida", "Page", "صفحة"), href: "/formular-och-lankar", text: formularIngress },
+  { titel: "Webshop", typ: t("Sida", "Page", "صفحة"), href: "/webshop", text: webshopIngress },
 
   // Behandlingarna — länkar till raden i dragspelet
   ...behandlingar.map((b) => ({
     titel: b.namn,
-    typ: "Behandling",
+    typ: t("Behandling", "Treatment", "علاج"),
     href: `/behandlingar#${b.slug}`,
     text: b.text,
   })),
@@ -46,8 +43,8 @@ export const sokposter: SokPost[] = [
   ...priser.flatMap((kat) =>
     kat.rader.map((r) => ({
       titel: r.tjanst,
-      typ: "Pris",
-      href: `/priser#${prisAnkare(kat.rubrik)}`,
+      typ: t("Pris", "Price", "سعر"),
+      href: `/priser#${kat.slug}`,
       text: `${r.pris}${r.not ? ` · ${r.not}` : ""} · ${kat.rubrik}`,
     })),
   ),
@@ -55,7 +52,7 @@ export const sokposter: SokPost[] = [
   // Besökstyperna
   ...besokstyper.map((b) => ({
     titel: b.titel,
-    typ: "Boka tid",
+    typ: t("Boka tid", "Booking", "حجز"),
     href: "/boka-tid",
     text: `${b.pris} · ${b.text}`,
   })),
@@ -63,23 +60,23 @@ export const sokposter: SokPost[] = [
   // Teamet — länkar till personkortet
   ...[...lakare, ...personal].map((p) => ({
     titel: p.namn,
-    typ: "Team",
+    typ: t("Team", "Team", "الفريق"),
     href: `/om-oss#${p.slug}`,
     text: `${p.titel}. ${p.bio[0]}`,
   })),
 
-  // Webshopens produkter — länkar till kategorin
+  // Webshopens produkter — länkar till kategorin (stabil slug, ej rubriken)
   ...produkter.map((p) => ({
     titel: p.namn,
-    typ: "Webshop",
-    href: `/webshop#${p.kategori.toLowerCase()}`,
+    typ: t("Webshop", "Shop", "المتجر"),
+    href: `/webshop#${kategorier.find((k) => k.kategori === p.kategori)!.slug}`,
     text: `${p.pris} · ${p.beskrivning}`,
   })),
 
   // Formulären
   ...formular.map((f) => ({
     titel: f.titel,
-    typ: "Formulär",
+    typ: t("Formulär", "Form", "نموذج"),
     href: "/formular-och-lankar",
     text: f.text,
   })),

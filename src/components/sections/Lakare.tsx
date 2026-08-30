@@ -2,17 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "../ui";
 import { lakare } from "@/content/omoss";
+import { t } from "@/i18n";
 
 export function Lakare() {
   return (
     <section className="bg-gradient-to-b from-paper to-lavender-mist">
       <div className="mx-auto max-w-[1240px] px-6 pb-28 lg:pb-36">
         <h2 className="mx-auto max-w-[20ch] text-center text-[clamp(2rem,3.6vw,3.1rem)] text-ink">
-          Några av Sveriges mest erfarna specialister
+          {t("Några av Sveriges mest erfarna specialister", "Some of Sweden\u2019s most experienced specialists", "من أكثر الاختصاصيين خبرة في السويد")}
         </h2>
         <p className="mx-auto mt-6 max-w-[62ch] text-center text-[16px] leading-relaxed text-ink/70">
-          Våra läkare kombinerar mångårig klinisk expertis med ledande forskning
-          för att ge varje patient trygg, modern och individanpassad vård.
+          {t(
+            "Våra läkare kombinerar mångårig klinisk expertis med ledande forskning för att ge varje patient trygg, modern och individanpassad vård.",
+            "Our doctors combine decades of clinical expertise with leading research to give every patient safe, modern and individualised care.",
+            "يجمع أطباؤنا بين خبرة سريرية طويلة وأبحاث رائدة لتقديم رعاية آمنة وحديثة ومصممة لكل مريضة.",
+          )}
         </p>
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
@@ -36,7 +40,7 @@ export function Lakare() {
                   {l.titel}
                 </p>
                 <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] text-ink/50 transition-colors group-hover:text-ink">
-                  Läs mer
+                  {t("Läs mer", "Read more", "اقرئي المزيد")}
                   <ArrowUpRight className="size-[11px]" />
                 </span>
               </div>
@@ -50,7 +54,7 @@ export function Lakare() {
             href="/om-oss"
             className="inline-flex items-center gap-2 text-[16px] text-ink/70 underline-offset-4 transition-colors hover:text-ink hover:underline max-lg:min-h-11 max-lg:px-4"
           >
-            Om GynRaMa och hela teamet
+            {t("Om GynRaMa och hela teamet", "About GynRaMa and the whole team", "عن GynRaMa والفريق بأكمله")}
             <ArrowUpRight className="size-[13px]" />
           </Link>
         </p>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Check, NoteTag, Pill } from "../ui";
 import { besok, bilder } from "@/content/gynrama";
+import { t } from "@/i18n";
 
 export function Besok() {
   return (
@@ -9,23 +10,23 @@ export function Besok() {
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           <div>
             <h2 className="max-w-[12ch] text-[clamp(2.2rem,4.4vw,3.8rem)] text-ink">
-              Så bokar du ditt besök
+              {t("Så bokar du ditt besök", "How to book your visit", "كيف تحجزين زيارتك")}
             </h2>
             <div className="mt-8">
               <Pill href="/boka-tid" tone="lila">
-                Boka tid
+                {t("Boka tid", "Book now", "احجزي موعداً")}
               </Pill>
             </div>
 
             <div className="relative mt-14 max-w-[360px]">
               <Image
                 src={bilder.bokaBesok}
-                alt="Receptionen på GynRaMa med klinikens logga på väggen"
+                alt={t("Receptionen på GynRaMa med klinikens logga på väggen", "The GynRaMa reception with the clinic logo on the wall", "استقبال GynRaMa وشعار العيادة على الجدار")}
                 width={1066}
                 height={1600}
                 className="h-[340px] w-full rounded-card object-cover object-top"
               />
-              <NoteTag className="-bottom-3 left-5">Ingen remiss!</NoteTag>
+              <NoteTag className="-bottom-3 start-5">{t("Ingen remiss!", "No referral!", "بدون إحالة!")}</NoteTag>
             </div>
           </div>
 
@@ -60,7 +61,7 @@ export function Besok() {
                   {i === 0 && (
                     <Image
                       src={bilder.graviditet}
-                      alt="Ultraljudsundersökning av gravid mage"
+                      alt={t("Ultraljudsundersökning av gravid mage", "Ultrasound examination of a pregnant belly", "فحص بالموجات فوق الصوتية لبطن حامل")}
                       width={933}
                       height={1400}
                       className="h-[150px] w-full rounded-[18px] object-cover"

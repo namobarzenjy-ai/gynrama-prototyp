@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Check, Pill } from "../ui";
 import { bilder, fordelar, ivfPunkter } from "@/content/gynrama";
+import { t } from "@/i18n";
 
 export function CtaBand() {
   return (
@@ -22,16 +23,16 @@ export function CtaBand() {
                 kortet är nu ett rent bokningskort. */}
             <div className="max-w-[420px] self-center rounded-[20px] bg-lavender p-8 lg:p-10">
               <Pill href="/boka-tid" tone="lila" withArrow>
-                Boka tid
+                {t("Boka tid", "Book now", "احجزي موعداً")}
               </Pill>
               <p className="mt-6 text-[14px] text-ink/60">
-                Ingen remiss eller egenremiss krävs.
+                {t("Ingen remiss eller egenremiss krävs.", "No referral or self-referral needed.", "لا حاجة إلى إحالة طبية.")}
               </p>
             </div>
 
             {/* Mörka fördelskortet */}
             <div className="self-center rounded-[20px] bg-ink p-6">
-              <h3 className="text-[21px] text-white">Därför GynRaMa</h3>
+              <h3 className="text-[21px] text-white">{t("Därför GynRaMa", "Why GynRaMa", "لماذا GynRaMa")}</h3>
               <ul className="mt-4 space-y-2">
                 {[...fordelar, ...ivfPunkter.slice(0, 2)].map((f) => (
                   <li
@@ -45,7 +46,7 @@ export function CtaBand() {
               </ul>
               <Image
                 src={bilder.ctaKort}
-                alt="Specialistläkare på GynRaMa"
+                alt={t("Specialistläkare på GynRaMa", "Specialist doctor at GynRaMa", "طبيبة اختصاصية في GynRaMa")}
                 width={1600}
                 height={1066}
                 className="mt-5 h-[130px] w-full rounded-[14px] object-cover object-top"

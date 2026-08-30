@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
+import { t } from "@/i18n";
 import { Footer } from "@/components/Footer";
 import { SidHero } from "@/components/sections/SidHero";
 import { ArrowUpRight } from "@/components/ui";
@@ -8,7 +9,7 @@ import { formular, formularIngress, gdprPdf } from "@/content/formular";
 import { kontakt } from "@/content/gynrama";
 
 export const metadata: Metadata = {
-  title: "Formulär & länkar – GynRaMa",
+  title: t("Formulär & länkar – GynRaMa", "Forms & links – GynRaMa", "النماذج والروابط – GynRaMa"),
   description:
     "Ladda ner hälsodeklaration, miktionslista och frågeformulär för klimakteriebesvär inför ditt besök hos GynRaMa i Göteborg.",
 };
@@ -18,7 +19,7 @@ export default function FormularOchLankar() {
     <>
       <Header aktiv="/formular-och-lankar" />
       <main>
-        <SidHero titel="Formulär & länkar" ingress={formularIngress} />
+        <SidHero titel={t("Formulär & länkar", "Forms & links", "النماذج والروابط")} ingress={formularIngress} />
 
         <section className="bg-gradient-to-b from-lavender-soft to-lavender-mist">
           <div className="mx-auto max-w-[1240px] px-6 pt-20 pb-28 lg:pb-36">
@@ -39,7 +40,7 @@ export default function FormularOchLankar() {
                     {f.text}
                   </p>
                   <span className="mt-6 text-[13px] text-ink/45">
-                    PDF · öppnas i ny flik
+                    {t("PDF · öppnas i ny flik", "PDF · opens in a new tab", "PDF · يُفتح في تبويب جديد")}
                   </span>
                 </Link>
               ))}
@@ -47,26 +48,31 @@ export default function FormularOchLankar() {
 
             <div className="mt-16 grid gap-6 rounded-card bg-slate-deep p-8 text-white sm:grid-cols-2 lg:p-10">
               <div>
-                <h2 className="text-[24px]">Integritet</h2>
+                <h2 className="text-[24px]">{t("Integritet", "Privacy", "الخصوصية")}</h2>
                 <p className="mt-3 max-w-[46ch] text-[15px] leading-relaxed text-white/75">
-                  Vi hanterar dina personuppgifter enligt GDPR. Läs vår
-                  personuppgiftspolicy för att se hur vi samlar in, använder och
-                  skyddar din information.
+                  {t(
+                    "Vi hanterar dina personuppgifter enligt GDPR. Läs vår personuppgiftspolicy för att se hur vi samlar in, använder och skyddar din information.",
+                    "We handle your personal data in accordance with the GDPR. Read our privacy policy to see how we collect, use and protect your information.",
+                    "نتعامل مع بياناتك الشخصية وفق اللائحة الأوروبية لحماية البيانات (GDPR). اقرئي سياسة الخصوصية لمعرفة كيف نجمع معلوماتك ونستخدمها ونحميها.",
+                  )}
                 </p>
                 <Link
                   href={gdprPdf}
                   className="mt-5 inline-flex items-center gap-2 text-[15px] transition-colors hover:text-lila-ljus max-lg:min-h-11"
                 >
-                  Personuppgiftspolicy (PDF)
+                  {t("Personuppgiftspolicy (PDF)", "Privacy policy (PDF)", "سياسة الخصوصية (PDF)")}
                   <ArrowUpRight className="size-[12px]" />
                 </Link>
               </div>
 
               <div>
-                <h2 className="text-[24px]">Frågor?</h2>
+                <h2 className="text-[24px]">{t("Frågor?", "Questions?", "أسئلة؟")}</h2>
                 <p className="mt-3 max-w-[42ch] text-[15px] leading-relaxed text-white/75">
-                  Hittar du inte det du söker, eller undrar du vilket formulär
-                  som gäller för ditt besök? Hör av dig.
+                  {t(
+                    "Hittar du inte det du söker, eller undrar du vilket formulär som gäller för ditt besök? Hör av dig.",
+                    "Can\u2019t find what you are looking for, or unsure which form applies to your visit? Get in touch.",
+                    "لم تجدي ما تبحثين عنه، أو لست متأكدة أي نموذج يخص زيارتك؟ تواصلي معنا.",
+                  )}
                 </p>
                 <div className="mt-5 space-y-1.5">
                   <Link

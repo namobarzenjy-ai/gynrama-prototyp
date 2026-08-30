@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
+import { t } from "@/i18n";
 import { Footer } from "@/components/Footer";
 import { SidHero } from "@/components/sections/SidHero";
 import { ArrowUpRight, Check, Pill } from "@/components/ui";
@@ -16,7 +17,7 @@ import {
 import { kontakt } from "@/content/gynrama";
 
 export const metadata: Metadata = {
-  title: "Boka tid – GynRaMa",
+  title: t("Boka tid – GynRaMa", "Book an appointment – GynRaMa", "حجز موعد – GynRaMa"),
   description:
     "Boka gynekologbesök, videobesök eller telefonkonsultation hos GynRaMa i Göteborg. Ingen remiss krävs. Videobesök tillgängligt över hela världen.",
 };
@@ -26,7 +27,7 @@ export default function BokaTid() {
     <>
       <Header aktiv="/boka-tid" />
       <main>
-        <SidHero titel="Boka tid" ingress={bokaIngress} />
+        <SidHero titel={t("Boka tid", "Book an appointment", "حجز موعد")} ingress={bokaIngress} />
 
         <section className="bg-gradient-to-b from-lavender-soft to-lavender-mist">
           <div className="mx-auto max-w-[1240px] px-6 pt-16 pb-28 lg:pb-36">
@@ -67,7 +68,7 @@ export default function BokaTid() {
                   </p>
                   <div className="mt-6">
                     <Pill href={b.bokningsUrl} tone="lila" withArrow>
-                      Boka
+                      {t("Boka", "Book", "احجزي")}
                     </Pill>
                   </div>
                 </article>
@@ -91,8 +92,8 @@ export default function BokaTid() {
                   </p>
                 ))}
               </div>
-              <div className="lg:text-right">
-                <p className="text-[13px] text-white/50">Ring oss</p>
+              <div className="lg:text-end">
+                <p className="text-[13px] text-white/50">{t("Ring oss", "Call us", "اتصلي بنا")}</p>
                 <Link
                   href={kontakt.telefonHref}
                   className="mt-1 block font-serif text-[26px] transition-colors hover:text-lila-ljus"

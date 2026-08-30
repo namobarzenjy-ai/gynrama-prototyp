@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "../ui";
 import { omraden } from "@/content/gynrama";
+import { t } from "@/i18n";
 
 export function Omraden() {
   return (
@@ -11,7 +12,7 @@ export function Omraden() {
     >
       <div className="mx-auto max-w-[1240px] px-6 pb-28 lg:pb-36">
         <h2 className="mx-auto max-w-[18ch] text-center text-[clamp(2rem,3.6vw,3.1rem)] text-ink">
-          Specialistvård med kvalitet i fokus
+          {t("Specialistvård med kvalitet i fokus", "Specialist care with quality in focus", "رعاية تخصصية جودتها في المقام الأول")}
         </h2>
         <p className="mt-8 text-center">
           {/* max-lg: tryckyta bara på mobil — desktop-layouten rörs inte */}
@@ -19,7 +20,7 @@ export function Omraden() {
             href="/behandlingar"
             className="inline-flex items-center gap-2 text-[16px] text-ink/70 underline-offset-4 transition-colors hover:text-ink hover:underline max-lg:min-h-11 max-lg:px-4"
           >
-            Se alla behandlingar
+            {t("Se alla behandlingar", "See all treatments", "عرض جميع العلاجات")}
             <ArrowUpRight className="size-[13px]" />
           </Link>
         </p>
@@ -41,7 +42,7 @@ export function Omraden() {
                   <h3 className="text-[22px] text-white">{o.titel}</h3>
                   <Link
                     href={o.href}
-                    aria-label={`Läs mer om ${o.titel}`}
+                    aria-label={`${t("Läs mer om", "Read more about", "اقرئي المزيد عن")} ${o.titel}`}
                     className="grid size-9 shrink-0 place-items-center rounded-full bg-lila text-white transition-colors hover:bg-lila-deep max-lg:size-11"
                   >
                     <ArrowUpRight className="size-[14px]" />

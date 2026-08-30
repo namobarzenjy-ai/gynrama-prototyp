@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Check } from "../ui";
 import { lakare, personal, teamAvslutning, type Person } from "@/content/omoss";
+import { t } from "@/i18n";
 
 function PersonKort({ p }: { p: Person }) {
   // Första stycket syns alltid; resten av biografin och meriterna fälls ut.
@@ -41,8 +42,8 @@ function PersonKort({ p }: { p: Person }) {
                 <span className="absolute top-1/2 left-0 h-px w-3.5 -translate-y-1/2 bg-current" />
                 <span className="absolute top-0 left-1/2 h-3.5 w-px -translate-x-1/2 bg-current transition-opacity group-open:opacity-0" />
               </span>
-              <span className="group-open:hidden">Läs mer</span>
-              <span className="hidden group-open:inline">Visa mindre</span>
+              <span className="group-open:hidden">{t("Läs mer", "Read more", "اقرئي المزيد")}</span>
+              <span className="hidden group-open:inline">{t("Visa mindre", "Show less", "عرض أقل")}</span>
             </summary>
 
             <div className="mt-4 space-y-3">
@@ -84,7 +85,7 @@ export function Team() {
     <section id="team" className="bg-lavender-mist">
       <div className="mx-auto max-w-[1240px] px-6 pb-28 lg:pb-36">
         <h2 className="mx-auto max-w-[16ch] pt-4 text-center text-[clamp(2rem,3.6vw,3.1rem)] text-ink">
-          Våra specialistläkare
+          {t("Våra specialistläkare", "Our specialist doctors", "أطباؤنا الاختصاصيون")}
         </h2>
         <p className="mx-auto mt-6 max-w-[58ch] text-center text-[16px] leading-relaxed text-ink/70">
           {teamAvslutning}
@@ -98,7 +99,7 @@ export function Team() {
         </div>
 
         <h3 className="mt-20 text-center text-[clamp(1.6rem,2.6vw,2.2rem)] text-ink">
-          Övrig personal
+          {t("Övrig personal", "Other staff", "بقية الفريق")}
         </h3>
         <div className="mx-auto mt-10 grid max-w-[810px] gap-5 sm:grid-cols-2">
           {personal.map((p) => (

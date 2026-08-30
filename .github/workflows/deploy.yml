@@ -24,9 +24,37 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm run build
+
+      # Ett språk per bygge (se src/i18n.ts): svenska till roten,
+      # engelska till /en/, arabiska till /ar/. Flaggorna i headern
+      # länkar mellan versionerna. Svenska byggs sist så att den
+      # hamnar i out/ och språken kan flyttas in som undermappar.
+      - name: Bygg engelska (/en)
+        run: |
+          npm run build
+          mv out/ out-en/
         env:
           GITHUB_PAGES: "true"
+          NEXT_PUBLIC_SPRAK: en
+          BASE_PATH: /gynrama-prototyp/en
+
+      - name: Bygg arabiska (/ar)
+        run: |
+          npm run build
+          mv out/ out-ar/
+        env:
+          GITHUB_PAGES: "true"
+          NEXT_PUBLIC_SPRAK: ar
+          BASE_PATH: /gynrama-prototyp/ar
+
+      - name: Bygg svenska (rot) och sätt ihop
+        run: |
+          npm run build
+          mv out-en out/en
+          mv out-ar out/ar
+        env:
+          GITHUB_PAGES: "true"
+
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

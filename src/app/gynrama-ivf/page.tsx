@@ -14,12 +14,20 @@ import {
   ivfPriser,
 } from "@/content/ivf";
 import { bilder } from "@/content/gynrama";
+import { t } from "@/i18n";
 import { lakare } from "@/content/omoss";
 
 export const metadata: Metadata = {
-  title: "GynRaMa IVF – Fertilitet & IVF i samarbete med Nordic IVF",
-  description:
+  title: t(
+    "GynRaMa IVF – Fertilitet & IVF i samarbete med Nordic IVF",
+    "GynRaMa IVF – Fertility & IVF in partnership with Nordic IVF",
+    "GynRaMa IVF – الخصوبة وأطفال الأنابيب بالتعاون مع Nordic IVF",
+  ),
+  description: t(
     "Individanpassade IVF-behandlingar i Göteborg i nära samarbete med Nordic IVF. Samma specialistteam hela vägen, korta väntetider och evidensbaserad vård med akademisk profil.",
+    "Individualised IVF treatment in Gothenburg in close partnership with Nordic IVF. The same specialist team throughout, short waiting times and evidence-based care with an academic profile.",
+    "علاج أطفال الأنابيب مصمم لكل حالة في يوتيبوري بالتعاون الوثيق مع Nordic IVF. نفس الفريق المتخصص طوال الرحلة، أوقات انتظار قصيرة ورعاية قائمة على الأدلة.",
+  ),
 };
 
 export default function Ivf() {
@@ -40,7 +48,7 @@ export default function Ivf() {
                 ))}
                 <div className="pt-3">
                   <Pill href="/boka-tid" tone="lila" withArrow>
-                    Boka fertilitetskonsultation
+                    {t("Boka fertilitetskonsultation", "Book a fertility consultation", "احجزي استشارة خصوبة")}
                   </Pill>
                 </div>
               </div>
@@ -48,12 +56,12 @@ export default function Ivf() {
               <div className="relative lg:w-[320px]">
                 <Image
                   src={bilder.ivf}
-                  alt="Nyfödd hand som håller om en vuxens finger"
+                  alt={t("Nyfödd hand som håller om en vuxens finger", "A newborn hand holding an adult\u2019s finger", "يد مولود جديد تمسك بإصبع شخص بالغ")}
                   width={800}
                   height={953}
                   className="h-[380px] w-full rounded-card object-cover"
                 />
-                <NoteTag className="-bottom-4 left-6">Med Nordic IVF</NoteTag>
+                <NoteTag className="-bottom-4 start-6">{t("Med Nordic IVF", "With Nordic IVF", "مع Nordic IVF")}</NoteTag>
               </div>
             </div>
 
@@ -78,7 +86,7 @@ export default function Ivf() {
 
               {/* Relevanta priser direkt på sidan */}
               <div className="self-start rounded-[20px] bg-ink p-6 text-white">
-                <h3 className="text-[20px]">Priser</h3>
+                <h3 className="text-[20px]">{t("Priser", "Prices", "الأسعار")}</h3>
                 <dl className="mt-4 space-y-3">
                   {ivfPriser.map((p) => (
                     <div key={p.tjanst} className="border-b border-white/12 pb-3">
@@ -93,7 +101,7 @@ export default function Ivf() {
                   href="/priser"
                   className="mt-5 inline-flex items-center gap-1.5 text-[13px] text-white/60 transition-colors hover:text-lila-ljus max-lg:min-h-11"
                 >
-                  Hela prislistan
+                  {t("Hela prislistan", "Full price list", "قائمة الأسعار الكاملة")}
                   <ArrowUpRight className="size-[11px]" />
                 </Link>
               </div>
@@ -130,7 +138,7 @@ export default function Ivf() {
                       {l.titel}
                     </p>
                     <span className="mt-3 inline-flex items-center gap-1.5 text-[13px] text-ink/50 transition-colors group-hover:text-ink">
-                      Läs mer
+                      {t("Läs mer", "Read more", "اقرئي المزيد")}
                       <ArrowUpRight className="size-[11px]" />
                     </span>
                   </div>

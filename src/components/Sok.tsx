@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { sokposter, type SokPost } from "@/content/sokindex";
+import { t } from "@/i18n";
 
 /**
  * Sökrutan i headern. Helt klientbaserad — sajten är statisk (GitHub Pages)
@@ -87,7 +88,7 @@ export function Sok() {
     <div ref={ref}>
       <button
         type="button"
-        aria-label={oppen ? "Stäng sök" : "Sök på sidan"}
+        aria-label={oppen ? t("Stäng sök", "Close search", "أغلقي البحث") : t("Sök på sidan", "Search the site", "ابحثي في الموقع")}
         aria-expanded={oppen}
         onClick={() => setOppen(!oppen)}
         className="grid size-11 place-items-center rounded-full text-ink transition-colors hover:bg-lavender/60"
@@ -135,8 +136,8 @@ export function Sok() {
                 autoFocus
                 value={fraga}
                 onChange={(e) => setFraga(e.target.value)}
-                placeholder="Sök behandling, pris, produkt …"
-                aria-label="Sök på sidan"
+                placeholder={t("Sök behandling, pris, produkt …", "Search treatments, prices, products …", "ابحثي عن علاج أو سعر أو منتج…")}
+                aria-label={t("Sök på sidan", "Search the site", "ابحثي في الموقع")}
                 className="w-full rounded-pill border border-ink/15 bg-white px-6 py-3.5 text-[17px] text-ink outline-none placeholder:text-ink/40 focus:border-lila"
               />
             </form>
@@ -169,9 +170,10 @@ export function Sok() {
 
             {fraga.trim().length >= 2 && traffar.length === 0 && (
               <p className="mt-3 py-2 text-[15px] text-ink/60">
-                Inga träffar på ”{fraga.trim()}”. Prova ett annat ord, eller{" "}
+                {t("Inga träffar på", "No results for", "لا توجد نتائج لـ")} ”{fraga.trim()}”.{" "}
+                {t("Prova ett annat ord, eller", "Try another word, or", "جرّبي كلمة أخرى، أو")}{" "}
                 <Link href="/boka-tid" onClick={stang} className="underline underline-offset-4 hover:text-lila">
-                  kontakta oss
+                  {t("kontakta oss", "contact us", "تواصلي معنا")}
                 </Link>
                 .
               </p>

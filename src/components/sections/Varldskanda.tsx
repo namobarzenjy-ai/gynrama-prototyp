@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Pill } from "../ui";
 import { sverigesRadio, varldskanda, lakare } from "@/content/omoss";
+import { t } from "@/i18n";
 
 /** Klinikens starkaste innehåll — livmodertransplantationen. */
 export function Varldskanda() {
@@ -58,7 +59,7 @@ export function Varldskanda() {
                   className="grid size-12 shrink-0 place-items-center rounded-full bg-slate-deep text-white transition-colors group-hover:bg-ink"
                 >
                   {/* Play-triangel */}
-                  <svg viewBox="0 0 16 16" className="ml-0.5 size-4 fill-current">
+                  <svg viewBox="0 0 16 16" className="ms-0.5 size-4 fill-current">
                     <path d="M4 2.5v11l9-5.5-9-5.5Z" />
                   </svg>
                 </span>
@@ -67,17 +68,18 @@ export function Varldskanda() {
                     {sverigesRadio.etikett} · {sverigesRadio.datum} · {sverigesRadio.langd}
                   </span>
                   <span className="mt-0.5 block font-serif text-[19px] leading-snug text-ink">
-                    Hör inslaget: {sverigesRadio.rubrik}
+                    {t("Hör inslaget:", "Listen to the segment:", "استمعي إلى الحلقة:")} {sverigesRadio.rubrik}
                   </span>
                   <span className="mt-1 block text-[13px] leading-snug text-ink/60">
-                    {sverigesRadio.beskrivning} Öppnas hos Sveriges Radio.
+                    {sverigesRadio.beskrivning}{" "}
+                    {t("Öppnas hos Sveriges Radio.", "Opens at Sveriges Radio.", "يُفتح على موقع الإذاعة السويدية.")}
                   </span>
                 </span>
               </a>
 
               <div className="mt-7">
                 <Pill href="#team" tone="lila" withArrow>
-                  Möt teamet
+                  {t("Möt teamet", "Meet the team", "تعرّفي على الفريق")}
                 </Pill>
               </div>
             </div>

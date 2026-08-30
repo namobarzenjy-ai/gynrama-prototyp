@@ -20,7 +20,7 @@ Alla åtta sidor är byggda:
 
 | Sida | Innehåll |
 | --- | --- |
-| `/` | Startsida |
+| `/` | Startsida (sv på roten; en/ar under `/en/` resp. `/ar/`) |
 | `/behandlingar` | 17 behandlingar i 4 kategorier |
 | `/gynrama-ivf` | IVF i samarbete med Nordic IVF |
 | `/priser` | 39 tjänster i 7 kategorier |
@@ -165,8 +165,43 @@ och laddar ingen CSS — då blir varje element en falsk avvikelse.
   priskategori, personkort, webshopkategori).
 
 Kvar från samma besked, väntar på underlag/beslut: nytt prisunderlag,
-"gryniga bilden" (oklart vilken), AI-chatt (juridik först), tre språk
-(eget arbetspaket).
+"gryniga bilden" (oklart vilken), AI-chatt (juridik först).
+
+## Tre språk: svenska, engelska, arabiska
+
+Sajten finns på svenska (standard, roten), engelska (`/en/`) och arabiska
+(`/ar/`). Flaggorna i headerns hörn växlar språk och behåller sidan man
+står på (`SprakVal.tsx`).
+
+**Arkitekturen är ett bygge per språk** — sajten är statisk utan server, så
+språket väljs vid byggtid via `NEXT_PUBLIC_SPRAK` och deployen bygger tre
+gånger (se `deploy.yml`). All text går genom `t(sv, en, ar)` i `src/i18n.ts`;
+svenskan är källa och fallback. Översättningarna ligger inline bredvid
+källtexten i content-filerna — de kan inte tappa synk, och kliniken kan
+granska språken sida vid sida.
+
+- **ÖVERSÄTTNINGARNA ÄR UTKAST** (2026-08-30, maskinellt framtagna med
+  medicinsk omsorg) och SKA granskas av kliniken innan skarp drift — de har
+  språkkunnig personal. Detta gäller särskilt behandlingstexterna.
+- **Lokalt:** `npm run dev` är svenska; `NEXT_PUBLIC_SPRAK=en npm run dev`
+  visar engelska på rot-URL:en. Språkväxlarens länkar fungerar bara i det
+  ihopsatta Pages-bygget.
+- **Arabiska är RTL** (`dir="rtl"`): layouten speglas automatiskt eftersom
+  komponenterna använder logiska utilities (`ps-`/`pe-`/`ms-`/`me-`/`start-`/
+  `end-`), inte fysiska (`pl-`/`left-` …). Två fällor är dokumenterade i
+  koden: centrera absoluta element med `inset-0 + mx-auto`, ALDRIG
+  `left-1/2 -translate-x-1/2` (RTL ignorerar `left` vid överbestämd
+  positionering — boxen hamnar utanför skärmen), och riktade gradienter
+  behöver `rtl:bg-linear-to-l`-varianten (se Hero.tsx).
+- **Sökrutan är flerspråkig gratis** — indexet byggs ur content-filerna per
+  bygge. Ankar-id:n (kategorislugs) är däremot språkoberoende och får inte
+  översättas.
+- **Flaggan för arabiska** är Saudiarabiens (arabiskan har ingen egen
+  flagga; detta är konventionen på svenska sajter). Lätt att byta i
+  `SPRAKVAL` i `i18n.ts` om kunden vill.
+- Radioinslaget hos SR och personalens porträttbildtexter är på svenska —
+  SR-kortet säger det uttryckligen på en/ar. Broschyr-PDF:erna på
+  formulärsidan finns bara på svenska.
 
 ## Bilderna
 

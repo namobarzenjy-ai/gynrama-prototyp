@@ -9,166 +9,212 @@
  * Kunden har aviserat ett NYTT PRISUNDERLAG som ännu inte kommit — övriga
  * belopp är alltså fortfarande 2026-07-17 och ska bytas när underlaget
  * finns. VERIFIERA MOT KLINIKEN INNAN SKARP DRIFT.
+ *
+ * slug bygger ankar-id:t på prissidan och får inte översättas — arabiska
+ * rubriker kan inte bli id:n, och sökindexet länkar hit.
+ *
+ * EN/AR-texterna är UTKAST och ska granskas av kliniken (se README).
  */
+import { t } from "@/i18n";
 
 export type Prisrad = { tjanst: string; pris: string; not?: string };
-export type Priskategori = { rubrik: string; rader: Prisrad[] };
+export type Priskategori = { rubrik: string; slug: string; rader: Prisrad[] };
 
 export const prisHamtat = "2026-07-17";
 
+const kr = (belopp: string, en: string, ar: string) => t(`${belopp} kr`, `SEK ${en}`, `${ar} كرونا`);
+
 export const priser: Priskategori[] = [
   {
-    rubrik: "Konsultationer & besök",
+    rubrik: t("Konsultationer & besök", "Consultations & visits", "الاستشارات والزيارات"),
+    slug: "konsultationer-besok",
     rader: [
       {
-        tjanst: "Gynekolog besök inkl. ultraljud",
-        pris: "1 600 kr",
-        not: "Laboratorieprover tillkommer enligt separat prislista",
+        tjanst: t("Gynekolog besök inkl. ultraljud", "Gynaecologist visit incl. ultrasound", "زيارة طبيبة النساء شاملة الموجات فوق الصوتية"),
+        pris: kr("1 600", "1,600", "1 600"),
+        not: t("Laboratorieprover tillkommer enligt separat prislista", "Laboratory tests are charged according to a separate price list", "تُضاف الفحوصات المخبرية وفق قائمة أسعار منفصلة"),
       },
-      { tjanst: "Telefonkonsultation / medicinsk rådgivning", pris: "500 kr" },
-      { tjanst: "Videobesök konsultation med specialist", pris: "1 000 kr" },
-      { tjanst: "Receptförskrivning utanför läkarbesök", pris: "500 kr" },
+      { tjanst: t("Telefonkonsultation / medicinsk rådgivning", "Phone consultation / medical advice", "استشارة هاتفية / مشورة طبية"), pris: kr("500", "500", "500") },
+      { tjanst: t("Videobesök konsultation med specialist", "Video consultation with a specialist", "استشارة بالفيديو مع اختصاصية"), pris: kr("1 000", "1,000", "1 000") },
+      { tjanst: t("Receptförskrivning utanför läkarbesök", "Prescription outside a doctor's visit", "وصفة طبية خارج الزيارة"), pris: kr("500", "500", "500") },
       {
-        tjanst: "Akut besök inom 4 timmar",
-        pris: "3 900 kr",
-        not: "Gäller även utanför ordinarie öppettider",
+        tjanst: t("Akut besök inom 4 timmar", "Urgent visit within 4 hours", "زيارة عاجلة خلال 4 ساعات"),
+        pris: kr("3 900", "3,900", "3 900"),
+        not: t("Gäller även utanför ordinarie öppettider", "Also available outside regular opening hours", "متاحة أيضاً خارج ساعات العمل المعتادة"),
       },
-      { tjanst: "Remiss i samband med besöket", pris: "500 kr" },
+      { tjanst: t("Remiss i samband med besöket", "Referral in connection with the visit", "إحالة مرتبطة بالزيارة"), pris: kr("500", "500", "500") },
     ],
   },
   {
-    rubrik: "Graviditetsrelaterade tjänster",
+    rubrik: t("Graviditetsrelaterade tjänster", "Pregnancy-related services", "خدمات متعلقة بالحمل"),
+    slug: "graviditet",
     rader: [
-      { tjanst: "Tidigt graviditetsultraljud (från v 6+)", pris: "1 600 kr" },
-      { tjanst: "Abdominellt graviditetsultraljud", pris: "1 900 kr" },
+      { tjanst: t("Tidigt graviditetsultraljud (från v 6+)", "Early pregnancy ultrasound (from week 6+)", "تصوير الحمل المبكر بالموجات فوق الصوتية (من الأسبوع 6+)"), pris: kr("1 600", "1,600", "1 600") },
+      { tjanst: t("Abdominellt graviditetsultraljud", "Abdominal pregnancy ultrasound", "تصوير الحمل عبر البطن بالموجات فوق الصوتية"), pris: kr("1 900", "1,900", "1 900") },
     ],
   },
   {
-    rubrik: "Fertilitetsutredningar & behandlingar",
+    rubrik: t("Fertilitetsutredningar & behandlingar", "Fertility investigations & treatments", "فحوصات وعلاجات الخصوبة"),
+    slug: "fertilitet",
     rader: [
-      { tjanst: "Fertilitetskonsultation", pris: "2 000 kr" },
+      { tjanst: t("Fertilitetskonsultation", "Fertility consultation", "استشارة خصوبة"), pris: kr("2 000", "2,000", "2 000") },
       {
-        tjanst: "Komplett fertilitetsutredning inför ev. IVF-remiss",
-        pris: "11 500 kr",
+        tjanst: t("Komplett fertilitetsutredning inför ev. IVF-remiss", "Complete fertility investigation ahead of a possible IVF referral", "فحص خصوبة شامل قبل إحالة محتملة لأطفال الأنابيب"),
+        pris: kr("11 500", "11,500", "11 500"),
       },
       {
-        tjanst: "Missfallsutredning",
-        pris: "9 800 kr",
-        not: "Exklusive kromosomanalys",
+        tjanst: t("Missfallsutredning", "Miscarriage investigation", "فحص الإجهاض المتكرر"),
+        pris: kr("9 800", "9,800", "9 800"),
+        not: t("Exklusive kromosomanalys", "Excluding chromosome analysis", "لا يشمل تحليل الكروموسومات"),
       },
       {
-        tjanst:
+        tjanst: t(
           "Ägglossningsstimulering med hormontabletter / Letrozol-behandling inklusive en uppföljning med ultraljud",
-        pris: "4 000 kr",
+          "Ovulation stimulation with hormone tablets / letrozole treatment, including one ultrasound follow-up",
+          "تحفيز الإباضة بأقراص هرمونية / علاج ليتروزول شاملاً متابعة واحدة بالموجات فوق الصوتية",
+        ),
+        pris: kr("4 000", "4,000", "4 000"),
       },
       {
-        tjanst:
+        tjanst: t(
           "Ägglossningsstimulering med hormonsprutor inklusive uppföljning med ultraljud",
-        pris: "9 000 kr",
-        not: "Exklusive läkemedelskostnad",
+          "Ovulation stimulation with hormone injections, including ultrasound follow-up",
+          "تحفيز الإباضة بالحقن الهرمونية شاملاً المتابعة بالموجات فوق الصوتية",
+        ),
+        pris: kr("9 000", "9,000", "9 000"),
+        not: t("Exklusive läkemedelskostnad", "Excluding medication costs", "لا يشمل تكلفة الأدوية"),
       },
       {
-        tjanst: "Undersökning av livmoder och äggledare – HyCoSy/HSSG",
-        pris: "4 000 kr",
+        tjanst: t("Undersökning av livmoder och äggledare – HyCoSy/HSSG", "Examination of the uterus and fallopian tubes – HyCoSy/HSSG", "فحص الرحم وقناتي فالوب – HyCoSy/HSSG"),
+        pris: kr("4 000", "4,000", "4 000"),
       },
       {
-        tjanst: "Undersökning av livmoder – hydrosonografi (KAVUS)",
-        pris: "2 000 kr",
+        tjanst: t("Undersökning av livmoder – hydrosonografi (KAVUS)", "Examination of the uterus – hydrosonography (SIS)", "فحص الرحم – التصوير بالمحلول الملحي (KAVUS)"),
+        pris: kr("2 000", "2,000", "2 000"),
       },
-      { tjanst: "Spermieprov", pris: "2 000 kr" },
-      { tjanst: "Kolposkopi inklusive biopsi och cellprov", pris: "8 000 kr" },
-      { tjanst: "Kolposkopi exklusive biopsi och cellprov", pris: "3 500 kr" },
+      { tjanst: t("Spermieprov", "Sperm test", "فحص الحيوانات المنوية"), pris: kr("2 000", "2,000", "2 000") },
+      { tjanst: t("Kolposkopi inklusive biopsi och cellprov", "Colposcopy including biopsy and smear test", "تنظير عنق الرحم شاملاً الخزعة ومسحة الخلايا"), pris: kr("8 000", "8,000", "8 000") },
+      { tjanst: t("Kolposkopi exklusive biopsi och cellprov", "Colposcopy excluding biopsy and smear test", "تنظير عنق الرحم دون خزعة أو مسحة"), pris: kr("3 500", "3,500", "3 500") },
     ],
   },
   {
-    rubrik: "Gynekologiska tjänster",
+    rubrik: t("Gynekologiska tjänster", "Gynaecological services", "خدمات نسائية"),
+    slug: "gynekologi",
     rader: [
       {
-        tjanst: "Spiraluttag (inklusive läkarbesök och ultraljud)",
-        pris: "1 700 kr",
-        not: "Extra kostnad tillkommer vid bedövning",
+        tjanst: t("Spiraluttag (inklusive läkarbesök och ultraljud)", "IUD removal (including doctor's visit and ultrasound)", "إزالة اللولب (شاملة الزيارة والموجات فوق الصوتية)"),
+        pris: kr("1 700", "1,700", "1 700"),
+        not: t("Extra kostnad tillkommer vid bedövning", "Extra cost for anaesthesia", "تُضاف تكلفة إضافية عند التخدير"),
       },
       {
-        tjanst: "Spiralinsättning (inklusive läkarbesök och ultraljud)",
-        pris: "2 000 kr",
-        not: "600 kr tillkommer för kopparspiralen. 200 kr tillkommer för samtidigt spiraluttag",
+        tjanst: t("Spiralinsättning (inklusive läkarbesök och ultraljud)", "IUD insertion (including doctor's visit and ultrasound)", "تركيب اللولب (شاملاً الزيارة والموجات فوق الصوتية)"),
+        pris: kr("2 000", "2,000", "2 000"),
+        not: t(
+          "600 kr tillkommer för kopparspiralen. 200 kr tillkommer för samtidigt spiraluttag",
+          "SEK 600 extra for a copper IUD. SEK 200 extra for simultaneous IUD removal",
+          "تُضاف 600 كرونا للولب النحاسي و200 كرونا عند إزالة لولب في نفس الجلسة",
+        ),
       },
       {
-        tjanst: "Spiraluttag + spiralinsättning",
-        pris: "2 500 kr",
-        not: "Extra kostnad tillkommer vid bedövning",
+        tjanst: t("Spiraluttag + spiralinsättning", "IUD removal + insertion", "إزالة وتركيب اللولب"),
+        pris: kr("2 500", "2,500", "2 500"),
+        not: t("Extra kostnad tillkommer vid bedövning", "Extra cost for anaesthesia", "تُضاف تكلفة إضافية عند التخدير"),
       },
       {
-        tjanst:
+        tjanst: t(
           "Gynekologisk undersökning vid IVF-behandling på annan klinik eller utomlands",
-        pris: "1 600 kr",
-        not: "För gynekologisk undersökning inklusive ultraljud. Kostnad för laboratorieprover tillkommer enligt prislista. Receptförskrivning 500 kr per recept, exklusive förmån. 200 kr tillkommer för kopia av journalanteckning i samband med besöket",
+          "Gynaecological examination during IVF treatment at another clinic or abroad",
+          "فحص نسائي أثناء علاج أطفال الأنابيب في عيادة أخرى أو في الخارج",
+        ),
+        pris: kr("1 600", "1,600", "1 600"),
+        not: t(
+          "För gynekologisk undersökning inklusive ultraljud. Kostnad för laboratorieprover tillkommer enligt prislista. Receptförskrivning 500 kr per recept, exklusive förmån. 200 kr tillkommer för kopia av journalanteckning i samband med besöket",
+          "For a gynaecological examination including ultrasound. Laboratory tests are charged according to the price list. Prescriptions SEK 500 each, excluding subsidy. SEK 200 extra for a copy of the medical record from the visit",
+          "لفحص نسائي شامل الموجات فوق الصوتية. تُضاف الفحوصات المخبرية وفق قائمة الأسعار. الوصفة الطبية 500 كرونا، دون دعم. تُضاف 200 كرونا لنسخة من ملاحظات السجل الطبي للزيارة",
+        ),
       },
       {
-        tjanst: "Cellprov (HPV + cytologi)",
-        pris: "1 800 kr",
-        not: "Exklusive läkarbesök",
+        tjanst: t("Cellprov (HPV + cytologi)", "Smear test (HPV + cytology)", "مسحة الخلايا (فيروس الورم الحليمي + الخلايا)"),
+        pris: kr("1 800", "1,800", "1 800"),
+        not: t("Exklusive läkarbesök", "Excluding doctor's visit", "لا تشمل زيارة الطبيبة"),
       },
-      { tjanst: "HPV-analys", pris: "900 kr", not: "Exklusive läkarbesök" },
       {
-        tjanst: "Utredning/provtagning av postmenopausal blödning",
-        pris: "Från 3 000 kr",
-        not: "Exklusive läkarkostnad",
+        tjanst: t("HPV-analys", "HPV analysis", "تحليل فيروس الورم الحليمي HPV"),
+        pris: kr("900", "900", "900"),
+        not: t("Exklusive läkarbesök", "Excluding doctor's visit", "لا يشمل زيارة الطبيبة"),
       },
-      { tjanst: "Uttag av P-stav inklusive bedövning", pris: "1 800 kr" },
-      { tjanst: "Insättning av P-stav inklusive bedövning", pris: "1 800 kr" },
-      { tjanst: "3D/4D-ultraljud", pris: "2 500 kr" },
+      {
+        tjanst: t("Utredning/provtagning av postmenopausal blödning", "Investigation/sampling of postmenopausal bleeding", "فحص وأخذ عينات لنزيف ما بعد سن اليأس"),
+        pris: t("Från 3 000 kr", "From SEK 3,000", "ابتداءً من 3 000 كرونا"),
+        not: t("Exklusive läkarkostnad", "Excluding doctor's fee", "لا يشمل أتعاب الطبيبة"),
+      },
+      { tjanst: t("Uttag av P-stav inklusive bedövning", "Contraceptive implant removal including anaesthesia", "إزالة غرسة منع الحمل شاملة التخدير"), pris: kr("1 800", "1,800", "1 800") },
+      { tjanst: t("Insättning av P-stav inklusive bedövning", "Contraceptive implant insertion including anaesthesia", "تركيب غرسة منع الحمل شاملاً التخدير"), pris: kr("1 800", "1,800", "1 800") },
+      { tjanst: t("3D/4D-ultraljud", "3D/4D ultrasound", "موجات فوق صوتية ثلاثية/رباعية الأبعاد"), pris: kr("2 500", "2,500", "2 500") },
     ],
   },
   {
-    rubrik: "Psykiatri",
+    rubrik: t("Psykiatri", "Psychiatry", "الطب النفسي"),
+    slug: "psykiatri",
     rader: [
       {
-        tjanst: "Psykiatrisk konsultation – fysiskt besök (60 min)",
-        pris: "2 000 kr",
-        not: "Inklusive PMDS, utmattningssyndrom och postpartum depression",
+        tjanst: t("Psykiatrisk konsultation – fysiskt besök (60 min)", "Psychiatric consultation – in person (60 min)", "استشارة نفسية – في العيادة (60 دقيقة)"),
+        pris: kr("2 000", "2,000", "2 000"),
+        not: t(
+          "Inklusive PMDS, utmattningssyndrom och postpartum depression",
+          "Including PMDD, burnout and postpartum depression",
+          "تشمل اضطراب ما قبل الطمث الانزعاجي والإرهاق واكتئاب ما بعد الولادة",
+        ),
       },
-      {
-        tjanst: "Psykiatrisk konsultation – videobesök (45 min)",
-        pris: "1 500 kr",
-      },
-      { tjanst: "Psykiatrisk telefonkonsultation (20 min)", pris: "1 000 kr" },
+      { tjanst: t("Psykiatrisk konsultation – videobesök (45 min)", "Psychiatric consultation – video (45 min)", "استشارة نفسية – فيديو (45 دقيقة)"), pris: kr("1 500", "1,500", "1 500") },
+      { tjanst: t("Psykiatrisk telefonkonsultation (20 min)", "Psychiatric phone consultation (20 min)", "استشارة نفسية هاتفية (20 دقيقة)"), pris: kr("1 000", "1,000", "1 000") },
     ],
   },
   {
-    rubrik: "Kirurgiska ingrepp",
+    rubrik: t("Kirurgiska ingrepp", "Surgical procedures", "العمليات الجراحية"),
+    slug: "kirurgi",
     rader: [
-      { tjanst: "Hysteroskopi diagnostisk", pris: "18 000 kr" },
-      { tjanst: "Hysteroskopi med biopsi/polypborttagning", pris: "25 000 kr" },
+      { tjanst: t("Hysteroskopi diagnostisk", "Diagnostic hysteroscopy", "تنظير الرحم التشخيصي"), pris: kr("18 000", "18,000", "18 000") },
+      { tjanst: t("Hysteroskopi med biopsi/polypborttagning", "Hysteroscopy with biopsy/polyp removal", "تنظير الرحم مع خزعة/إزالة سليلة"), pris: kr("25 000", "25,000", "25 000") },
     ],
   },
   {
-    rubrik: "Övriga tjänster",
+    rubrik: t("Övriga tjänster", "Other services", "خدمات أخرى"),
+    slug: "ovrigt",
     rader: [
+      { tjanst: t("Kopia av journalanteckning i samband med besöket", "Copy of the medical record from the visit", "نسخة من ملاحظات السجل الطبي للزيارة"), pris: kr("200", "200", "200") },
       {
-        tjanst: "Kopia av journalanteckning i samband med besöket",
-        pris: "200 kr",
+        tjanst: t("Utskick av kopia på labbprover/journalkopior utanför besökstiden", "Copies of lab results/medical records sent outside visit hours", "إرسال نسخ نتائج المختبر/السجل الطبي خارج وقت الزيارة"),
+        pris: kr("300", "300", "300"),
       },
+      { tjanst: t("Enstaka blodprover", "Individual blood tests", "فحوصات دم مفردة"), pris: t("Från 900 kr", "From SEK 900", "ابتداءً من 900 كرونا") },
+      { tjanst: t("Läkarintyg", "Medical certificate", "شهادة طبية"), pris: t("Från 1 000 kr", "From SEK 1,000", "ابتداءً من 1 000 كرونا") },
       {
-        tjanst:
-          "Utskick av kopia på labbprover/journalkopior utanför besökstiden",
-        pris: "300 kr",
-      },
-      { tjanst: "Enstaka blodprover", pris: "Från 900 kr" },
-      { tjanst: "Läkarintyg", pris: "Från 1 000 kr" },
-      {
-        tjanst:
+        tjanst: t(
           "Endometrial microbiome test vid RIF eller upprepade missfall",
-        pris: "8 600 kr",
+          "Endometrial microbiome test for RIF or recurrent miscarriage",
+          "فحص ميكروبيوم بطانة الرحم عند فشل الانغراس المتكرر أو الإجهاض المتكرر",
+        ),
+        pris: kr("8 600", "8,600", "8 600"),
       },
     ],
   },
 ];
 
-export const prisIngress = `Nedan hittar du våra priser för privat vård. Vi erbjuder även landstingsfinansierad vård, där patientavgift tas ut enligt Västra Götalandsregionens gällande regiontaxa.`;
+export const prisIngress = t(
+  `Nedan hittar du våra priser för privat vård. Vi erbjuder även landstingsfinansierad vård, där patientavgift tas ut enligt Västra Götalandsregionens gällande regiontaxa.`,
+  `Below you find our prices for private care. We also offer publicly funded care, where a patient fee is charged according to the current tariff of Region Västra Götaland.`,
+  `تجدين أدناه أسعار الرعاية الخاصة لدينا. نقدم أيضاً رعاية ممولة من القطاع العام تُحتسب فيها رسوم المريض وفق التعرفة السارية في منطقة فسترا يوتالاند.`,
+);
 
 export const prisNoter = [
-  "Vi tar endast emot betalning via kort eller Swish.",
-  "Ingen remiss eller egenremiss krävs för privat vård.",
-  "Avboka senast 24 timmar innan planerad tid. Vid sen avbokning eller uteblivet besök debiteras hela besökskostnaden.",
+  t("Vi tar endast emot betalning via kort eller Swish.",
+    "We only accept payment by card or Swish.",
+    "نقبل الدفع بالبطاقة أو تطبيق Swish فقط."),
+  t("Ingen remiss eller egenremiss krävs för privat vård.",
+    "No referral or self-referral is needed for private care.",
+    "لا حاجة إلى إحالة للرعاية الخاصة."),
+  t("Avboka senast 24 timmar innan planerad tid. Vid sen avbokning eller uteblivet besök debiteras hela besökskostnaden.",
+    "Cancel no later than 24 hours before the scheduled time. Late cancellations and missed visits are charged the full visit fee.",
+    "ألغي الموعد قبل 24 ساعة على الأقل. عند الإلغاء المتأخر أو عدم الحضور تُحتسب كامل تكلفة الزيارة."),
 ];

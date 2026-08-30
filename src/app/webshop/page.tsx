@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/Header";
+import { t } from "@/i18n";
 import { Footer } from "@/components/Footer";
 import { SidHero } from "@/components/sections/SidHero";
 import { ArrowUpRight, Check } from "@/components/ui";
@@ -14,9 +15,16 @@ import {
 } from "@/content/webshop";
 
 export const metadata: Metadata = {
-  title: "Webshop – CE-märkta snabbtester – GynRaMa",
-  description:
+  title: t(
+    "Webshop – CE-märkta snabbtester – GynRaMa",
+    "Web shop – CE-marked rapid tests – GynRaMa",
+    "المتجر – فحوصات سريعة معتمدة CE – GynRaMa",
+  ),
+  description: t(
     "Beställ CE-märkta snabbtester hem: graviditetstest, ägglossningstest, spermatest, klamydia, HIV och fler. Kortbetalning och leverans 1–2 dagar.",
+    "Order CE-marked rapid tests to your home: pregnancy tests, ovulation tests, sperm tests, chlamydia, HIV and more. Card payment and delivery in 1–2 days.",
+    "اطلبي فحوصات سريعة معتمدة CE إلى منزلك: اختبار الحمل، الإباضة، الحيوانات المنوية، الكلاميديا، فيروس نقص المناعة والمزيد. دفع بالبطاقة وتوصيل خلال يوم إلى يومين.",
+  ),
 };
 
 export default function Webshop() {
@@ -25,11 +33,11 @@ export default function Webshop() {
       <Header aktiv="/webshop" />
       <main>
         <SidHero
-          titel="Webshop"
+          titel={t("Webshop", "Web shop", "المتجر")}
           ingress={webshopIngress}
           ankare={kategorier.map((k) => ({
-            label: k,
-            href: `#${k.toLowerCase()}`,
+            label: k.rubrik,
+            href: `#${k.slug}`,
           }))}
         />
 
@@ -48,19 +56,22 @@ export default function Webshop() {
             </div>
 
             {kategorier.map((kat) => {
-              const iKat = produkter.filter((p) => p.kategori === kat);
+              const iKat = produkter.filter((p) => p.kategori === kat.kategori);
               return (
                 <div
-                  key={kat}
-                  id={kat.toLowerCase()}
+                  key={kat.slug}
+                  id={kat.slug}
                   className="pt-16"
                 >
                   <div className="flex items-end justify-between gap-6 border-b border-ink/20 pb-5">
                     <h2 className="text-[clamp(1.8rem,3vw,2.5rem)] text-ink">
-                      {kat}
+                      {kat.rubrik}
                     </h2>
                     <span className="pb-1 text-[14px] text-ink/50">
-                      {iKat.length} {iKat.length === 1 ? "produkt" : "produkter"}
+                      {iKat.length}{" "}
+                      {iKat.length === 1
+                        ? t("produkt", "product", "منتج")
+                        : t("produkter", "products", "منتجات")}
                     </span>
                   </div>
 
@@ -79,13 +90,13 @@ export default function Webshop() {
                             className="h-[220px] w-full object-contain p-4"
                           />
                           <span
-                            className={`absolute top-4 left-4 rounded-pill px-3 py-1.5 text-[11px] leading-none ${
+                            className={`absolute top-4 start-4 rounded-pill px-3 py-1.5 text-[11px] leading-none ${
                               p.ce === "Självtest"
                                 ? "bg-lila text-white"
                                 : "bg-lavender text-ink"
                             }`}
                           >
-                            {p.ce === "Okänt" ? "CE-märkt" : p.ce}
+                            {p.ce === "Okänt" ? t("CE-märkt", "CE-marked", "معتمد CE") : p.ce === "Självtest" ? t("Självtest", "Self-test", "فحص ذاتي") : t("Professionellt bruk", "Professional use", "استخدام مهني")}
                           </span>
                         </div>
 
@@ -122,7 +133,7 @@ export default function Webshop() {
                             href={kopUrl(p.slug)}
                             className="mt-6 inline-flex items-center justify-center gap-2 rounded-pill bg-slate-deep px-[22px] py-[13px] text-[15px] leading-none text-white transition-colors hover:bg-ink"
                           >
-                            Till produkten
+                            {t("Till produkten", "View product", "إلى المنتج")}
                             <ArrowUpRight className="size-[12px]" />
                           </Link>
                         </div>

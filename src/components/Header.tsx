@@ -1,15 +1,17 @@
 import Link from "next/link";
+import { t } from "@/i18n";
 import { Logo } from "./Logo";
 import { MobilMeny } from "./MobilMeny";
 import { Sok } from "./Sok";
+import { SprakVal } from "./SprakVal";
 
 const NAV = [
-  { label: "Hem", href: "/" },
-  { label: "Behandlingar", href: "/behandlingar" },
+  { label: t("Hem", "Home", "الرئيسية"), href: "/" },
+  { label: t("Behandlingar", "Treatments", "العلاجات"), href: "/behandlingar" },
   { label: "IVF", href: "/gynrama-ivf" },
-  { label: "Priser", href: "/priser" },
-  { label: "Om oss", href: "/om-oss" },
-  { label: "Webshop", href: "/webshop" },
+  { label: t("Priser", "Prices", "الأسعار"), href: "/priser" },
+  { label: t("Om oss", "About us", "من نحن"), href: "/om-oss" },
+  { label: t("Webshop", "Web shop", "المتجر"), href: "/webshop" },
 ];
 
 export function Header({ aktiv = "/" }: { aktiv?: string }) {
@@ -47,12 +49,13 @@ export function Header({ aktiv = "/" }: { aktiv?: string }) {
           logga, sök, knapp och hamburgare på 375px.
         */}
         <div className="flex items-center gap-1 lg:gap-2">
+          <SprakVal />
           <Sok />
           <Link
             href="/boka-tid"
             className="hidden rounded-pill bg-lavender px-[25px] py-[17px] text-[18px] leading-none font-medium text-ink transition-colors hover:bg-lavender/80 lg:inline-flex lg:items-center"
           >
-            Boka tid
+            {t("Boka tid", "Book now", "احجزي موعداً")}
           </Link>
           <MobilMeny lankar={NAV} aktiv={aktiv} />
         </div>

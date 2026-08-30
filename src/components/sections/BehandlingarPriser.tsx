@@ -1,4 +1,5 @@
 import { Pill } from "../ui";
+import { t } from "@/i18n";
 
 /**
  * "Behandlingar & priser" — tydlig brygga mellan de två sidorna, på kundens
@@ -12,19 +13,29 @@ export function BehandlingarPriser({ visa }: { visa: "priser" | "behandlingar" }
       <div className="mx-auto max-w-[1240px] px-6 pb-24 lg:pb-32">
         <div className="rounded-card bg-slate-deep px-8 py-12 text-center lg:px-16 lg:py-16">
           <h2 className="mx-auto max-w-[16ch] text-[clamp(1.9rem,3.2vw,2.7rem)] text-white">
-            Behandlingar &amp; priser
+            {t("Behandlingar & priser", "Treatments & prices", "العلاجات والأسعار")}
           </h2>
           <p className="mx-auto mt-5 max-w-[52ch] text-[16px] leading-relaxed text-white/75">
             {tillPriser
-              ? "Alla priser för privat vård finns samlade på prissidan, kategori för kategori. Vi erbjuder även landstingsfinansierad vård."
-              : "Varje behandling beskrivs i detalj på behandlingssidan — vad som ingår, när du bör söka vård och hur undersökningen går till."}
+              ? t(
+                  "Alla priser för privat vård finns samlade på prissidan, kategori för kategori. Vi erbjuder även landstingsfinansierad vård.",
+                  "All prices for private care are gathered on the price page, category by category. We also offer publicly funded care.",
+                  "جميع أسعار الرعاية الخاصة مجموعة في صفحة الأسعار، فئة بفئة. نقدم أيضاً رعاية ممولة من القطاع العام.",
+                )
+              : t(
+                  "Varje behandling beskrivs i detalj på behandlingssidan — vad som ingår, när du bör söka vård och hur undersökningen går till.",
+                  "Every treatment is described in detail on the treatments page — what is included, when to seek care and how the examination works.",
+                  "كل علاج موصوف بالتفصيل في صفحة العلاجات — ما يشمله، ومتى تُنصح المريضة بطلب الرعاية، وكيف يتم الفحص.",
+                )}
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Pill href={tillPriser ? "/priser" : "/behandlingar"} tone="lila" withArrow>
-              {tillPriser ? "Se alla priser" : "Se alla behandlingar"}
+              {tillPriser
+                ? t("Se alla priser", "See all prices", "عرض جميع الأسعار")
+                : t("Se alla behandlingar", "See all treatments", "عرض جميع العلاجات")}
             </Pill>
             <Pill href="/boka-tid" tone="ghost">
-              Boka tid
+              {t("Boka tid", "Book now", "احجزي موعداً")}
             </Pill>
           </div>
         </div>

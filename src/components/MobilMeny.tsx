@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { t } from "@/i18n";
 
 /**
  * Mobilmeny byggd på <details> — ingen klient-JS, precis som dragspelen.
@@ -17,7 +18,7 @@ export function MobilMeny({
   return (
     <details className="group relative lg:hidden">
       <summary
-        aria-label="Öppna menyn"
+        aria-label={t("Öppna menyn", "Open the menu", "افتحي القائمة")}
         className="grid size-11 cursor-pointer list-none place-items-center rounded-full text-ink transition-colors hover:bg-lavender/60 [&::-webkit-details-marker]:hidden"
       >
         {/* Tre streck som blir ett kryss när menyn är öppen */}
@@ -28,7 +29,7 @@ export function MobilMeny({
         </span>
       </summary>
 
-      <nav className="absolute right-0 z-50 mt-3 w-[240px] rounded-card bg-white p-3 shadow-[0_18px_50px_rgba(31,31,40,0.22)]">
+      <nav className="absolute end-0 z-50 mt-3 w-[240px] rounded-card bg-white p-3 shadow-[0_18px_50px_rgba(31,31,40,0.22)]">
         {lankar.map((l) => (
           <Link
             key={l.label}
@@ -48,7 +49,7 @@ export function MobilMeny({
           href="/boka-tid"
           className="mt-2 flex min-h-12 items-center justify-center rounded-pill bg-lila px-4 text-[17px] font-medium text-white transition-colors hover:bg-lila-deep"
         >
-          Boka tid
+          {t("Boka tid", "Book now", "احجزي موعداً")}
         </Link>
       </nav>
     </details>

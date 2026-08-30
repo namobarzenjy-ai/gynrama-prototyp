@@ -6,11 +6,15 @@ import { BehandlingarPriser } from "@/components/sections/BehandlingarPriser";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Check, Pill } from "@/components/ui";
 import { priser, prisIngress, prisNoter, prisHamtat } from "@/content/priser";
+import { t } from "@/i18n";
 
 export const metadata: Metadata = {
-  title: "Priser – GynRaMa",
-  description:
+  title: t("Priser – GynRaMa", "Prices – GynRaMa", "الأسعار – GynRaMa"),
+  description: t(
     "Priser för privat gynekologisk vård i Göteborg: gynekologbesök 1 600 kr, videobesök 1 000 kr, telefonkonsultation 500 kr. Vi erbjuder även landstingsfinansierad vård.",
+    "Prices for private gynaecological care in Gothenburg: gynaecologist visit SEK 1,600, video consultation SEK 1,000, phone consultation SEK 500. We also offer publicly funded care.",
+    "أسعار الرعاية النسائية الخاصة في يوتيبوري: زيارة الطبيبة 1600 كرونا، استشارة فيديو 1000 كرونا، استشارة هاتفية 500 كرونا. نقدم أيضاً رعاية ممولة من القطاع العام.",
+  ),
 };
 
 export default function Priser() {
@@ -19,11 +23,11 @@ export default function Priser() {
       <Header aktiv="/priser" />
       <main>
         <SidHero
-          titel="Priser"
+          titel={t("Priser", "Prices", "الأسعار")}
           ingress={prisIngress}
           ankare={priser.map((p) => ({
             label: p.rubrik,
-            href: `#${p.rubrik.toLowerCase().replace(/[^a-zåäö]+/g, "-")}`,
+            href: `#${p.slug}`,
           }))}
         />
 
@@ -45,7 +49,7 @@ export default function Priser() {
             {priser.map((kat) => (
               <div
                 key={kat.rubrik}
-                id={kat.rubrik.toLowerCase().replace(/[^a-zåäö]+/g, "-")}
+                id={kat.slug}
                 className="pt-16"
               >
                 <h2 className="text-[clamp(1.8rem,3vw,2.5rem)] text-ink">
@@ -77,11 +81,15 @@ export default function Priser() {
 
             <div className="mt-16 flex flex-wrap items-center gap-5">
               <Pill href="/boka-tid" tone="lila" withArrow>
-                Boka tid
+                {t("Boka tid", "Book now", "احجزي موعداً")}
               </Pill>
               <p className="text-[13px] text-ink/50">
-                Prislistan hämtad {prisHamtat}. Med reservation för ändringar –
-                kontakta oss om något är oklart.
+                {t("Prislistan hämtad", "Price list retrieved", "قائمة الأسعار بتاريخ")} {prisHamtat}.{" "}
+                {t(
+                  "Med reservation för ändringar – kontakta oss om något är oklart.",
+                  "Subject to change – contact us if anything is unclear.",
+                  "الأسعار قابلة للتغيير – تواصلي معنا عند أي استفسار.",
+                )}
               </p>
             </div>
           </div>

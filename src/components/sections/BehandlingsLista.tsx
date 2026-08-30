@@ -1,5 +1,6 @@
 import { Check, Pill } from "../ui";
 import { behandlingar, kategorier } from "@/content/behandlingar";
+import { t } from "@/i18n";
 
 /**
  * Renderar GynRaMas ordagranna behandlingstext.
@@ -67,7 +68,9 @@ export function BehandlingsLista() {
                 </h2>
                 <span className="pb-1 text-[14px] text-ink/50">
                   {iKat.length}{" "}
-                  {iKat.length === 1 ? "behandling" : "behandlingar"}
+                  {iKat.length === 1
+                    ? t("behandling", "treatment", "علاج")
+                    : t("behandlingar", "treatments", "علاجات")}
                 </span>
               </div>
 
@@ -104,7 +107,7 @@ export function BehandlingsLista() {
                     <Brodtext text={b.text} />
                     <div className="mt-7 flex flex-wrap gap-3">
                       <Pill href="/boka-tid" tone="lila">
-                        Boka tid
+                        {t("Boka tid", "Book now", "احجزي موعداً")}
                       </Pill>
                       {b.mer && (
                         <Pill href={b.mer.href} tone="slate">
