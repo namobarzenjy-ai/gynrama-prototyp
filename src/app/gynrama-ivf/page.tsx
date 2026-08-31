@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -17,18 +18,19 @@ import { bilder } from "@/content/gynrama";
 import { t } from "@/i18n";
 import { lakare } from "@/content/omoss";
 
-export const metadata: Metadata = {
-  title: t(
+export const metadata: Metadata = seoMeta({
+  titel: t(
     "GynRaMa IVF – Fertilitet & IVF i samarbete med Nordic IVF",
     "GynRaMa IVF – Fertility & IVF in partnership with Nordic IVF",
     "GynRaMa IVF – الخصوبة وأطفال الأنابيب بالتعاون مع Nordic IVF",
   ),
-  description: t(
+  beskrivning: t(
     "Individanpassade IVF-behandlingar i Göteborg i nära samarbete med Nordic IVF. Samma specialistteam hela vägen, korta väntetider och evidensbaserad vård med akademisk profil.",
     "Individualised IVF treatment in Gothenburg in close partnership with Nordic IVF. The same specialist team throughout, short waiting times and evidence-based care with an academic profile.",
     "علاج أطفال الأنابيب مصمم لكل حالة في يوتيبوري بالتعاون الوثيق مع Nordic IVF. نفس الفريق المتخصص طوال الرحلة، أوقات انتظار قصيرة ورعاية قائمة على الأدلة.",
   ),
-};
+  sokvag: "/gynrama-ivf/",
+});
 
 export default function Ivf() {
   return (

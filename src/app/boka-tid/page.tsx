@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/seo";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { t } from "@/i18n";
@@ -16,11 +17,15 @@ import {
 } from "@/content/bokatid";
 import { kontakt } from "@/content/gynrama";
 
-export const metadata: Metadata = {
-  title: t("Boka tid – GynRaMa", "Book an appointment – GynRaMa", "حجز موعد – GynRaMa"),
-  description:
+export const metadata: Metadata = seoMeta({
+  titel: t("Boka tid – GynRaMa", "Book an appointment – GynRaMa", "حجز موعد – GynRaMa"),
+  beskrivning: t(
     "Boka gynekologbesök, videobesök eller telefonkonsultation hos GynRaMa i Göteborg. Ingen remiss krävs. Videobesök tillgängligt över hela världen.",
-};
+    "Book a gynaecologist visit, video consultation or phone consultation at GynRaMa in Gothenburg. No referral needed. Video consultations available worldwide.",
+    "احجزي زيارة طبيبة نساء أو استشارة بالفيديو أو الهاتف لدى GynRaMa في يوتيبوري. دون إحالة. استشارات الفيديو متاحة حول العالم.",
+  ),
+  sokvag: "/boka-tid/",
+});
 
 export default function BokaTid() {
   return (

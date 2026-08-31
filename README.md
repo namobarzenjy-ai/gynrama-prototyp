@@ -224,6 +224,36 @@ granska språken sida vid sida.
   SR-kortet säger det uttryckligen på en/ar. Broschyr-PDF:erna på
   formulärsidan finns bara på svenska.
 
+## SEO — byggt och vilande bakom noindex
+
+Sajten är fortfarande **`noindex, nofollow`** (layout.tsx) — avsiktligt, så
+att ingen patient googlar sig till prototypen. Allt SEO-arbete nedan ligger
+klart men är verkningslöst tills den raden tas bort vid skarp lansering.
+
+- **`src/seo.ts`** är navet: `seoMeta()` ger varje sida title/description,
+  canonical, hreflang (sv/en/ar + x-default) och Open Graph/Twitter. ALLA
+  sidor använder den — lägg aldrig en sida utan, då ärver den fel canonical
+  från layouten. Ny sida = lägg även till sökvägen i `SIDOR`-listan
+  (sitemapen byggs därifrån).
+- **`SAJT_URL`** är prototypens Pages-adress. Vid flytt till gynrama.se:
+  sätt `NEXT_PUBLIC_SAJT_URL=https://gynrama.se` i deploy-workflowets alla
+  tre byggen — canonical, hreflang, sitemap, robots och JSON-LD följer med.
+- **sitemap.xml** (trespråkig, med xhtml:link-alternates) och **robots.txt**
+  genereras vid bygget (`app/sitemap.ts`, `app/robots.ts`). robots.txt
+  TILLÅTER crawlning med flit — blockerar man i robots.txt kan Google aldrig
+  läsa noindex-taggen. På Pages ligger robots.txt under /gynrama-prototyp/
+  och ignoreras (måste ligga i domänroten) — verksam först på gynrama.se.
+- **Strukturerad data** (`StruktureradData.tsx` i layouten): MedicalClinic
+  med adress, öppettider, kontakt och sociala länkar, plus läkarna som
+  Physician. Öppettiderna där är strukturerade fält — ändras tiderna igen
+  måste de uppdateras även i den komponenten (kommentar finns).
+- **Delningsbild** `public/og-bild.jpg` (1200×630, ur receptionsbilden).
+  Ligger bara i rotbygget; alla språk pekar på samma URL utan språkprefix.
+
+Kvarstående SEO-frågor som kräver beslut (ej byggda): egna URL:er per
+behandling (dragspelen på /behandlingar rankar inte per behandling),
+domänflytt till gynrama.se med redirects från gamla WordPress-URL:er.
+
 ## Bilderna
 
 Alla stämningsbilder är **klinikens egna foton**, tagna på GynRaMa, optimerade

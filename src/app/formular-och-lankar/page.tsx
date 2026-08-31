@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/seo";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { t } from "@/i18n";
@@ -8,11 +9,15 @@ import { ArrowUpRight } from "@/components/ui";
 import { formular, formularIngress, gdprPdf } from "@/content/formular";
 import { kontakt } from "@/content/gynrama";
 
-export const metadata: Metadata = {
-  title: t("Formulär & länkar – GynRaMa", "Forms & links – GynRaMa", "النماذج والروابط – GynRaMa"),
-  description:
+export const metadata: Metadata = seoMeta({
+  titel: t("Formulär & länkar – GynRaMa", "Forms & links – GynRaMa", "النماذج والروابط – GynRaMa"),
+  beskrivning: t(
     "Ladda ner hälsodeklaration, miktionslista och frågeformulär för klimakteriebesvär inför ditt besök hos GynRaMa i Göteborg.",
-};
+    "Download the health declaration, voiding diary and menopause questionnaire ahead of your visit to GynRaMa in Gothenburg.",
+    "حمّلي الإقرار الصحي وسجل التبوّل واستبيان أعراض سن اليأس قبل زيارتك إلى GynRaMa في يوتيبوري.",
+  ),
+  sokvag: "/formular-och-lankar/",
+});
 
 export default function FormularOchLankar() {
   return (

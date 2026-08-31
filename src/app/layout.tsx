@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, DM_Serif_Display, Caveat } from "next/font/google";
 import { RTL, SPRAK, t } from "@/i18n";
+import { StruktureradData } from "@/components/StruktureradData";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -50,7 +51,10 @@ export default function RootLayout({
       dir={RTL ? "rtl" : "ltr"}
       className={`${dmSans.variable} ${dmSerif.variable} ${caveat.variable} antialiased`}
     >
-      <body className="flex min-h-screen flex-col">{children}</body>
+      <body className="flex min-h-screen flex-col">
+        {children}
+        <StruktureradData />
+      </body>
     </html>
   );
 }

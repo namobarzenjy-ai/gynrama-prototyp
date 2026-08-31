@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/seo";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SidHero } from "@/components/sections/SidHero";
@@ -8,14 +9,15 @@ import { Check, Pill } from "@/components/ui";
 import { priser, prisIngress, prisNoter, prisHamtat } from "@/content/priser";
 import { t } from "@/i18n";
 
-export const metadata: Metadata = {
-  title: t("Priser – GynRaMa", "Prices – GynRaMa", "الأسعار – GynRaMa"),
-  description: t(
+export const metadata: Metadata = seoMeta({
+  titel: t("Priser – GynRaMa", "Prices – GynRaMa", "الأسعار – GynRaMa"),
+  beskrivning: t(
     "Priser för privat gynekologisk vård i Göteborg: gynekologbesök 1 600 kr, videobesök 1 000 kr, telefonkonsultation 500 kr. Vi erbjuder även landstingsfinansierad vård.",
     "Prices for private gynaecological care in Gothenburg: gynaecologist visit SEK 1,600, video consultation SEK 1,000, phone consultation SEK 500. We also offer publicly funded care.",
     "أسعار الرعاية النسائية الخاصة في يوتيبوري: زيارة الطبيبة 1600 كرونا، استشارة فيديو 1000 كرونا، استشارة هاتفية 500 كرونا. نقدم أيضاً رعاية ممولة من القطاع العام.",
   ),
-};
+  sokvag: "/priser/",
+});
 
 export default function Priser() {
   return (
