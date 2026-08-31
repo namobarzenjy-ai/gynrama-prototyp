@@ -117,8 +117,8 @@ och laddar ingen CSS — då blir varje element en falsk avvikelse.
   byggd — "Till produkten" länkar till klinikens skarpa WooCommerce-sidor.
   Produktbilderna hotlänkas också från gynrama.se.
 - **Priserna är hämtade 2026-07-17** (`content/priser.ts`, `prisHamtat`),
-  med två undantag från kundens besked 2026-08-30: akuttiden (inom 4 timmar,
-  3 900 kr) och NIPT som är borttaget. Kunden har aviserat ett **nytt
+  med undantagen från kundens besked: NIPT borttaget (2026-08-30) och
+  akuttiden 24 tim/2 600 kr (2026-08-31). Kunden har aviserat ett **nytt
   prisunderlag som ännu inte kommit** — övriga belopp ska bytas när det finns.
 - ~~Två stavfel i källtexten är medvetet bevarade~~ Kunden gav 2026-08-30
   klartecken att rätta språkfel; de är rättade och dokumenterade i noten
