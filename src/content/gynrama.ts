@@ -12,15 +12,26 @@ export const kontakt = {
   adress: "Anders Personsgatan 12, Plan 4",
   postort: "416 64 Göteborg",
   karta: "https://www.google.com/maps?q=Anders+Personsgatan+12,+41664+Göteborg",
-  oppet: t("Mån–lör: 8:30–17:00", "Mon–Sat: 8:30–17:00", "الإثنين–السبت: 8:30–17:00"),
+  /* Kundens besked 2026-08-31: mån–fre + lördag 10–16; söndag är INTE
+     ordinarie öppettid, bara akuta tider. Akutraden ska stå ihop med
+     öppettiderna överallt. OBS: samma besked satte akuttiden till
+     "inom 24 timmar, 2 600 kr" — vilket UPPHÄVER beskedet från 2026-08-30
+     (4 timmar, 3 900 kr). Flaggat för kunden; senaste beskedet gäller. */
+  oppet: t("Mån–fre: 08:30–17:00", "Mon–Fri: 08:30–17:00", "الإثنين–الجمعة: 08:30–17:00"),
+  oppetLordag: t("Lör: 10:00–16:00", "Sat: 10:00–16:00", "السبت: 10:00–16:00"),
   oppetNot: t("Söndagar: endast akuta tider", "Sundays: urgent appointments only", "الأحد: الحالات العاجلة فقط"),
+  akutRad: t(
+    "Akut tid inom 24 timmar – 2 600 kr",
+    "Urgent appointment within 24 hours – SEK 2,600",
+    "موعد عاجل خلال 24 ساعة – 2 600 كرونا",
+  ),
   orgnr: "559368-8111",
   facebook: "https://m.facebook.com/100086003392370/",
   instagram: "https://www.instagram.com/gynrama",
   allabolag:
     "https://www.allabolag.se/foretag/gynrama-ab/göteborg/hälsotjänster/2KIC5DBI63IHB",
   gdpr: "https://gynrama.se/wp-content/uploads/2023/09/Personuppgiftspolicy-GynRaMa-AB-Ref.-23002A.pdf",
-  verksamhetschef: t("Randa Akouri, Verksamhetschef", "Randa Akouri, Clinic Director", "رندة عكوري، مديرة العيادة"),
+  verksamhetschef: t("Docent Randa Akouri, verksamhetschef", "Associate Professor Randa Akouri, Clinic Director", "الأستاذة المشاركة رندة عكوري، مديرة العيادة"),
 };
 
 /*
@@ -161,12 +172,12 @@ export const besok = [
     punkt: t("Medicinsk rådgivning", "Medical advice", "استشارة طبية"),
   },
   {
-    titel: t("Akut besök inom 4 timmar", "Urgent visit within 4 hours", "زيارة عاجلة خلال 4 ساعات"),
-    pris: t("3 900 kr", "SEK 3,900", "3 900 كرونا"),
+    titel: t("Akut besök inom 24 timmar", "Urgent visit within 24 hours", "زيارة عاجلة خلال 24 ساعة"),
+    pris: t("2 600 kr", "SEK 2,600", "2 600 كرونا"),
     text: t(
-      "När det inte kan vänta får du tid hos specialistläkare inom fyra timmar. Gäller även utanför ordinarie öppettider.",
-      "When it cannot wait, you see a specialist doctor within four hours. Also available outside regular opening hours.",
-      "عندما لا يحتمل الأمر الانتظار، تقابلين طبيبة اختصاصية خلال أربع ساعات. متاح أيضاً خارج ساعات العمل المعتادة.",
+      "När det inte kan vänta får du tid hos specialistläkare inom 24 timmar.",
+      "When it cannot wait, you see a specialist doctor within 24 hours.",
+      "عندما لا يحتمل الأمر الانتظار، تقابلين طبيبة اختصاصية خلال 24 ساعة.",
     ),
     punkt: t("Inga väntetider", "No waiting times", "بدون أوقات انتظار"),
   },

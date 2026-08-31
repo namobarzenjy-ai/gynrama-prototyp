@@ -4,8 +4,9 @@
  * bokningsUrl pekar på klinikens SKARPA bokningssystem (patient.nu).
  * Länkarna är hämtade från deras egen sida, inte gissade.
  *
- * Avvikelse från källan: akutbesök är "inom 4 timmar" sedan kundens
- * besked 2026-08-30 (källsidan sade 24/8 timmar).
+ * Avvikelse från källan: akutbesök är "inom 24 timmar, 2 600 kr" sedan
+ * kundens besked 2026-08-31 (upphävde 2026-08-30-beskedet om 4 timmar;
+ * källsidan sade 24/8 timmar).
  */
 
 import { t } from "@/i18n";
@@ -93,7 +94,7 @@ No referral or self-referral is needed to visit us.`,
 export const bokaFakta = [
   { etikett: t("Videobesök", "Video consultations", "استشارات الفيديو"), varde: t("Hela världen", "Worldwide", "حول العالم") },
   { etikett: t("Fysiska besök", "In-person visits", "الزيارات في العيادة"), varde: t("Göteborg", "Gothenburg", "يوتيبوري") },
-  { etikett: t("Öppet", "Open", "مفتوح"), varde: t("Mån–lör 8:30–17:00", "Mon–Sat 8:30–17:00", "الإثنين–السبت 8:30–17:00") },
+  { etikett: t("Öppet", "Open", "مفتوح"), varde: t("Mån–fre 08:30–17:00 · Lör 10:00–16:00", "Mon–Fri 08:30–17:00 · Sat 10:00–16:00", "الإثنين–الجمعة 08:30–17:00 · السبت 10:00–16:00") },
 ];
 
 /** Från rubriken "Gällande bokning/avbokning". */
@@ -104,9 +105,9 @@ export const bokningsregler = [
   t("Vid sen avbokning eller uteblivet besök debiteras hela besökskostnaden.",
     "Late cancellations and missed visits are charged the full visit fee.",
     "عند الإلغاء المتأخر أو عدم الحضور تُحتسب كامل تكلفة الزيارة."),
-  t("Bokar du tid samma dag, välj akutbesök inom 4 timmar. Gäller oavsett besökstyp.",
-    "If you book a same-day appointment, choose the urgent visit within 4 hours. Applies to all visit types.",
-    "إذا حجزت موعداً في نفس اليوم، اختاري الزيارة العاجلة خلال 4 ساعات. ينطبق على جميع أنواع الزيارات."),
+  t("Bokar du tid samma dag, välj akutbesök inom 24 timmar. Gäller oavsett besökstyp.",
+    "If you book a same-day appointment, choose the urgent visit within 24 hours. Applies to all visit types.",
+    "إذا حجزت موعداً في نفس اليوم، اختاري الزيارة العاجلة خلال 24 ساعة. ينطبق على جميع أنواع الزيارات."),
   t("Behöver du tolk kan vi ordna det. Vid privat besök betalar du själv tolkkostnaden.",
     "If you need an interpreter we can arrange one. For private visits you cover the interpreter cost yourself.",
     "إذا احتجت إلى مترجم يمكننا ترتيب ذلك. في الزيارات الخاصة تتحملين تكلفة الترجمة بنفسك."),

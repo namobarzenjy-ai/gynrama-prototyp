@@ -10,6 +10,11 @@
  *    gynrama.se/gynrama-ivf/ (samma källa som ivf.ts).
  *  - Kategorin Fertilitet visas som "Fertilitet & IVF".
  *
+ * Kundens ändringar 2026-08-31:
+ *  - Endo-test borttaget helt — erbjuds inte längre. Lägg INTE tillbaka.
+ *  - Spermaprov fick riktig text (kundens egen formulering, ersätter
+ *    "Text kommer snart!").
+ *
  * Rader som börjar med "• " renderas som punktlista. Korta rader utan
  * avslutande punkt renderas som underrubrik. Se `Brodtext` i
  * components/sections/BehandlingsLista.tsx.
@@ -473,61 +478,6 @@ If you have urine leakage or symptoms of incontinence, you can contact GynRaMa f
     ),
   },
   {
-    slug: "endo-test",
-    namn: t("Endo test", "Endo test", "فحص بطانة الرحم المهاجرة"),
-    kategori: "Gynekologi",
-    text: t(
-      `Vad är endometrios?
-Endometrios kännetecknas av endometrieliknande vävnad utanför livmodern, så kallade endometrios lesioner. Tillväxten av dessa lesioner är ofta förknippad med en inflammatorisk process.
-Under menstruation kan endometrios lesioner reagera på variationer i hormonella nivåer, vilket leder till akut inflammation, blödning, svår smärta och många andra symtom. Endometrios drabbar cirka 10 % av kvinnor i fertil ålder. I dagsläget är cirka 250 000 kvinnor i Sverige drabbade.
-Symtom av endometrios
-• Svår mensvärk
-• Smärta under samlag
-• Långvarig bäckensmärta
-• Smärta i höger axel
-• Matsmältningsproblem
-• Intensiv trötthet
-• Urinvägssjukdomar
-• Infertilitet
-• Smärta vid avföring
-• Smärtsam rektal blödning
-• Hematuri under menstruationen
-• Omväxlande diarré – förstoppning`,
-      `What is endometriosis?
-Endometriosis is characterised by endometrium-like tissue outside the uterus, known as endometriosis lesions. The growth of these lesions is often associated with an inflammatory process.
-During menstruation, endometriosis lesions can react to variations in hormone levels, leading to acute inflammation, bleeding, severe pain and many other symptoms. Endometriosis affects about 10% of women of fertile age. Today around 250,000 women in Sweden are affected.
-Symptoms of endometriosis
-• Severe period pain
-• Pain during intercourse
-• Long-lasting pelvic pain
-• Pain in the right shoulder
-• Digestive problems
-• Intense fatigue
-• Urinary tract conditions
-• Infertility
-• Pain when passing stools
-• Painful rectal bleeding
-• Blood in the urine during menstruation
-• Alternating diarrhoea and constipation`,
-      `ما هي بطانة الرحم المهاجرة؟
-تتميز بطانة الرحم المهاجرة (الانتباذ البطاني الرحمي) بوجود نسيج شبيه ببطانة الرحم خارج الرحم، يُعرف بآفات الانتباذ. غالباً ما يرتبط نمو هذه الآفات بعملية التهابية.
-أثناء الدورة الشهرية قد تتفاعل هذه الآفات مع تغيّرات مستويات الهرمونات، ما يؤدي إلى التهاب حاد ونزيف وألم شديد وأعراض كثيرة أخرى. تصيب الحالة نحو 10% من النساء في سن الإنجاب، ونحو 250 ألف امرأة في السويد اليوم.
-أعراض بطانة الرحم المهاجرة
-• ألم شديد أثناء الدورة
-• ألم أثناء الجماع
-• ألم حوضي طويل الأمد
-• ألم في الكتف الأيمن
-• مشاكل هضمية
-• تعب شديد
-• أمراض المسالك البولية
-• العقم
-• ألم عند التبرز
-• نزيف شرجي مؤلم
-• دم في البول أثناء الدورة
-• تناوب الإسهال والإمساك`,
-    ),
-  },
-  {
     slug: "tidig-graviditet",
     namn: t("Kontroll av tidig graviditet", "Early pregnancy check", "فحص الحمل المبكر"),
     kategori: "Graviditet",
@@ -789,8 +739,33 @@ Every treatment is designed around your individual circumstances. Whether you co
     slug: "spermaprov",
     namn: t("Spermaprov", "Sperm test", "فحص الحيوانات المنوية"),
     kategori: "Fertilitet",
-    // GynRaMa har ingen text för den här behandlingen ännu — deras egna ord.
-    text: t(`Text kommer snart!`, `Text coming soon!`, `النص قريباً!`),
+    // Kundens egen text, levererad 2026-08-31.
+    text: t(
+      `Hos GynRaMa erbjuder vi spermaprov som en viktig del av den basala fertilitetsutredningen.
+Analysen omfattar:
+• Spermiekoncentration
+• Totalt antal spermier
+• Rörlighet (motilitet)
+Spermaprovet ger viktig information om spermiekvaliteten och kan vara ett första steg i fertilitetsutredningen.
+Trygg och professionell fertilitetsutredning – med dig i fokus.
+DNA-fragmenteringsanalys ingår inte i den basala spermaanalysen.`,
+      `At GynRaMa we offer sperm testing as an important part of the basic fertility investigation.
+The analysis covers:
+• Sperm concentration
+• Total sperm count
+• Motility
+The sperm test provides important information about sperm quality and can be a first step in the fertility investigation.
+Safe and professional fertility investigation – with you in focus.
+DNA fragmentation analysis is not included in the basic sperm analysis.`,
+      `نقدم في GynRaMa فحص الحيوانات المنوية كجزء مهم من فحص الخصوبة الأساسي.
+يشمل التحليل:
+• تركيز الحيوانات المنوية
+• العدد الإجمالي للحيوانات المنوية
+• الحركة
+يقدم الفحص معلومات مهمة عن جودة الحيوانات المنوية وقد يكون خطوة أولى في فحص الخصوبة.
+فحص خصوبة آمن ومهني – وأنتم في المقام الأول.
+تحليل تفتت الحمض النووي DNA غير مشمول في التحليل الأساسي.`,
+    ),
   },
   {
     slug: "abort",

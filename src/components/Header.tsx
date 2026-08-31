@@ -31,7 +31,7 @@ export function Header({ aktiv = "/" }: { aktiv?: string }) {
               key={item.label}
               href={item.href}
               aria-current={item.href === aktiv ? "page" : undefined}
-              className={`rounded-pill px-[25px] py-[10px] text-[18px] leading-none transition-colors ${
+              className={`rounded-pill px-[25px] py-[10px] text-[18px] leading-none whitespace-nowrap transition-colors ${
                 item.href === aktiv
                   ? "bg-slate-deep text-white"
                   : "text-ink hover:bg-lavender/60"
@@ -53,7 +53,7 @@ export function Header({ aktiv = "/" }: { aktiv?: string }) {
           <Sok />
           <Link
             href="/boka-tid"
-            className="hidden rounded-pill bg-lavender px-[25px] py-[17px] text-[18px] leading-none font-medium text-ink transition-colors hover:bg-lavender/80 lg:inline-flex lg:items-center"
+            className="hidden rounded-pill bg-lavender px-[25px] py-[17px] text-[18px] leading-none font-medium whitespace-nowrap text-ink transition-colors hover:bg-lavender/80 lg:inline-flex lg:items-center"
           >
             {t("Boka tid", "Book now", "احجزي موعداً")}
           </Link>

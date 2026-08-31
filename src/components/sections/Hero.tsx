@@ -82,7 +82,7 @@ export function Hero() {
               "Your private clinic for gynaecological health",
               "عيادتكِ الخاصة لصحة المرأة",
             )}{" "}
-            · {kontakt.oppet}
+            · {kontakt.oppet} · {kontakt.oppetLordag}
           </p>
         </div>
       </div>

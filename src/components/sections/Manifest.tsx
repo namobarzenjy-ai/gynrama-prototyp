@@ -43,7 +43,7 @@ export function Manifest() {
               height={960}
               className="h-[440px] w-full rounded-card object-cover object-top"
             />
-            <NoteTag className="-bottom-4 start-6">{t("Randa, verksamhetschef", "Randa, clinic director", "رندة، مديرة العيادة")}</NoteTag>
+            <NoteTag className="-bottom-4 start-6">{t("Docent Randa Akouri, verksamhetschef", "Assoc. Prof. Randa Akouri, clinic director", "د. رندة عكوري، مديرة العيادة")}</NoteTag>
           </div>
         </div>
 

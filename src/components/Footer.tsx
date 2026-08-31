@@ -114,8 +114,13 @@ export function Footer() {
             <ul className="mt-5 space-y-3 text-[15px] text-white/70">
               <li>
                 {kontakt.oppet}
+                <span className="block">{kontakt.oppetLordag}</span>
                 <span className="block text-[13px] text-white/50">
                   {kontakt.oppetNot}
+                </span>
+                {/* Akutraden ska stå ihop med öppettiderna — kundkrav 2026-08-31 */}
+                <span className="mt-2 block text-[14px] text-white">
+                  {kontakt.akutRad}
                 </span>
               </li>
             </ul>

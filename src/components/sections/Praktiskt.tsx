@@ -38,7 +38,10 @@ export function Praktiskt() {
           <div>
             <p className="text-[13px] text-white/50">{t("Öppettider", "Opening hours", "ساعات العمل")}</p>
             <p className="mt-2 text-[16px]">{kontakt.oppet}</p>
+            <p className="text-[16px]">{kontakt.oppetLordag}</p>
             <p className="text-[13px] text-white/50">{kontakt.oppetNot}</p>
+            {/* Akutraden ska stå ihop med öppettiderna — kundkrav 2026-08-31 */}
+            <p className="mt-1.5 text-[14px]">{kontakt.akutRad}</p>
           </div>
           <div>
             <p className="text-[13px] text-white/50">{t("Telefonrådgivning", "Phone advice line", "الاستشارة الهاتفية")}</p>

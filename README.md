@@ -21,7 +21,7 @@ Alla åtta sidor är byggda:
 | Sida | Innehåll |
 | --- | --- |
 | `/` | Startsida (sv på roten; en/ar under `/en/` resp. `/ar/`) |
-| `/behandlingar` | 17 behandlingar i 4 kategorier |
+| `/behandlingar` | 16 behandlingar i 4 kategorier |
 | `/gynrama-ivf` | IVF i samarbete med Nordic IVF |
 | `/priser` | 39 tjänster i 7 kategorier |
 | `/boka-tid` | 4 besökstyper, länkade till klinikens skarpa bokningssystem |
@@ -127,8 +127,8 @@ och laddar ingen CSS — då blir varje element en falsk avvikelse.
 
 ## Kundens ändringsbesked 2026-08-30 (genomfört)
 
-- **Akuttid:** "inom 4 timmar, 3 900 kr" överallt (priser, startsida,
-  bokningsregler). Ersätter 24 tim/2 600 kr och 3 tim-raden.
+- **Akuttid:** ~~"inom 4 timmar, 3 900 kr"~~ **UPPHÄVT 2026-08-31** — kunden
+  återgick till "inom 24 timmar, 2 600 kr". Se nästa avsnitt.
 - **NIPT borttaget** ur behandlingar och prislista, inklusive
   mikrodeletions-tillvalet som bara fanns som NIPT-tillägg.
 - **IVF är egen behandling** under kategorin som nu heter "Fertilitet &
@@ -166,6 +166,27 @@ och laddar ingen CSS — då blir varje element en falsk avvikelse.
 
 Kvar från samma besked, väntar på underlag/beslut: nytt prisunderlag,
 "gryniga bilden" (oklart vilken), AI-chatt (juridik först).
+
+## Kundens ändringsbesked 2026-08-31 (genomfört)
+
+- **Öppettider:** Mån–fre 08:30–17:00 och Lör 10:00–16:00. Söndag är inte
+  ordinarie öppettid — bara akuta tider (`oppetNot`). Uppdaterat i footern,
+  heron, om-oss-kortet och boka-tid-fakta via `kontakt.oppet`/`oppetLordag`.
+- **Akutrad ihop med öppettiderna:** "Akut tid inom 24 timmar – 2 600 kr"
+  (`kontakt.akutRad`), synlig i footern och på om-oss. **OBS: detta UPPHÄVDE
+  2026-08-30-beskedet om 4 tim/3 900 kr.** Motsägelsen är flaggad för kunden;
+  senaste beskedet gäller och akuttiden är nu 24 tim/2 600 kr överallt
+  (prislistan, startsidans besökstyper, bokningsreglerna).
+- **Endo-test borttaget helt** — erbjuds inte längre; lägg inte tillbaka.
+  (Prisraden "Endometrial microbiome test vid RIF..." ligger kvar — den heter
+  inte Endo-test; flaggad som fråga till kunden.)
+- **KAVUS → HSG** i prislistan (hydrosonografi-raden), alla tre språk.
+- **Titeln:** "Docent Randa Akouri, verksamhetschef" konsekvent — footerns
+  juridikrad och bildtexten på startsidan (`kontakt.verksamhetschef`).
+- **Spermaprov** fick kundens egen text (koncentration, antal, motilitet;
+  DNA-fragmentering ingår inte), översatt till en/ar som utkast.
+- Headerns navlänkar fick `whitespace-nowrap` — flaggorna gjorde headern
+  trängre och "Om oss"/"Boka tid" radbröts internt på desktop.
 
 ## Tre språk: svenska, engelska, arabiska
 

@@ -1,8 +1,10 @@
 /**
  * Prislista — hämtad från https://gynrama.se/priser/ 2026-07-17, med
  * kundens ändringar 2026-08-30:
- *  - Akuttiden är "inom 4 timmar, 3 900 kr" (ersätter 24 tim/2 600 och
- *    3 tim-raden).
+ *  - Akuttiden är "inom 24 timmar, 2 600 kr" (kundens besked 2026-08-31,
+ *    som UPPHÄVDE 2026-08-30-beskedet om 4 tim/3 900 — flaggat för kunden).
+ *    3 tim-raden från källan är borttagen sedan tidigare.
+ *  - KAVUS heter HSG (2026-08-31).
  *  - NIPT är borttaget ur sortimentet, inklusive mikrodeletions-tillvalet
  *    som bara fanns som tillägg till NIPT.
  *
@@ -38,9 +40,8 @@ export const priser: Priskategori[] = [
       { tjanst: t("Videobesök konsultation med specialist", "Video consultation with a specialist", "استشارة بالفيديو مع اختصاصية"), pris: kr("1 000", "1,000", "1 000") },
       { tjanst: t("Receptförskrivning utanför läkarbesök", "Prescription outside a doctor's visit", "وصفة طبية خارج الزيارة"), pris: kr("500", "500", "500") },
       {
-        tjanst: t("Akut besök inom 4 timmar", "Urgent visit within 4 hours", "زيارة عاجلة خلال 4 ساعات"),
-        pris: kr("3 900", "3,900", "3 900"),
-        not: t("Gäller även utanför ordinarie öppettider", "Also available outside regular opening hours", "متاحة أيضاً خارج ساعات العمل المعتادة"),
+        tjanst: t("Akut besök inom 24 timmar", "Urgent visit within 24 hours", "زيارة عاجلة خلال 24 ساعة"),
+        pris: kr("2 600", "2,600", "2 600"),
       },
       { tjanst: t("Remiss i samband med besöket", "Referral in connection with the visit", "إحالة مرتبطة بالزيارة"), pris: kr("500", "500", "500") },
     ],
@@ -89,7 +90,7 @@ export const priser: Priskategori[] = [
         pris: kr("4 000", "4,000", "4 000"),
       },
       {
-        tjanst: t("Undersökning av livmoder – hydrosonografi (KAVUS)", "Examination of the uterus – hydrosonography (SIS)", "فحص الرحم – التصوير بالمحلول الملحي (KAVUS)"),
+        tjanst: t("Undersökning av livmoder – hydrosonografi (HSG)", "Examination of the uterus – hydrosonography (HSG)", "فحص الرحم – التصوير بالمحلول الملحي (HSG)"),
         pris: kr("2 000", "2,000", "2 000"),
       },
       { tjanst: t("Spermieprov", "Sperm test", "فحص الحيوانات المنوية"), pris: kr("2 000", "2,000", "2 000") },
