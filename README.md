@@ -224,6 +224,42 @@ granska språken sida vid sida.
   SR-kortet säger det uttryckligen på en/ar. Broschyr-PDF:erna på
   formulärsidan finns bara på svenska.
 
+## Behandlingssidor — en sida per behandling
+
+Byggt 2026-10-11 (det största SEO-lyftet: dragspelen på /behandlingar kunde
+inte ranka per behandling). 15 sidor på `/behandlingar/<slug>/`, statiskt
+genererade ur `content/behandlingar.ts` — slugarna är desamma som dragspelens
+gamla ankare.
+
+- **Texten är klinikens ordagranna** och renderas av `components/Brodtext.tsx`.
+  Inget skrivs om. Det sidan lägger till är rubrikstruktur, bokningsruta,
+  "Fler behandlingar", läkarna (`Lakare`) och CTA-bandet.
+- **SEO-uppgifterna ligger i `content/behandlingssidor.ts`**, inte i
+  behandlingar.ts — sökordsanpassad `<title>` på tre språk, schema.org-typ
+  (MedicalCondition, MedicalProcedure …) och vilket prisavsnitt "Se priser"
+  pekar på. Titlarna är våra formuleringar, inte klinikens text. Meta-
+  beskrivningen tas ur klinikens första meningar plus "Ingen remiss krävs".
+- **IVF har ingen egen behandlingssida** — texten är densamma som på
+  `/gynrama-ivf/`, och två sidor med samma innehåll konkurrerar om samma
+  sökningar. Raden i översikten och i sökningen pekar dit.
+- **Översikten `/behandlingar`** visar namn + första meningen och länkar till
+  sidan. Raderna behåller `id={slug}`, så gamla djuplänkar fungerar.
+- **Rubriknivåer** finns inte i källtexten utan läses ut: kort rad utan
+  skiljetecken eller kort fråga = rubrik; en rubrik direkt följd av en annan
+  rubrik = avsnitt (h2), rubrikerna under = h3. Se `arUnderrubrik()` och
+  `Brodtext`.
+- **Strukturerad data:** `MedicalWebPage` (about, specialty, publisher =
+  kliniken) + `BreadcrumbList`, som Google kan visa som brödsmulor i
+  sökresultatet.
+- **"Medicinskt granskad av …"** finns färdigt men är TOMT: fältet `granskad`
+  i behandlingssidor.ts visas på sidan och i JSON-LD (reviewedBy/lastReviewed)
+  först när det fylls i. Fyll ALDRIG i ett namn utan klinikens besked — det
+  är ett påstående om en verklig läkare. Be kliniken om granskare och datum
+  per sida; det väger tungt för vårdsidor hos Google.
+- **Ny behandling** i behandlingar.ts får automatiskt en sida, en rad i
+  översikten, en post i sitemapen och sökningen. Lägg till en post i
+  behandlingssidor.ts också, annars blir titeln bara namnet.
+
 ## SEO — byggt och vilande bakom noindex
 
 Sajten är fortfarande **`noindex, nofollow`** (layout.tsx) — avsiktligt, så
@@ -250,9 +286,11 @@ klart men är verkningslöst tills den raden tas bort vid skarp lansering.
 - **Delningsbild** `public/og-bild.jpg` (1200×630, ur receptionsbilden).
   Ligger bara i rotbygget; alla språk pekar på samma URL utan språkprefix.
 
-Kvarstående SEO-frågor som kräver beslut (ej byggda): egna URL:er per
-behandling (dragspelen på /behandlingar rankar inte per behandling),
-domänflytt till gynrama.se med redirects från gamla WordPress-URL:er.
+Egna URL:er per behandling är byggda (se "Behandlingssidor"). Kvarstående
+SEO-frågor som kräver beslut: domänflytt till gynrama.se (WordPress-sidorna
+har samma adresser som våra, så inga omdirigeringar behövs för dem —
+kontrollera övriga indexerade WP-adresser i Search Console före bytet),
+Google-företagsprofilen och medicinsk granskare per behandlingssida.
 
 ## Bilderna
 
@@ -267,7 +305,8 @@ uppskalade — uppskalning skapar bara suddighet. Bara kolposkopi-bilden är ett
 nya foton i högre upplösning.
 
 Kolposkopi-bilden i sin helhet (pågående undersökning) ligger **bara** på
-behandlingssidan, vid Cellförändringar. Randas övriga bilder används som
+behandlingssidan för cellförändringar (`/behandlingar/cellforandringar/`) —
+sedan 2026-10-11 inte längre i översikten, som bara visar ingresser. Randas övriga bilder används som
 stämningsbilder, inte som profilbild — hennes profilbild är orörd.
 
 ### Bilden ska matcha ämnet

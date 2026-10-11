@@ -1,57 +1,19 @@
-import { Check, Pill } from "../ui";
+import Link from "next/link";
+import { ArrowUpRight } from "../ui";
 import { behandlingar, kategorier } from "@/content/behandlingar";
+import { behandlingUrl, ingressUr } from "@/content/behandlingssidor";
 import { t } from "@/i18n";
 
 /**
- * Renderar GynRaMas ordagranna behandlingstext.
- * "• " -> punktlista. Kort rad utan avslutande skiljetecken -> underrubrik.
+ * Översikten på /behandlingar. Varje behandling har en egen sida
+ * (/behandlingar/<slug>/) med klinikens hela text — här står bara namnet
+ * och första meningen, så att översikten inte konkurrerar med
+ * behandlingssidorna om samma sökningar.
+ *
+ * Raderna behåller id={slug}, så gamla djuplänkar (/behandlingar#myom)
+ * landar fortfarande på rätt rad. IVF pekar på /gynrama-ivf, se
+ * behandlingssidor.ts.
  */
-function Brodtext({ text }: { text: string }) {
-  const rader = text.split("\n").filter((r) => r.trim());
-  const block: React.ReactNode[] = [];
-  let punkter: string[] = [];
-
-  const tomPunkter = (key: string) => {
-    if (!punkter.length) return;
-    block.push(
-      <ul key={key} className="my-3 space-y-1.5">
-        {punkter.map((p, i) => (
-          <li key={i} className="flex items-start gap-2.5 text-[15px] text-ink/75">
-            <Check className="mt-[6px] size-[13px] shrink-0 text-ink/40" />
-            <span>{p}</span>
-          </li>
-        ))}
-      </ul>,
-    );
-    punkter = [];
-  };
-
-  rader.forEach((rad, i) => {
-    const r = rad.trim();
-    if (r.startsWith("•")) {
-      punkter.push(r.replace(/^•\s*/, ""));
-      return;
-    }
-    tomPunkter(`ul-${i}`);
-
-    const arUnderrubrik = r.length < 60 && !/[.!?:]$/.test(r);
-    block.push(
-      arUnderrubrik ? (
-        <h4 key={i} className="mt-6 mb-2 font-serif text-[19px] text-ink">
-          {r}
-        </h4>
-      ) : (
-        <p key={i} className="mb-3 text-[15px] leading-relaxed text-ink/75">
-          {r}
-        </p>
-      ),
-    );
-  });
-  tomPunkter("ul-slut");
-
-  return <div className="max-w-[68ch]">{block}</div>;
-}
-
 export function BehandlingsLista() {
   return (
     <section className="bg-gradient-to-b from-lavender-soft to-lavender-mist">
@@ -74,50 +36,32 @@ export function BehandlingsLista() {
                 </span>
               </div>
 
-              {iKat.map((b) => (
-                <details
-                  key={b.slug}
-                  id={b.slug}
-                  className="group border-b border-ink/20"
-                >
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-6 [&::-webkit-details-marker]:hidden">
-                    <h3 className="text-[21px] text-ink transition-opacity group-hover:opacity-70">
-                      {b.namn}
-                    </h3>
-                    <span
-                      aria-hidden
-                      className="relative size-4 shrink-0 text-ink"
+              <ul>
+                {iKat.map((b) => (
+                  <li key={b.slug} id={b.slug} className="border-b border-ink/20">
+                    <Link
+                      href={behandlingUrl(b)}
+                      className="group flex items-center justify-between gap-6 py-6"
                     >
-                      <span className="absolute top-1/2 left-0 h-px w-4 -translate-y-1/2 bg-current" />
-                      <span className="absolute top-0 left-1/2 h-4 w-px -translate-x-1/2 bg-current transition-opacity group-open:opacity-0" />
-                    </span>
-                  </summary>
-
-                  <div className="pb-8">
-                    {b.bild && (
-                      <img
-                        src={b.bild}
-                        alt={b.bildAlt ?? ""}
-                        width={2560}
-                        height={1707}
-                        loading="lazy"
-                        className="mb-6 h-[280px] w-full max-w-[560px] rounded-card object-cover"
-                      />
-                    )}
-                    <Brodtext text={b.text} />
-                    <div className="mt-7 flex flex-wrap gap-3">
-                      <Pill href="/boka-tid" tone="lila">
-                        {t("Boka tid", "Book now", "احجزي موعداً")}
-                      </Pill>
-                      {b.mer && (
-                        <Pill href={b.mer.href} tone="slate">
-                          {b.mer.label}
-                        </Pill>
-                      )}
-                    </div>
-                  </div>
-                </details>
-              ))}
+                      {/* div, inte span: h3 får inte ligga i ett frasinnehåll */}
+                      <div className="min-w-0">
+                        <h3 className="text-[21px] text-ink transition-opacity group-hover:opacity-70">
+                          {b.namn}
+                        </h3>
+                        <p className="mt-1.5 max-w-[78ch] text-[15px] leading-relaxed text-ink/60">
+                          {ingressUr(b.text)}
+                        </p>
+                      </div>
+                      <span
+                        aria-hidden
+                        className="grid size-11 shrink-0 place-items-center rounded-full bg-white/60 text-ink transition-colors group-hover:bg-lila group-hover:text-white"
+                      >
+                        <ArrowUpRight className="size-[13px]" />
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           );
         })}

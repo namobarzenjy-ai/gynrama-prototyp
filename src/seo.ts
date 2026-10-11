@@ -11,6 +11,7 @@
  */
 import type { Metadata } from "next";
 import { SPRAK, type Sprak } from "@/i18n";
+import { behandlingarMedSida } from "@/content/behandlingssidor";
 
 export const SAJT_URL =
   process.env.NEXT_PUBLIC_SAJT_URL ??
@@ -26,7 +27,9 @@ export const SIDOR = [
   "/om-oss/",
   "/formular-och-lankar/",
   "/webshop/",
-] as const;
+  // En sida per behandling (IVF hänvisar till /gynrama-ivf/, se behandlingssidor.ts)
+  ...behandlingarMedSida.map((b) => `/behandlingar/${b.slug}/`),
+];
 
 const PREFIX: Record<Sprak, string> = { sv: "", en: "/en", ar: "/ar" };
 

@@ -5,6 +5,7 @@
  * här automatiskt; lägger du till en NY content-fil måste den in nedan.
  */
 import { behandlingar, ingress as behandlingsIngress } from "./behandlingar";
+import { behandlingUrl } from "./behandlingssidor";
 import { priser, prisIngress } from "./priser";
 import { besokstyper, bokaIngress } from "./bokatid";
 import { lakare, personal, intro as omossIntro } from "./omoss";
@@ -35,7 +36,8 @@ export const sokposter: SokPost[] = [
   ...behandlingar.map((b) => ({
     titel: b.namn,
     typ: t("Behandling", "Treatment", "علاج"),
-    href: `/behandlingar#${b.slug}`,
+    // Egen sida per behandling (IVF -> /gynrama-ivf)
+    href: behandlingUrl(b),
     text: b.text,
   })),
 
