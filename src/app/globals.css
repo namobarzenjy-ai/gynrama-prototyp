@@ -92,6 +92,19 @@ h4 {
   transform: rotate(-3deg);
 }
 
+/* Varukorgspanelen (Varukorg.tsx) är en modal <dialog> — lås sidan bakom */
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+
+/* Varukorgens fasta list under 1100px — luft under footern så att listen
+   inte täcker den. Klassen och brytpunkten hör ihop med Varukorg.tsx. */
+@media (max-width: 1099.98px) {
+  body.har-korglist {
+    padding-bottom: 76px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

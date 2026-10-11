@@ -4,6 +4,7 @@ import { Logo } from "./Logo";
 import { MobilMeny } from "./MobilMeny";
 import { Sok } from "./Sok";
 import { SprakVal } from "./SprakVal";
+import { Varukorg } from "./Varukorg";
 
 const NAV = [
   { label: t("Hem", "Home", "الرئيسية"), href: "/" },
@@ -51,6 +52,8 @@ export function Header({ aktiv = "/" }: { aktiv?: string }) {
         <div className="flex items-center gap-1 lg:gap-2">
           <SprakVal />
           <Sok />
+          {/* Butiken (webshop, produkt, kassa) skickar aktiv="/webshop" */}
+          <Varukorg butik={aktiv === "/webshop"} />
           <Link
             href="/boka-tid"
             className="hidden rounded-pill bg-lavender px-[25px] py-[17px] text-[18px] leading-none font-medium whitespace-nowrap text-ink transition-colors hover:bg-lavender/80 lg:inline-flex lg:items-center"

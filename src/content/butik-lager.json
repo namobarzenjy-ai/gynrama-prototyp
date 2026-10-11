@@ -1,0 +1,107 @@
+{
+  "hamtad": "2026-10-11T15:01:02.136Z",
+  "produkter": {
+    "2525": {
+      "id": 2525,
+      "iLager": true,
+      "kopbar": true,
+      "belopp": 199
+    },
+    "alkoholtest-fran-saliv-02-30-promille-5-pack": {
+      "id": 2585,
+      "iLager": true,
+      "kopbar": true,
+      "belopp": 289
+    },
+    "spermatest-2-st": {
+      "id": 2557,
+      "iLager": true,
+      "kopbar": true,
+      "belopp": 399
+    },
+    "agglossningstest-stav": {
+      "id": 2554,
+      "iLager": true,
+      "kopbar": true,
+      "belopp": 199
+    },
+    "graviditetstest-sticka": {
+      "id": 2552,
+      "iLager": true,
+      "kopbar": true,
+      "belopp": 149
+    },
+    "graviditetstest-stav": {
+      "id": 2547,
+      "iLager": false,
+      "kopbar": true,
+      "belopp": 149
+    },
+    "agglossningstest-sticka": {
+      "id": 2542,
+      "iLager": true,
+      "kopbar": true,
+      "belopp": 179
+    },
+    "saliv-drogtest-multi-12-panel": {
+      "id": 2540,
+      "iLager": true,
+      "kopbar": true,
+      "belopp": 289
+    },
+    "urin-drogtest-multi-12-panel": {
+      "id": 2537,
+      "iLager": true,
+      "kopbar": true,
+      "belopp": 239
+    },
+    "prostata-test-psa": {
+      "id": 2532,
+      "iLager": true,
+      "kopbar": true,
+      "belopp": 169
+    },
+    "strep-a-test-halsfluss": {
+      "id": 2527,
+      "iLager": true,
+      "kopbar": true,
+      "belopp": 239
+    },
+    "bakteriell-vaginos-slidkatarr-6-kombo-kit": {
+      "id": 2521,
+      "iLager": true,
+      "kopbar": true,
+      "belopp": 349
+    },
+    "syfilistest": {
+      "id": 2516,
+      "iLager": true,
+      "kopbar": true,
+      "belopp": 219
+    },
+    "gonorretest": {
+      "id": 2512,
+      "iLager": true,
+      "kopbar": true,
+      "belopp": 189
+    },
+    "herpes-typ-2-test": {
+      "id": 2510,
+      "iLager": true,
+      "kopbar": true,
+      "belopp": 229
+    },
+    "hiv-snabbtest": {
+      "id": 2506,
+      "iLager": true,
+      "kopbar": true,
+      "belopp": 399
+    },
+    "klamydia-test": {
+      "id": 2494,
+      "iLager": true,
+      "kopbar": true,
+      "belopp": 189
+    }
+  }
+}

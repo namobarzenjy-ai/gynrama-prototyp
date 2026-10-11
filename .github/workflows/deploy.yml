@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Varje natt (03:00 UTC = 05:00 sommartid, 04:00 vintertid): bygger om så att webbshoppens
+  # lagerstatus och priser följer WooCommerce. OBS: GitHub stänger av
+  # schemalagda körningar i repon utan aktivitet på 60 dagar.
+  schedule:
+    - cron: "0 3 * * *"
 
 permissions:
   contents: read
@@ -24,6 +29,12 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+
+      # Lagerstatus, priser och produkt-id ur klinikens WooCommerce, se
+      # scripts/hamta-butik.mjs. Går hämtningen inte byggs sajten med den
+      # senast sparade butik-lager.json — bygget fallerar inte för det.
+      - name: Hämta lager och priser från WooCommerce
+        run: npm run butik
 
       # Ett språk per bygge (se src/i18n.ts): svenska till roten,
       # engelska till /en/, arabiska till /ar/. Flaggorna i headern

@@ -113,9 +113,9 @@ och laddar ingen CSS — då blir varje element en falsk avvikelse.
 - **Inga patientomdömen.** Mallen har en omdömessektion; GynRaMa har inga
   omdömen på sin sida, så den är ersatt med de riktiga specialistläkarna.
   Omdömen får inte hittas på.
-- **Webshoppen är en katalog, ingen butik.** Ingen varukorg och ingen kassa är
-  byggd — "Till produkten" länkar till klinikens skarpa WooCommerce-sidor.
-  Produktbilderna hotlänkas också från gynrama.se.
+- **Webbshoppen säljer på riktigt sedan 2026-10-11** — betalningen sker i
+  klinikens WooCommerce-kassa (se "Webshoppen"). Produktbilderna hotlänkas
+  fortfarande från gynrama.se.
 - **Priserna är hämtade 2026-07-17** (`content/priser.ts`, `prisHamtat`),
   med undantagen från kundens besked: NIPT borttaget (2026-08-30) och
   akuttiden 24 tim/2 600 kr (2026-08-31). Kunden har aviserat ett **nytt
@@ -230,6 +230,50 @@ granska språken sida vid sida.
   SR-kortet säger det uttryckligen på en/ar. Broschyr-PDF:erna på
   formulärsidan finns bara på svenska.
 
+## Webshoppen — egna sidor, betalning i WooCommerce
+
+Byggd 2026-10-11. Besökaren handlar i den här designen och betalar i
+klinikens befintliga WooCommerce-kassa — betalsätten (WooPayments-kort,
+PayPal, Apple/Google Pay), orderhanteringen och orderbekräftelserna är
+alltså exakt desamma som i dag. **Inga API-nycklar behövs.**
+
+- **Produktsidor** `/produkt/<slug>/` — en per test (17 st), statiskt byggda
+  ur `content/webshop.ts`. Adresserna är **exakt WooCommerce-adresserna**:
+  läggs sajten bredvid WordPress hos Loopia ersätter de WooCommerce-sidorna
+  utan att en enda indexerad adress byts. Varje sida har `seoMeta()`,
+  produktbilden som delningsbild och JSON-LD `Product` (pris, lagerstatus)
+  + `BreadcrumbList`. Produkterna ligger i `SIDOR` och därmed i sitemapen.
+- **Varukorgen** (`src/varukorg.ts`) ligger i besökarens `localStorage`.
+  Ikonen syns i headern från 1100px; under det visas en fast list längst ned
+  i butiken (headern rymmer ingen knapp till — uppmätt, se `Varukorg.tsx`).
+  Panelen är en native `<dialog>` som glider in från radslutet.
+- **Kassan** är WooCommerces egen. "Till kassan" skickar hela korgen med en
+  checkout-länk: `gynrama.se/checkout-link/?products=<id>:<antal>,…`
+  (WooCommerce 9.9+, butiken kör 11.2). Länken **ersätter** korgen i
+  WooCommerce, så korgen här är facit, och slutsålda varor släpps med ett
+  felmeddelande (allt verifierat 2026-10-11). Korgen töms när besökaren
+  lämnar sidan mot kassan — annars kunde den som betalat och kommer tillbaka
+  råka köpa samma varor igen. Panelen hänvisar då till kassan i 48 timmar
+  (så länge WooCommerce sparar korgen).
+- **Lager, pris och produkt-id** hämtas ur Store API vid varje bygge och
+  varje natt (`scripts/hamta-butik.mjs` → `content/butik-lager.json`,
+  `npm run butik` lokalt; schemat ligger i `deploy.yml`). WooCommerce-priset
+  vinner över det sparade. Slutsålda varor får "Slut i lager" och en
+  avstängd knapp. Går hämtningen inte byggs sajten med den sparade filen.
+  Webbläsaren kan inte hämta lagret själv: Store API tillåter bara anrop
+  från gynrama.se (CORS) — efter lanseringen på samma domän går det.
+- **Ny produkt** i WooCommerce syns inte här förrän den läggs in i
+  `content/webshop.ts` (namn, text och bild ligger där). Slugen kopplar ihop
+  den med lagret.
+- **Texter som är våra, inte klinikens:** stegen "Så går det till" på
+  produktsidan (bygger på `webshopFakta` och CE-meningarna ur
+  `webshopIngress`, utom "Läs bruksanvisningen …" för drogtesterna och
+  kontaktuppmaningen) samt varukorgens mikrotexter. Låt kliniken godkänna dem.
+- **Kassans utseende** är WooCommerces nuvarande. Ska även betalsidan få den
+  nya designen krävs en egen kassa mot Store API:s `checkout` plus
+  betalleverantörens egna kortfält (och avtal/nycklar från kliniken) — inte
+  byggt. En enklare mellanväg är att styla kassan i WordPress-temat.
+
 ## Behandlingssidor — en sida per behandling
 
 Byggt 2026-10-11 (det största SEO-lyftet: dragspelen på /behandlingar kunde
@@ -291,6 +335,10 @@ klart men är verkningslöst tills den raden tas bort vid skarp lansering.
   måste de uppdateras även i den komponenten (kommentar finns).
 - **Delningsbild** `public/og-bild.jpg` (1200×630, ur receptionsbilden).
   Ligger bara i rotbygget; alla språk pekar på samma URL utan språkprefix.
+
+- **`/webshop/` saknade `seoMeta()`** trots att SEO-commiten säger "alla åtta
+  sidor" — upptäckt och rättat 2026-10-11 tillsammans med produktsidorna
+  (se "Webshoppen").
 
 Egna URL:er per behandling är byggda (se "Behandlingssidor"). Kvarstående
 SEO-frågor som kräver beslut: domänflytt till gynrama.se (WordPress-sidorna

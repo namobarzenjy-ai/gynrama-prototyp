@@ -9,7 +9,7 @@ import { behandlingUrl } from "./behandlingssidor";
 import { priser, prisIngress } from "./priser";
 import { besokstyper, bokaIngress } from "./bokatid";
 import { lakare, personal, intro as omossIntro } from "./omoss";
-import { kategorier, produkter, webshopIngress } from "./webshop";
+import { produkter, produktUrl, webshopIngress } from "./webshop";
 import { formular, formularIngress } from "./formular";
 import { ivfIngress } from "./ivf";
 import { t } from "@/i18n";
@@ -67,11 +67,11 @@ export const sokposter: SokPost[] = [
     text: `${p.titel}. ${p.bio[0]}`,
   })),
 
-  // Webshopens produkter — länkar till kategorin (stabil slug, ej rubriken)
+  // Webshopens produkter — länkar till produktsidan
   ...produkter.map((p) => ({
     titel: p.namn,
     typ: t("Webshop", "Shop", "المتجر"),
-    href: `/webshop#${kategorier.find((k) => k.kategori === p.kategori)!.slug}`,
+    href: produktUrl(p.slug),
     text: `${p.pris} · ${p.beskrivning}`,
   })),
 

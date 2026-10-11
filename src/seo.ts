@@ -11,6 +11,7 @@
  */
 import type { Metadata } from "next";
 import { SPRAK, type Sprak } from "@/i18n";
+import { produkter, produktUrl } from "@/content/webshop";
 import { behandlingarMedSida } from "@/content/behandlingssidor";
 
 export const SAJT_URL =
@@ -29,6 +30,8 @@ export const SIDOR = [
   "/webshop/",
   // En sida per behandling (IVF hänvisar till /gynrama-ivf/, se behandlingssidor.ts)
   ...behandlingarMedSida.map((b) => `/behandlingar/${b.slug}/`),
+  // Produktsidorna ligger på samma adresser som i WooCommerce (/produkt/<slug>/)
+  ...produkter.map((p) => `${produktUrl(p.slug)}/`),
 ];
 
 const PREFIX: Record<Sprak, string> = { sv: "", en: "/en", ar: "/ar" };
@@ -65,6 +68,8 @@ export function seoMeta(opts: {
   beskrivning: string;
   /** Sidans sökväg utan språkprefix, t.ex. "/behandlingar/". */
   sokvag: string;
+  /** Egen delningsbild (absolut URL). Standard är og-bild.jpg. */
+  bild?: { url: string; alt: string };
 }): Metadata {
   const url = sidUrl(SPRAK, opts.sokvag);
   return {
@@ -84,7 +89,7 @@ export function seoMeta(opts: {
       // Delningsbilden delas av alla språk och ligger bara i rotbygget —
       // därför alltid utan språkprefix.
       images: [
-        {
+        opts.bild ?? {
           url: `${SAJT_URL}/og-bild.jpg`,
           width: 1200,
           height: 630,

@@ -1,31 +1,31 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { Header } from "@/components/Header";
 import { t } from "@/i18n";
+import { seoMeta } from "@/seo";
 import { Footer } from "@/components/Footer";
+import { ProduktKort } from "@/components/ProduktKort";
 import { SidHero } from "@/components/sections/SidHero";
-import { ArrowUpRight, Check } from "@/components/ui";
+import { Check } from "@/components/ui";
 import {
   produkter,
   kategorier,
   webshopIngress,
   webshopFakta,
-  kopUrl,
 } from "@/content/webshop";
 
-export const metadata: Metadata = {
-  title: t(
+export const metadata: Metadata = seoMeta({
+  titel: t(
     "Webshop – CE-märkta snabbtester – GynRaMa",
     "Web shop – CE-marked rapid tests – GynRaMa",
     "المتجر – فحوصات سريعة معتمدة CE – GynRaMa",
   ),
-  description: t(
+  beskrivning: t(
     "Beställ CE-märkta snabbtester hem: graviditetstest, ägglossningstest, spermatest, klamydia, HIV och fler. Kortbetalning och leverans 1–2 dagar.",
     "Order CE-marked rapid tests to your home: pregnancy tests, ovulation tests, sperm tests, chlamydia, HIV and more. Card payment and delivery in 1–2 days.",
     "اطلبي فحوصات سريعة معتمدة CE إلى منزلك: اختبار الحمل، الإباضة، الحيوانات المنوية، الكلاميديا، فيروس نقص المناعة والمزيد. دفع بالبطاقة وتوصيل خلال يوم إلى يومين.",
   ),
-};
+  sokvag: "/webshop/",
+});
 
 export default function Webshop() {
   return (
@@ -77,67 +77,7 @@ export default function Webshop() {
 
                   <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                     {iKat.map((p) => (
-                      <article
-                        key={p.slug}
-                        className="flex flex-col overflow-hidden rounded-card bg-white"
-                      >
-                        <div className="relative bg-paper">
-                          <Image
-                            src={p.bild}
-                            alt={p.namn}
-                            width={520}
-                            height={520}
-                            className="h-[220px] w-full object-contain p-4"
-                          />
-                          <span
-                            className={`absolute top-4 start-4 rounded-pill px-3 py-1.5 text-[11px] leading-none ${
-                              p.ce === "Självtest"
-                                ? "bg-lila text-white"
-                                : "bg-lavender text-ink"
-                            }`}
-                          >
-                            {p.ce === "Okänt" ? t("CE-märkt", "CE-marked", "معتمد CE") : p.ce === "Självtest" ? t("Självtest", "Self-test", "فحص ذاتي") : t("Professionellt bruk", "Professional use", "استخدام مهني")}
-                          </span>
-                        </div>
-
-                        <div className="flex flex-1 flex-col p-6">
-                          <div className="flex items-baseline justify-between gap-3">
-                            <h3 className="text-[18px] leading-snug text-ink">
-                              {p.namn}
-                            </h3>
-                            <span className="shrink-0 font-serif text-[19px] whitespace-nowrap text-ink">
-                              {p.pris}
-                            </span>
-                          </div>
-
-                          <ul className="mt-4 flex-1 space-y-1.5">
-                            {p.beskrivning
-                              .split("\n")
-                              .filter(Boolean)
-                              .slice(0, 5)
-                              .map((rad, i) => {
-                                const t = rad.replace(/^[-–]\s*/, "");
-                                return (
-                                  <li
-                                    key={i}
-                                    className="text-[13px] leading-relaxed text-ink/65"
-                                  >
-                                    {t}
-                                  </li>
-                                );
-                              })}
-                          </ul>
-
-                          {/* Köp sker i klinikens WooCommerce — inte här */}
-                          <Link
-                            href={kopUrl(p.slug)}
-                            className="mt-6 inline-flex items-center justify-center gap-2 rounded-pill bg-slate-deep px-[22px] py-[13px] text-[15px] leading-none text-white transition-colors hover:bg-ink"
-                          >
-                            {t("Till produkten", "View product", "إلى المنتج")}
-                            <ArrowUpRight className="size-[12px]" />
-                          </Link>
-                        </div>
-                      </article>
+                      <ProduktKort key={p.slug} p={p} />
                     ))}
                   </div>
                 </div>
@@ -145,10 +85,11 @@ export default function Webshop() {
             })}
 
             <p className="mt-16 max-w-[70ch] text-[13px] leading-relaxed text-ink/50">
-              Är testet CE-godkänt som självtest kan det utföras av privatpersoner
-              i hemmiljö utan särskild utbildning. Är det CE-godkänt för
-              professionellt bruk är det avsett att användas inom hälso- och
-              sjukvården av personer med formell utbildning och expertis.
+              {t(
+                "Är testet CE-godkänt som självtest kan det utföras av privatpersoner i hemmiljö utan särskild utbildning. Är det CE-godkänt för professionellt bruk är det avsett att användas inom hälso- och sjukvården av personer med formell utbildning och expertis.",
+                "If a test is CE-approved as a self-test, it can be carried out by private individuals at home without special training. If it is CE-approved for professional use, it is intended for use in healthcare by people with formal training and expertise.",
+                "إذا كان الفحص معتمداً CE كفحص ذاتي، فيمكن للأفراد إجراؤه في المنزل دون تدريب خاص. أما إذا كان معتمداً CE للاستخدام المهني، فهو مخصص للاستخدام في الرعاية الصحية من قِبل أشخاص ذوي تدريب رسمي وخبرة.",
+              )}
             </p>
           </div>
         </section>
