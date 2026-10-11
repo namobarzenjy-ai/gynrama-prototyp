@@ -23,7 +23,7 @@ export const kontakt = {
   akutRad: t(
     "Akut tid inom 24 timmar – 2 600 kr",
     "Urgent appointment within 24 hours – SEK 2,600",
-    "موعد عاجل خلال 24 ساعة – 2 600 كرونا",
+    "موعد عاجل خلال 24 ساعة – 2\u00a0600 كرونا",
   ),
   orgnr: "559368-8111",
   facebook: "https://m.facebook.com/100086003392370/",
@@ -143,7 +143,7 @@ export const omraden = [
 export const besok = [
   {
     titel: t("Gynekologiskt besök", "Gynaecological visit", "زيارة نسائية"),
-    pris: t("1 600 kr", "SEK 1,600", "1 600 كرونا"),
+    pris: t("1 600 kr", "SEK 1,600", "1\u00a0600 كرونا"),
     text: t(
       "Ett fysiskt besök hos specialistläkare inklusive ultraljud. Ingen remiss eller egenremiss krävs — du bokar direkt via bokningssystemet.",
       "An in-person visit with a specialist doctor, including ultrasound. No referral or self-referral needed — you book directly through the booking system.",
@@ -153,7 +153,7 @@ export const besok = [
   },
   {
     titel: t("Videobesök", "Video consultation", "استشارة بالفيديو"),
-    pris: t("1 000 kr", "SEK 1,000", "1 000 كرونا"),
+    pris: t("1 000 kr", "SEK 1,000", "1\u00a0000 كرونا"),
     text: t(
       "Konsultation med specialistläkare via video, var du än befinner dig i landet eller världen.",
       "A video consultation with a specialist doctor, wherever you are in the country or the world.",
@@ -173,7 +173,7 @@ export const besok = [
   },
   {
     titel: t("Akut besök inom 24 timmar", "Urgent visit within 24 hours", "زيارة عاجلة خلال 24 ساعة"),
-    pris: t("2 600 kr", "SEK 2,600", "2 600 كرونا"),
+    pris: t("2 600 kr", "SEK 2,600", "2\u00a0600 كرونا"),
     text: t(
       "När det inte kan vänta får du tid hos specialistläkare inom 24 timmar.",
       "When it cannot wait, you see a specialist doctor within 24 hours.",

@@ -26,7 +26,7 @@ export const besokstyper: Besokstyp[] = [
       "Gynaecological or obstetric examination",
       "فحص نسائي أو توليدي",
     ),
-    pris: t("1 600 kr", "SEK 1,600", "1 600 كرونا"),
+    pris: t("1 600 kr", "SEK 1,600", "1\u00a0600 كرونا"),
     text: t(
       "Fysiskt besök hos specialistläkare på kliniken i Göteborg, inklusive ultraljud.",
       "In-person visit with a specialist doctor at the clinic in Gothenburg, including ultrasound.",
@@ -41,7 +41,7 @@ export const besokstyper: Besokstyp[] = [
       "Video consultation with a specialist doctor",
       "استشارة بالفيديو مع طبيبة اختصاصية",
     ),
-    pris: t("1 000 kr", "SEK 1,000", "1 000 كرونا"),
+    pris: t("1 000 kr", "SEK 1,000", "1\u00a0000 كرونا"),
     text: t(
       "Tillgängligt över hela världen – du behöver inte vara i Göteborg.",
       "Available worldwide – you do not need to be in Gothenburg.",
@@ -71,7 +71,7 @@ export const besokstyper: Besokstyp[] = [
       "Psychiatric consultation with a specialist doctor",
       "استشارة نفسية مع طبيب اختصاصي",
     ),
-    pris: t("Från 1 000 kr", "From SEK 1,000", "ابتداءً من 1 000 كرونا"),
+    pris: t("Från 1 000 kr", "From SEK 1,000", "ابتداءً من 1\u00a0000 كرونا"),
     text: t(
       "Fysiskt besök, videobesök eller telefon. Inklusive PMDS, utmattningssyndrom och postpartum depression.",
       "In person, by video or by phone. Including PMDD, burnout and postpartum depression.",

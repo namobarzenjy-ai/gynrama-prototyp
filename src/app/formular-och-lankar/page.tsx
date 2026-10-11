@@ -84,7 +84,7 @@ export default function FormularOchLankar() {
                     href={kontakt.telefonHref}
                     className="block text-[15px] transition-colors hover:text-lila-ljus max-lg:flex max-lg:min-h-11 max-lg:items-center"
                   >
-                    {kontakt.telefon}
+                    <span dir="ltr">{kontakt.telefon}</span>
                   </Link>
                   <Link
                     href={`mailto:${kontakt.epost}`}

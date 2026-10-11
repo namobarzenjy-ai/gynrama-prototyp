@@ -214,6 +214,12 @@ granska språken sida vid sida.
   `left-1/2 -translate-x-1/2` (RTL ignorerar `left` vid överbestämd
   positionering — boxen hamnar utanför skärmen), och riktade gradienter
   behöver `rtl:bg-linear-to-l`-varianten (se Hero.tsx).
+- **Siffror i arabisk text vänds** om de inte hålls ihop (rättat 2026-10-11):
+  telefonnumret ligger i ett `<span dir="ltr">` inuti länken (annars visas
+  "031-232 122" som "122 232-031") — inte som `dir` på själva länken, för på
+  en blocklänk vänder det även justeringen. Arabiska belopp med tusental
+  behöver hårt mellanrum `\u00a0` (annars visas "1 600" som "600 1"). `kr()`
+  i priser.ts gör det automatiskt; skrivs ett belopp för hand, använd `\u00a0`.
 - **Sökrutan är flerspråkig gratis** — indexet byggs ur content-filerna per
   bygge. Ankar-id:n (kategorislugs) är däremot språkoberoende och får inte
   översättas.

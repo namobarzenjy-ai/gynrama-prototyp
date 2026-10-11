@@ -62,8 +62,8 @@ export const ivfFilosofi = {
 
 /** Relevanta rader ur prislistan, för snabb överblick på IVF-sidan. */
 export const ivfPriser = [
-  { tjanst: t("Fertilitetskonsultation", "Fertility consultation", "استشارة خصوبة"), pris: t("2 000 kr", "SEK 2,000", "2 000 كرونا") },
-  { tjanst: t("Komplett fertilitetsutredning inför ev. IVF-remiss", "Complete fertility investigation ahead of a possible IVF referral", "فحص خصوبة شامل قبل إحالة محتملة لأطفال الأنابيب"), pris: t("11 500 kr", "SEK 11,500", "11 500 كرونا") },
-  { tjanst: t("Ägglossningsstimulering med hormontabletter", "Ovulation stimulation with hormone tablets", "تحفيز الإباضة بأقراص هرمونية"), pris: t("4 000 kr", "SEK 4,000", "4 000 كرونا") },
-  { tjanst: t("Spermieprov", "Sperm test", "فحص الحيوانات المنوية"), pris: t("2 000 kr", "SEK 2,000", "2 000 كرونا") },
+  { tjanst: t("Fertilitetskonsultation", "Fertility consultation", "استشارة خصوبة"), pris: t("2 000 kr", "SEK 2,000", "2\u00a0000 كرونا") },
+  { tjanst: t("Komplett fertilitetsutredning inför ev. IVF-remiss", "Complete fertility investigation ahead of a possible IVF referral", "فحص خصوبة شامل قبل إحالة محتملة لأطفال الأنابيب"), pris: t("11 500 kr", "SEK 11,500", "11\u00a0500 كرونا") },
+  { tjanst: t("Ägglossningsstimulering med hormontabletter", "Ovulation stimulation with hormone tablets", "تحفيز الإباضة بأقراص هرمونية"), pris: t("4 000 kr", "SEK 4,000", "4\u00a0000 كرونا") },
+  { tjanst: t("Spermieprov", "Sperm test", "فحص الحيوانات المنوية"), pris: t("2 000 kr", "SEK 2,000", "2\u00a0000 كرونا") },
 ];

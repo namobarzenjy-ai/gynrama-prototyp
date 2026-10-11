@@ -24,7 +24,12 @@ export type Priskategori = { rubrik: string; slug: string; rader: Prisrad[] };
 
 export const prisHamtat = "2026-07-17";
 
-const kr = (belopp: string, en: string, ar: string) => t(`${belopp} kr`, `SEK ${en}`, `${ar} كرونا`);
+/* Arabiska: tusentalsmellanrummet måste vara hårt (U+00A0). Ett vanligt
+   mellanslag delar talet i två i höger-till-vänster-text, så "1 600" visas
+   som "600 1". Det hårda mellanrummet räknas som talavskiljare och håller
+   ihop talet. Gäller alla arabiska belopp — se även bokatid/gynrama/ivf. */
+const kr = (belopp: string, en: string, ar: string) =>
+  t(`${belopp} kr`, `SEK ${en}`, `${ar.replace(/ /g, "\u00a0")} كرونا`);
 
 export const priser: Priskategori[] = [
   {
@@ -146,7 +151,7 @@ export const priser: Priskategori[] = [
       },
       {
         tjanst: t("Utredning/provtagning av postmenopausal blödning", "Investigation/sampling of postmenopausal bleeding", "فحص وأخذ عينات لنزيف ما بعد سن اليأس"),
-        pris: t("Från 3 000 kr", "From SEK 3,000", "ابتداءً من 3 000 كرونا"),
+        pris: t("Från 3 000 kr", "From SEK 3,000", "ابتداءً من 3\u00a0000 كرونا"),
         not: t("Exklusive läkarkostnad", "Excluding doctor's fee", "لا يشمل أتعاب الطبيبة"),
       },
       { tjanst: t("Uttag av P-stav inklusive bedövning", "Contraceptive implant removal including anaesthesia", "إزالة غرسة منع الحمل شاملة التخدير"), pris: kr("1 800", "1,800", "1 800") },
@@ -189,7 +194,7 @@ export const priser: Priskategori[] = [
         pris: kr("300", "300", "300"),
       },
       { tjanst: t("Enstaka blodprover", "Individual blood tests", "فحوصات دم مفردة"), pris: t("Från 900 kr", "From SEK 900", "ابتداءً من 900 كرونا") },
-      { tjanst: t("Läkarintyg", "Medical certificate", "شهادة طبية"), pris: t("Från 1 000 kr", "From SEK 1,000", "ابتداءً من 1 000 كرونا") },
+      { tjanst: t("Läkarintyg", "Medical certificate", "شهادة طبية"), pris: t("Från 1 000 kr", "From SEK 1,000", "ابتداءً من 1\u00a0000 كرونا") },
       {
         tjanst: t(
           "Endometrial microbiome test vid RIF eller upprepade missfall",

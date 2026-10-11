@@ -49,7 +49,7 @@ export function Praktiskt() {
               href={kontakt.telefonHref}
               className="mt-2 inline-flex items-center text-[16px] transition-colors hover:text-lila-ljus max-lg:min-h-11"
             >
-              {kontakt.telefon}
+              <span dir="ltr">{kontakt.telefon}</span>
             </Link>
             <p className="text-[13px] text-white/50">{t("Mån–Fre 8:30–17:00", "Mon–Fri 8:30–17:00", "الإثنين–الجمعة 8:30–17:00")}</p>
           </div>

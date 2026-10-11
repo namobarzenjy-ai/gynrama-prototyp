@@ -103,13 +103,13 @@ export default function BokaTid() {
                   href={kontakt.telefonHref}
                   className="mt-1 block font-serif text-[26px] transition-colors hover:text-lila-ljus"
                 >
-                  {kontakt.telefon}
+                  <span dir="ltr">{kontakt.telefon}</span>
                 </Link>
                 <Link
                   href={kontakt.telefonAltHref}
                   className="mt-1 block text-[15px] text-white/70 transition-colors hover:text-lila-ljus max-lg:flex max-lg:min-h-11 max-lg:items-center"
                 >
-                  {kontakt.telefonAlt}
+                  <span dir="ltr">{kontakt.telefonAlt}</span>
                 </Link>
                 <p className="mt-2 text-[13px] text-white/50">
                   Mån–fre 8:30–17:00

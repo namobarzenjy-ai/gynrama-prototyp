@@ -70,7 +70,7 @@ export function Footer() {
               <li>
                 <span className="block text-white/50">{t("Telefon", "Phone", "الهاتف")}</span>
                 <Link href={kontakt.telefonHref} className="hover:text-lila-ljus max-lg:inline-flex max-lg:min-h-11 max-lg:items-center">
-                  {kontakt.telefon}
+                  <span dir="ltr">{kontakt.telefon}</span>
                 </Link>
               </li>
               <li>
